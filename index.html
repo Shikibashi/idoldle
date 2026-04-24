@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Content Security Policy: declarative defense-in-depth against XSS.
+      - default-src 'self': no third-party resources anywhere unless explicitly allowed
+      - script-src 'self': only our own JS (no inline, no eval, no CDN)
+      - style-src 'self' 'unsafe-inline': Tailwind + React inline-style props need inline
+      - img-src 'self' data:: favicon.svg + any future inline SVG data URIs
+      - connect-src 'self': fetch('/data/idols.json') + HEAD '/' clock probe, nothing external
+      - frame-ancestors 'none': block clickjacking embed in iframes on other sites
+      - base-uri 'self', form-action 'none': defense against base-tag + form hijack
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Idoldle — a daily Wordle-style game for K-pop girl group idol names."
+    />
+    <meta name="theme-color" content="#6aaa64" />
+    <title>Idoldle</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

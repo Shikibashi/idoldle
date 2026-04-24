@@ -1,0 +1,35 @@
+[Unit]
+Description=Idoldle Vite preview (static dist/) on 127.0.0.1:4173
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tcs
+WorkingDirectory=/var/home/tcs/Code/idoldle
+ExecStart=/home/linuxbrew/.linuxbrew/bin/npx vite preview --host 127.0.0.1 --port 4173 --strictPort
+Restart=always
+RestartSec=5
+
+# --- Hardening ---
+# Drop privileges beyond what's needed for Node + reading dist/.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+# Node needs write access to the project dir for Vite's cache.
+ReadWritePaths=/var/home/tcs/Code/idoldle
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+# Node's V8 JIT requires W+X pages; cannot deny write+execute.
+MemoryDenyWriteExecute=false
+# Allow localhost network only (AF_INET + AF_INET6)
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

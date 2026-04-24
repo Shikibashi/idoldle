@@ -1,0 +1,85 @@
+import type { LetterState } from "../types";
+
+interface KeyboardProps {
+  letterStates: Record<string, LetterState>;
+  onKey: (key: string) => void;
+}
+
+const ROWS = [
+  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+  ["⏎", "Z", "X", "C", "V", "B", "N", "M", "⌫"],
+];
+
+// State precedence for display: correct > present > absent > empty/pending
+const STATE_PRECEDENCE: Record<LetterState, number> = {
+  correct: 4,
+  present: 3,
+  absent: 2,
+  pending: 1,
+  empty: 0,
+};
+
+function getKeyState(letter: string, letterStates: Record<string, LetterState>): LetterState {
+  if (letter === "⏎" || letter === "⌫") return "empty";
+  return letterStates[letter] ?? "empty";
+}
+
+const KEY_BG: Record<LetterState, string> = {
+  empty: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+  pending: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+  correct: "bg-tile-correct text-white",
+  present: "bg-tile-present text-white",
+  absent: "bg-tile-absent text-white",
+};
+
+export function Keyboard({ letterStates, onKey }: KeyboardProps) {
+  return (
+    <div className="flex flex-col items-center gap-1.5 w-full">
+      {ROWS.map((row, rowIdx) => (
+        <div key={rowIdx} className="flex gap-1 justify-center">
+          {row.map((key) => {
+            const state = getKeyState(key, letterStates);
+            const isWide = key === "⏎" || key === "⌫";
+            const isRevealed = state === "correct" || state === "present" || state === "absent";
+
+            // Determine display key name for aria-label
+            const ariaLabel =
+              key === "⏎" ? "Enter" : key === "⌫" ? "Backspace" : `Key ${key}`;
+
+            // Map display key to dispatched value
+            const dispatchKey = key === "⏎" ? "Enter" : key === "⌫" ? "Backspace" : key;
+
+            return (
+              <button
+                key={key}
+                aria-label={ariaLabel}
+                onClick={() => onKey(dispatchKey)}
+                className={[
+                  "relative flex items-center justify-center",
+                  "min-w-[2.5rem] min-h-[3rem]",
+                  isWide ? "px-3 text-sm" : "w-10",
+                  "rounded font-semibold text-sm uppercase",
+                  "transition-colors duration-100",
+                  "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400",
+                  KEY_BG[state],
+                  // Reduce opacity slightly for known-absent to help keyboard scan
+                  state === "absent" ? "opacity-70" : "",
+                  // Mark precedence for state tracking (data attr, not visual)
+                  `data-state-prec-${STATE_PRECEDENCE[state]}`,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                {key}
+                {!isRevealed && (
+                  <span className="sr-only"> (untried)</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+}

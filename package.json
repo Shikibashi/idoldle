@@ -1,0 +1,44 @@
+{
+  "name": "idoldle",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A daily Wordle-style guessing game for K-pop girl group idol stage names.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:a11y": "playwright test tests/a11y.spec.ts",
+    "test:viewport": "playwright test tests/viewport.spec.ts",
+    "scrape:idols": "tsx scripts/scrape-idols.ts",
+    "validate:snapshot": "tsx scripts/validate-snapshot.ts",
+    "audit:rotation": "tsx scripts/audit-rotation.ts",
+    "verify:determinism": "tsx scripts/verify-determinism.ts"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.9.0",
+    "@playwright/test": "^1.46.0",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "jsdom": "^24.1.0",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3",
+    "vitest": "^2.0.2"
+  }
+}

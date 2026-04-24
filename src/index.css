@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Progressive fallback for mobile viewport units (AC-18).
+   Samsung Internet <18 and older Android WebView lack dvh support. */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  /* fallback first */
+  height: 100vh;
+  /* dynamic viewport for modern browsers */
+  height: 100dvh;
+  /* respect iOS safe area insets */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background: #ffffff;
+  color: #1a1a1b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* Respect prefers-reduced-motion — disable flips (AC-20). */
+@media (prefers-reduced-motion: reduce) {
+  .animate-flip,
+  .animate-shake {
+    animation: none !important;
+  }
+  * {
+    transition: none !important;
+  }
+}
