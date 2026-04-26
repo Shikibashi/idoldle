@@ -78,7 +78,7 @@ export function Board({
     <div
       role="grid"
       aria-label="Idoldle game board"
-      className="flex flex-col gap-1.5 w-full max-w-md px-2"
+      className="flex flex-col gap-1.5 w-full max-w-md md:max-w-lg lg:max-w-xl px-2"
     >
       {rows}
     </div>

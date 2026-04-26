@@ -26,18 +26,18 @@ function getKeyState(letter: string, letterStates: Record<string, LetterState>):
 }
 
 const KEY_BG: Record<LetterState, string> = {
-  empty: "bg-gray-200 text-gray-900 hover:bg-gray-300",
-  pending: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+  empty: "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500",
+  pending: "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-500",
   correct: "bg-tile-correct text-white",
-  present: "bg-tile-present text-white",
-  absent: "bg-tile-absent text-white",
+  present: "bg-tile-present text-gray-900",
+  absent: "bg-tile-absent text-white dark:opacity-80",
 };
 
 export function Keyboard({ letterStates, onKey }: KeyboardProps) {
   return (
     <div className="flex flex-col items-center gap-1.5 w-full">
       {ROWS.map((row, rowIdx) => (
-        <div key={rowIdx} className="flex gap-1 justify-center">
+        <div key={rowIdx} className="flex gap-1 justify-center w-full px-1">
           {row.map((key) => {
             const state = getKeyState(key, letterStates);
             const isWide = key === "⏎" || key === "⌫";
@@ -57,8 +57,8 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
                 onClick={() => onKey(dispatchKey)}
                 className={[
                   "relative flex items-center justify-center",
-                  "min-w-[2.5rem] min-h-[3rem]",
-                  isWide ? "px-3 text-sm" : "w-10",
+                  "flex-1 basis-0 min-w-0 md:min-w-[3rem] min-h-[3rem]",
+                  isWide ? "flex-[1.5] basis-0 md:min-w-[4.5rem] px-3 text-sm" : "",
                   "rounded font-semibold text-sm uppercase",
                   "transition-colors duration-100",
                   "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400",

@@ -7,11 +7,11 @@ interface TileProps {
 }
 
 const STATE_BG: Record<LetterState, string> = {
-  empty: "bg-tile-empty border-2 border-gray-500 text-gray-900",
-  pending: "bg-tile-pending border-2 border-gray-700 text-gray-900",
+  empty: "bg-tile-empty border-2 border-gray-500 text-gray-900 dark:bg-tile-dark-empty dark:border-gray-600 dark:text-gray-100",
+  pending: "bg-tile-pending border-2 border-gray-700 text-gray-900 dark:bg-tile-dark-pending dark:border-gray-500 dark:text-gray-100",
   correct: "bg-tile-correct text-white border-2 border-tile-correct",
-  present: "bg-tile-present text-white border-2 border-tile-present",
-  absent: "bg-tile-absent text-white border-2 border-tile-absent",
+  present: "bg-tile-present text-gray-900 border-2 border-tile-present",
+  absent: "bg-tile-absent text-white border-2 border-tile-absent dark:bg-tile-dark-absent dark:border-tile-dark-absent",
 };
 
 export function Tile({ letter, state, revealIndex }: TileProps) {
@@ -32,7 +32,7 @@ export function Tile({ letter, state, revealIndex }: TileProps) {
       aria-label={`Letter ${letter || "empty"}, ${state}`}
       className={[
         "relative flex items-center justify-center",
-        "flex-1 min-w-0 aspect-square max-w-[60px]",
+        "flex-1 min-w-0 aspect-square max-w-[60px] lg:max-w-[72px]",
         "text-xl font-bold uppercase select-none",
         STATE_BG[state],
         animationClass,

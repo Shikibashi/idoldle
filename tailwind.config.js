@@ -2,6 +2,8 @@
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   safelist: ["grid-cols-5", "grid-cols-6"],
+  darkMode: "media",
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     extend: {
       colors: {
@@ -11,6 +13,9 @@ export default {
           absent: "#787c7e",
           present: "#c9b458",
           correct: "#6aaa64",
+          "dark-empty": "#121213",
+          "dark-pending": "#3a3a3c",
+          "dark-absent": "#3a3a3c",
         },
       },
       keyframes: {

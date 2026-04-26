@@ -11,7 +11,7 @@ export function ClockSkewBanner({ skewMinutes, onDismiss }: ClockSkewBannerProps
   return (
     <div
       role="status"
-      className="flex items-center justify-between gap-2 w-full px-3 py-2 bg-yellow-100 border-b border-yellow-300 text-yellow-900 text-sm"
+      className="flex items-center justify-between gap-2 w-full px-3 py-2 bg-yellow-100 border-b border-yellow-300 text-yellow-900 text-sm dark:bg-yellow-900/30 dark:border-yellow-700 dark:text-yellow-200"
     >
       <span>
         Your device clock appears to be off by{" "}
@@ -22,7 +22,7 @@ export function ClockSkewBanner({ skewMinutes, onDismiss }: ClockSkewBannerProps
       <button
         onClick={onDismiss}
         aria-label="Dismiss clock skew warning"
-        className="shrink-0 text-yellow-700 hover:text-yellow-900 focus:outline-none focus:ring-2 focus:ring-yellow-500 rounded"
+        className="shrink-0 text-yellow-700 hover:text-yellow-900 focus:outline-none focus:ring-2 focus:ring-yellow-500 rounded dark:text-yellow-300 dark:hover:text-yellow-100"
       >
         &times;
       </button>

@@ -209,37 +209,50 @@ export default function App() {
   const { show: showSkew, skewMinutes, dismiss: dismissSkew } = useClockSkew();
 
   return (
-    <div className="flex flex-col max-w-md mx-auto h-full">
-      {showSkew && (
-        <ClockSkewBanner skewMinutes={skewMinutes} onDismiss={dismissSkew} />
-      )}
-
-      {fetchState.status === "loading" && (
-        <div className="flex flex-1 items-center justify-center text-gray-500 text-sm">
-          Loading today&apos;s puzzle&hellip;
+    <div className="min-h-full xl:bg-gradient-to-b xl:from-gray-50 xl:to-gray-100 dark:bg-gray-900 xl:dark:from-gray-900 xl:dark:to-gray-800">
+      {/* Landscape rotate hint */}
+      <div role="alert" aria-live="polite" className="rotate-hint fixed inset-0 z-50 items-center justify-center bg-black/80 text-white text-center p-8">
+        <div className="flex flex-col items-center gap-4">
+          <svg aria-hidden="true" className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M4 4v5h5M20 20v-5h-5" />
+            <path d="M20 9A9 9 0 0 0 5.64 5.64L4 4m16 16-1.64-1.64A9 9 0 0 1 4 15" />
+          </svg>
+          <p className="text-lg font-semibold">Rotate to portrait for the best experience</p>
         </div>
-      )}
+      </div>
 
-      {fetchState.status === "error" && (
-        <div className="flex flex-1 items-center justify-center px-6">
-          <div className="text-center">
-            <p className="text-lg font-bold text-gray-800 mb-2">
-              Could not load puzzle data
-            </p>
-            <p className="text-sm text-gray-500">{fetchState.message}</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="mt-4 px-4 py-2 bg-gray-900 text-white rounded-full text-sm hover:bg-gray-700"
-            >
-              Try again
-            </button>
+      <div className="flex flex-col max-w-md md:max-w-lg lg:max-w-xl mx-auto h-full">
+        {showSkew && (
+          <ClockSkewBanner skewMinutes={skewMinutes} onDismiss={dismissSkew} />
+        )}
+
+        {fetchState.status === "loading" && (
+          <div className="flex flex-1 items-center justify-center text-gray-500 dark:text-gray-400 text-sm">
+            Loading today&apos;s puzzle&hellip;
           </div>
-        </div>
-      )}
+        )}
 
-      {fetchState.status === "ready" && (
-        <GameApp snapshot={fetchState.snapshot} />
-      )}
+        {fetchState.status === "error" && (
+          <div className="flex flex-1 items-center justify-center px-6">
+            <div className="text-center">
+              <p className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2">
+                Could not load puzzle data
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{fetchState.message}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="mt-4 px-4 py-2 bg-gray-900 text-white rounded-full text-sm hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300"
+              >
+                Try again
+              </button>
+            </div>
+          </div>
+        )}
+
+        {fetchState.status === "ready" && (
+          <GameApp snapshot={fetchState.snapshot} />
+        )}
+      </div>
     </div>
   );
 }

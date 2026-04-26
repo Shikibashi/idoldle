@@ -20,6 +20,17 @@ export function ShareButton({ text, onCopied }: ShareButtonProps) {
   }, []);
 
   const handleCopy = useCallback(async () => {
+    // Primary on mobile: Web Share API
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
+        await navigator.share({ text });
+        onCopied?.();
+        return;
+      } catch {
+        // User cancelled or share failed — fall through to clipboard
+      }
+    }
+
     let success = false;
 
     // Primary: Clipboard API
@@ -72,7 +83,7 @@ export function ShareButton({ text, onCopied }: ShareButtonProps) {
         "transition-colors duration-150",
         copied
           ? "bg-tile-correct text-white"
-          : "bg-gray-900 text-white hover:bg-gray-700",
+          : "bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300",
         "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600",
       ].join(" ")}
     >
