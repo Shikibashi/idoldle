@@ -204,3 +204,48 @@ describe("buildShareCard URL footer", () => {
     expect(lines[2]).toBe("https://idoldle.edriffles.us");
   });
 });
+
+describe("buildShareCard streak line", () => {
+  const baseParams = {
+    dateKey: "2026-04-24",
+    guesses: [makeGuess("KARINA", "KARINA")],
+    won: true,
+    maxGuesses: 6,
+  };
+
+  it("includes the streak line as the second-to-last line when currentStreak >= 3", () => {
+    const card = buildShareCard({ ...baseParams, currentStreak: 5 });
+    const lines = card.split("\n");
+    expect(lines.length).toBe(4);
+    expect(lines[lines.length - 2]).toBe("🔥 5 day streak");
+    expect(lines[lines.length - 1]).toBe("https://idoldle.edriffles.us");
+  });
+
+  it("omits the streak line when currentStreak is below the threshold (2)", () => {
+    const card = buildShareCard({ ...baseParams, currentStreak: 2 });
+    const lines = card.split("\n");
+    expect(lines.length).toBe(3); // header + grid + url
+    expect(card).not.toContain("day streak");
+  });
+
+  it("omits the streak line when currentStreak is 0", () => {
+    const card = buildShareCard({ ...baseParams, currentStreak: 0 });
+    const lines = card.split("\n");
+    expect(lines.length).toBe(3);
+    expect(card).not.toContain("day streak");
+  });
+
+  it("streak line is correctly positioned even without a URL footer", () => {
+    const card = buildShareCard({ ...baseParams, currentStreak: 4, shareUrl: "" });
+    const lines = card.split("\n");
+    // header + grid + streak = 3 lines, no URL
+    expect(lines.length).toBe(3);
+    expect(lines[lines.length - 1]).toBe("🔥 4 day streak");
+    expect(card).not.toMatch(/https?:/);
+  });
+
+  it("threshold boundary: currentStreak === 3 includes the streak line", () => {
+    const card = buildShareCard({ ...baseParams, currentStreak: 3 });
+    expect(card).toContain("🔥 3 day streak");
+  });
+});

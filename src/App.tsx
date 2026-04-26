@@ -166,6 +166,7 @@ function GameApp({ snapshot }: { snapshot: Snapshot }) {
       <HUD
         dateKey={dateKey}
         themeLabel={themeLabel}
+        currentStreak={stats.currentStreak}
         onOpenStats={() => setStatsOpen(true)}
       />
 

@@ -1,10 +1,11 @@
 interface HUDProps {
   dateKey: string;
   themeLabel: string;
+  currentStreak: number;
   onOpenStats: () => void;
 }
 
-export function HUD({ dateKey, themeLabel, onOpenStats }: HUDProps) {
+export function HUD({ dateKey, themeLabel, currentStreak, onOpenStats }: HUDProps) {
   return (
     <header className="flex items-center justify-between w-full px-3 py-2 border-b border-gray-200 dark:border-gray-700">
       <div className="w-12" /> {/* spacer to center title */}
@@ -12,6 +13,9 @@ export function HUD({ dateKey, themeLabel, onOpenStats }: HUDProps) {
         <h1 className="text-xl font-bold tracking-wide dark:text-gray-100">Idoldle</h1>
         <p className="text-xs text-gray-500 dark:text-gray-400">
           {themeLabel} &middot; {dateKey}
+          {currentStreak >= 1 && (
+            <> &middot; <span aria-label={`${currentStreak} day streak`}>🔥 {currentStreak}</span></>
+          )}
         </p>
       </div>
       <button

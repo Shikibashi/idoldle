@@ -5,31 +5,22 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=tcs
 WorkingDirectory=/var/home/tcs/Code/idoldle
-ExecStart=/home/linuxbrew/.linuxbrew/bin/npx vite preview --host 127.0.0.1 --port 4173 --strictPort
+# npx's shebang is `#!/usr/bin/env node` — without linuxbrew on PATH,
+# the env lookup fails. Inject the linuxbrew bin dir explicitly.
+Environment=PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:/usr/bin:/bin
+# Invoke vite directly from the project's node_modules to avoid npx
+# auto-installing an unrelated global copy.
+ExecStart=/home/linuxbrew/.linuxbrew/bin/node /var/home/tcs/Code/idoldle/node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort
 Restart=always
 RestartSec=5
 
-# --- Hardening ---
-# Drop privileges beyond what's needed for Node + reading dist/.
+# Modest hardening — user services can't match system-unit lockdowns
+# because they share the user's SELinux context (user_u:user_r:user_t).
+# We leave the heavy-duty sandboxing (Protect* etc.) off because uBlue's
+# targeted policy denies too many required paths to systemd-user.
 NoNewPrivileges=true
 PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=read-only
-# Node needs write access to the project dir for Vite's cache.
-ReadWritePaths=/var/home/tcs/Code/idoldle
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectControlGroups=true
-RestrictRealtime=true
-RestrictNamespaces=true
-LockPersonality=true
-# Node's V8 JIT requires W+X pages; cannot deny write+execute.
-MemoryDenyWriteExecute=false
-# Allow localhost network only (AF_INET + AF_INET6)
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-SystemCallArchitectures=native
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

@@ -61,6 +61,19 @@ export interface GameState {
   maxGuesses: 6;
 }
 
+/**
+ * A single day's result, retained in Stats.history for the rolling
+ * 30-day heatmap shown in the stats modal. Stored per UTC-date so a
+ * returning user sees a contribution-grid style record of recent play.
+ */
+export interface DailyResult {
+  dateKey: string;                   // YYYY-MM-DD UTC
+  won: boolean;
+  guessCount: number;                // number of guesses used (1-6 on win, 6 on loss)
+  solveTimeMs: number | null;        // time from first guess submission to win; null on loss
+  answerStageName: string;           // the idol they were solving for (spoiler OK post-game)
+}
+
 export interface Stats {
   currentStreak: number;
   longestStreak: number;
@@ -69,12 +82,27 @@ export interface Stats {
   guessDistribution: [number, number, number, number, number, number]; // index 0 = solved in 1 guess
   lastPlayedDate: string | null;
   lastPlayedResult: "won" | "lost" | null;
-  storageSchemaVersion: number; // bump if shape changes
+  storageSchemaVersion: number;      // bump if shape changes
+  /** Rolling last-30-day log for the stats-modal heatmap. Append-only (capped). */
+  history: DailyResult[];
+  /** Fastest recorded solve time in ms (wins only). null until a first win. */
+  fastestSolveMs: number | null;
 }
 
-// Bumped to 4 on 2026-04-24 after the dataset expansion (260 → 359 idols)
-// + SNAPSHOT_DATE epoch bump. Any stored gameState written before this
-// carries a stale `answer` from the old 260-idol pool, so useLocalStorage
-// must discard it and let useGame recompute against the current snapshot.
-export const STORAGE_SCHEMA_VERSION = 4;
+/** Badge earned by the player, computed on demand from Stats — never stored. */
+export interface Badge {
+  id: string;
+  label: string;
+  icon: string;     // emoji
+  description: string;
+}
+
+// Schema version history:
+//   v1–v2: pre-refactor era-themed / 5-6-letter-only variants (historical)
+//   v3:    length-driven themes + long-name pool (earlier April 2026)
+//   v4:    dataset expansion 260→359 idols + SNAPSHOT_DATE epoch bump
+//   v5:    added Stats.history[] and Stats.fastestSolveMs (achievements + heatmap)
+// Bumps invalidate stored stats/gameState via useLocalStorage's version gate.
+export const STORAGE_SCHEMA_VERSION = 5;
 export const MAX_GUESSES = 6;
+export const HISTORY_CAP = 30;

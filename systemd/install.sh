@@ -1,38 +1,46 @@
 #!/usr/bin/env bash
-# Install the Idoldle systemd services for auto-restart + reboot survival.
-# Run once from the idoldle/ directory (or anywhere — paths are absolute).
+# Install the Idoldle services as USER-level systemd units.
+# Designed for Fedora Bluefin (uBlue atomic) — system-level units can't
+# exec /home/linuxbrew/ binaries under SELinux enforcement, but user
+# services run with the user's own SELinux context and work fine.
 #
 # Usage:
-#   sudo ./systemd/install.sh
+#   ./systemd/install.sh
+#
+# A single sudo prompt is needed at the end to enable-linger so the
+# services keep running when you're logged out / after reboot.
 
 set -euo pipefail
 
-if [[ $EUID -ne 0 ]]; then
-  echo "This script needs sudo. Re-run: sudo $0"
-  exit 1
-fi
-
 SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
+USER_UNIT_DIR="${HOME}/.config/systemd/user"
 
-echo "Installing unit files from ${SRC_DIR} to /etc/systemd/system/ ..."
-install -m 0644 "${SRC_DIR}/idoldle-preview.service"    /etc/systemd/system/idoldle-preview.service
-install -m 0644 "${SRC_DIR}/cloudflared-idoldle.service" /etc/systemd/system/cloudflared-idoldle.service
+echo "Installing user unit files to ${USER_UNIT_DIR} ..."
+mkdir -p "${USER_UNIT_DIR}"
+install -m 0644 "${SRC_DIR}/idoldle-preview.service"     "${USER_UNIT_DIR}/idoldle-preview.service"
+install -m 0644 "${SRC_DIR}/cloudflared-idoldle.service" "${USER_UNIT_DIR}/cloudflared-idoldle.service"
 
-echo "Reloading systemd..."
-systemctl daemon-reload
+echo "Reloading user systemd..."
+systemctl --user daemon-reload
 
 echo "Enabling + starting services..."
-systemctl enable --now idoldle-preview.service
-systemctl enable --now cloudflared-idoldle.service
+systemctl --user enable --now idoldle-preview.service
+systemctl --user enable --now cloudflared-idoldle.service
 
 echo
-echo "Done. Status:"
-systemctl --no-pager status idoldle-preview.service | head -10
+echo "Enabling user lingering (requires one sudo prompt) so services"
+echo "keep running without an active login session and survive reboot..."
+sudo loginctl enable-linger "$(id -un)"
+
 echo
-systemctl --no-pager status cloudflared-idoldle.service | head -10
+echo "=== Status ==="
+systemctl --user --no-pager status idoldle-preview.service     | head -6
 echo
-echo "Public URL: https://idoldle.edriffles.us"
-echo "If the URL was already served by a background process, kill it:"
-echo "  pkill -f 'vite preview' ; pkill cloudflared"
-echo "...then confirm the service restarted it:"
-echo "  systemctl status idoldle-preview cloudflared-idoldle"
+systemctl --user --no-pager status cloudflared-idoldle.service | head -6
+echo
+echo "Done. Public URL: https://idoldle.edriffles.us"
+echo
+echo "Future ops (no sudo required for these):"
+echo "  systemctl --user status idoldle-preview cloudflared-idoldle"
+echo "  systemctl --user restart idoldle-preview"
+echo "  journalctl --user -u cloudflared-idoldle -f"

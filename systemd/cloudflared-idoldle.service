@@ -6,26 +6,12 @@ Requires=idoldle-preview.service
 
 [Service]
 Type=simple
-User=tcs
 ExecStart=/home/linuxbrew/.linuxbrew/bin/cloudflared tunnel --config /var/home/tcs/.cloudflared/config.yml run idoldle
 Restart=always
 RestartSec=5
 
-# --- Hardening ---
 NoNewPrivileges=true
 PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=read-only
-# Cloudflared only needs read access to its credential files.
-ReadOnlyPaths=/var/home/tcs/.cloudflared
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectControlGroups=true
-RestrictRealtime=true
-RestrictNamespaces=true
-LockPersonality=true
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-SystemCallArchitectures=native
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import type { GameState, GameStatus, Guess, Idol, LetterState, Snapshot, Stats, WordLength } from "../types";
-import { MAX_GUESSES, STORAGE_SCHEMA_VERSION } from "../types";
+import type { DailyResult, GameState, GameStatus, Guess, Idol, LetterState, Snapshot, Stats, WordLength } from "../types";
+import { HISTORY_CAP, MAX_GUESSES, STORAGE_SCHEMA_VERSION } from "../types";
 import { useLocalStorage } from "./useLocalStorage";
 import { scoreGuess } from "../lib/wordle";
 import { getDailyAnswer, utcDateKey } from "../lib/daily";
@@ -16,6 +16,8 @@ const INITIAL_STATS: Stats = {
   lastPlayedDate: null,
   lastPlayedResult: null,
   storageSchemaVersion: STORAGE_SCHEMA_VERSION,
+  history: [],
+  fastestSolveMs: null,
 };
 
 // ─── Runtime shape validators for localStorage reads ────────────────────────
@@ -50,6 +52,17 @@ function isStats(v: unknown): v is Stats {
   if (typeof v.gamesWon !== "number") return false;
   if (!Array.isArray(v.guessDistribution) || v.guessDistribution.length !== 6) return false;
   if (!v.guessDistribution.every((n) => typeof n === "number")) return false;
+  // New in v5: history + fastestSolveMs. Schema bump invalidates older blobs,
+  // but still validate shape defensively (tampering / partial writes).
+  if (!Array.isArray(v.history)) return false;
+  if (
+    !v.history.every(
+      (h) => isObject(h) && typeof (h as Record<string, unknown>).dateKey === "string",
+    )
+  ) {
+    return false;
+  }
+  if (v.fastestSolveMs !== null && typeof v.fastestSolveMs !== "number") return false;
   return true;
 }
 
@@ -110,6 +123,10 @@ export function useGame(snapshot: Snapshot): {
   const [toast, setToast] = useState<string | null>(null);
   const [shaking, setShaking] = useState(false);
   const shakeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Timestamp of the first accepted guess in the current puzzle. Used to
+  // compute solveTimeMs for the history heatmap + fastest-solve badge.
+  // Null until the first accepted guess of the session; reset after game end.
+  const solveStartRef = useRef<number | null>(null);
 
   // Auto-clear toast after 1.5s
   useEffect(() => {
@@ -204,14 +221,49 @@ export function useGame(snapshot: Snapshot): {
 
       const newStatus: GameStatus = won ? "won" : lost ? "lost" : "playing";
 
+      // Solve-time tracking: stamp the clock on the first accepted guess;
+      // compute elapsed on win. Rejected guesses (length/pool validation
+      // above) return early so they never advance this ref.
+      if (prev.guesses.length === 0 && solveStartRef.current === null) {
+        solveStartRef.current = Date.now();
+      }
+
       // Update stats if game ended
       if (won || lost) {
+        const solveTimeMs =
+          won && solveStartRef.current !== null
+            ? Date.now() - solveStartRef.current
+            : null;
+        const dailyResult: DailyResult = {
+          dateKey: prev.dateKey,
+          won,
+          guessCount: newGuesses.length,
+          solveTimeMs,
+          answerStageName: prev.answer.stageName,
+        };
+        // Reset so a replay (e.g. after a midnight-stale reset) re-arms cleanly.
+        solveStartRef.current = null;
+
         setStats((prevStats) => {
           const dist = [...prevStats.guessDistribution] as Stats["guessDistribution"];
           if (won) {
             dist[newGuesses.length - 1] = dist[newGuesses.length - 1] + 1;
           }
           const newStreak = won ? prevStats.currentStreak + 1 : 0;
+
+          // History: replace any same-day entry (defensive: resetTodayIfStale
+          // should normally prevent same-day duplicates), else append. Cap at
+          // HISTORY_CAP, keeping the most recent entries.
+          const filtered = prevStats.history.filter(
+            (h) => h.dateKey !== dailyResult.dateKey,
+          );
+          const nextHistory = [...filtered, dailyResult].slice(-HISTORY_CAP);
+
+          const nextFastest =
+            won && solveTimeMs !== null
+              ? Math.min(prevStats.fastestSolveMs ?? Infinity, solveTimeMs)
+              : prevStats.fastestSolveMs;
+
           return {
             ...prevStats,
             gamesPlayed: prevStats.gamesPlayed + 1,
@@ -221,6 +273,11 @@ export function useGame(snapshot: Snapshot): {
             guessDistribution: dist,
             lastPlayedDate: prev.dateKey,
             lastPlayedResult: won ? "won" : "lost",
+            history: nextHistory,
+            // Guard against Infinity leaking into storage if for any reason
+            // won && solveTimeMs is null (shouldn't happen, but be safe).
+            fastestSolveMs:
+              nextFastest === Infinity ? prevStats.fastestSolveMs : nextFastest,
           };
         });
       }
@@ -264,8 +321,9 @@ export function useGame(snapshot: Snapshot): {
         guesses: state.guesses,
         won: state.status === "won",
         maxGuesses: MAX_GUESSES,
+        currentStreak: stats.currentStreak,
       }),
-    [state.dateKey, state.guesses, state.status],
+    [state.dateKey, state.guesses, state.status, stats.currentStreak],
   );
 
   return {

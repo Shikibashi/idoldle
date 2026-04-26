@@ -1,6 +1,28 @@
-import { useEffect, useRef } from "react";
-import type { Idol, Stats } from "../types";
+import { useEffect, useMemo, useRef } from "react";
+import type { DailyResult, Idol, Stats } from "../types";
+import { computeBadges } from "../lib/badges";
 import { ShareButton } from "./ShareButton";
+
+/** Format solve time ms as "Xs" or "Ym Zs" (zero-padded seconds). */
+function formatSolveTime(ms: number | null): string {
+  if (ms === null || !Number.isFinite(ms) || ms < 0) return "—";
+  const totalSec = Math.floor(ms / 1000);
+  if (totalSec < 60) return `${totalSec}s`;
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  return `${m}m ${String(s).padStart(2, "0")}s`;
+}
+
+/** Tailwind color class for a heatmap cell based on the day's result. */
+function heatmapCellClass(entry: DailyResult | undefined): string {
+  if (!entry) return "bg-gray-200";
+  if (!entry.won) return "bg-red-400";
+  const g = entry.guessCount;
+  if (g === 1) return "bg-green-800";
+  if (g <= 3) return "bg-green-600";
+  if (g <= 5) return "bg-green-400";
+  return "bg-green-300"; // 6 guesses
+}
 
 interface StatsModalProps {
   open: boolean;
@@ -37,6 +59,17 @@ export function StatsModal({
       dialogRef.current.focus();
     }
   }, [open]);
+
+  // IMPORTANT: All hooks must run on every render — no conditional early
+  // returns above this block. Compute memoised values first, then bail out
+  // for the closed-modal case.
+  const badges = useMemo(() => computeBadges(stats), [stats]);
+
+  // Sort history by dateKey ascending so oldest is left, newest is right.
+  const sortedHistory = useMemo(
+    () => [...stats.history].sort((a, b) => a.dateKey.localeCompare(b.dateKey)),
+    [stats.history],
+  );
 
   if (!open) return null;
 
@@ -140,6 +173,45 @@ export function StatsModal({
               );
             })}
           </div>
+        </div>
+
+        {/* Badges */}
+        {badges.length > 0 && (
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-center mb-2">
+              Badges
+            </h3>
+            <div className="flex flex-wrap gap-2 justify-center mt-2">
+              {badges.map((b) => (
+                <span
+                  key={b.id}
+                  title={b.description}
+                  className="px-2 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-semibold"
+                >
+                  {b.icon} {b.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Last 30 days heatmap */}
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-widest text-center mb-2">
+            Last 30 Days
+          </h3>
+          <div className="flex flex-wrap gap-1 justify-center">
+            {sortedHistory.map((h) => (
+              <div
+                key={h.dateKey}
+                title={`${h.dateKey}: ${h.won ? `solved in ${h.guessCount}` : "lost"} · answer was ${h.answerStageName}`}
+                className={`w-[14px] h-[14px] rounded-sm ${heatmapCellClass(h)}`}
+              />
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 text-center mt-2">
+            Fastest solve: {formatSolveTime(stats.fastestSolveMs)}
+          </p>
         </div>
 
         {/* Last game answer reveal */}
