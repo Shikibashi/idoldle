@@ -1,5 +1,5 @@
 {
-  "snapshotDate": "2026-04-24",
+  "snapshotDate": "2026-05-02",
   "attribution": {
     "source": "hand-curated v3 snapshot (public knowledge, docs/idol-reference.md)",
     "license": "factual metadata — not copyrighted",
@@ -643,6 +643,9 @@
       "debutYear": 2018,
       "themeTags": [
         "len-6"
+      ],
+      "aliases": [
+        "ARTMS"
       ]
     },
     {
@@ -652,6 +655,10 @@
       "debutYear": 2018,
       "themeTags": [
         "len-7"
+      ],
+      "aliases": [
+        "LATENCY",
+        "LOOSSEMBLE"
       ]
     },
     {
@@ -661,6 +668,9 @@
       "debutYear": 2018,
       "themeTags": [
         "len-6"
+      ],
+      "aliases": [
+        "ARTMS"
       ]
     },
     {
@@ -670,6 +680,9 @@
       "debutYear": 2018,
       "themeTags": [
         "len-6"
+      ],
+      "aliases": [
+        "LOOSSEMBLE"
       ]
     },
     {
@@ -679,6 +692,9 @@
       "debutYear": 2018,
       "themeTags": [
         "len-4"
+      ],
+      "aliases": [
+        "LOOSSEMBLE"
       ]
     },
     {
@@ -688,6 +704,10 @@
       "debutYear": 2018,
       "themeTags": [
         "len-6"
+      ],
+      "aliases": [
+        "ARTMS",
+        "ODD EYE CIRCLE"
       ]
     },
     {
@@ -697,6 +717,10 @@
       "debutYear": 2018,
       "themeTags": [
         "len-7"
+      ],
+      "aliases": [
+        "ARTMS",
+        "ODD EYE CIRCLE"
       ]
     },
     {
@@ -706,6 +730,10 @@
       "debutYear": 2018,
       "themeTags": [
         "len-7"
+      ],
+      "aliases": [
+        "ARTMS",
+        "ODD EYE CIRCLE"
       ]
     },
     {
@@ -733,6 +761,9 @@
       "debutYear": 2018,
       "themeTags": [
         "len-5"
+      ],
+      "aliases": [
+        "LOOSSEMBLE"
       ]
     },
     {
@@ -742,6 +773,9 @@
       "debutYear": 2018,
       "themeTags": [
         "len-5"
+      ],
+      "aliases": [
+        "LOOSSEMBLE"
       ]
     },
     {
@@ -2875,6 +2909,9 @@
       "debutYear": 2022,
       "themeTags": [
         "len-5"
+      ],
+      "aliases": [
+        "LATENCY"
       ]
     },
     {
@@ -3236,6 +3273,2979 @@
       "themeTags": [
         "len-5"
       ]
+    },
+    {
+      "stageName": "BELLA",
+      "group": "Alice",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "KARIN",
+      "group": "Alice",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HYESEONG",
+      "group": "Alice",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "YUKYUNG",
+      "group": "Alice",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "CHAEJEONG",
+      "group": "Alice",
+      "era": "3rd gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "HARA",
+      "group": "KARA",
+      "era": "2nd gen",
+      "debutYear": 2008,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "NICOLE",
+      "group": "KARA",
+      "era": "2nd gen",
+      "debutYear": 2008,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JIYOUNG",
+      "group": "KARA",
+      "era": "2nd gen",
+      "debutYear": 2008,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "YOUNGJI",
+      "group": "KARA",
+      "era": "2nd gen",
+      "debutYear": 2014,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "SUNGHEE",
+      "group": "KARA",
+      "era": "2nd gen",
+      "debutYear": 2007,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "KAHI",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "JUNGAH",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JOOYEON",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "BEKAH",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SOYOUNG",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "RAINA",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "LIZZY",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2010,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "EYOUNG",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2010,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "KAEUN",
+      "group": "After School",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "BORAM",
+      "group": "T-ARA",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "EUNJUNG",
+      "group": "T-ARA",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HYOMIN",
+      "group": "T-ARA",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HWAYOUNG",
+      "group": "T-ARA",
+      "era": "2nd gen",
+      "debutYear": 2010,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "AREUM",
+      "group": "T-ARA",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SUNYE",
+      "group": "Wonder Girls",
+      "era": "2nd gen",
+      "debutYear": 2007,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HYERIM",
+      "group": "Wonder Girls",
+      "era": "2nd gen",
+      "debutYear": 2010,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JIHYUN",
+      "group": "4Minute",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "GAYOON",
+      "group": "4Minute",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HYOSEONG",
+      "group": "SECRET",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "SUNHWA",
+      "group": "SECRET",
+      "era": "2nd gen",
+      "debutYear": 2009,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MIRYO",
+      "group": "Brown Eyed Girls",
+      "era": "2nd gen",
+      "debutYear": 2006,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "NARSHA",
+      "group": "Brown Eyed Girls",
+      "era": "2nd gen",
+      "debutYear": 2006,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "GAIN",
+      "group": "Brown Eyed Girls",
+      "era": "2nd gen",
+      "debutYear": 2006,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MINYOUNG",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2016,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "EUNYOUNG",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2011,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "SEOA",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2011,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YEJIN",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2011,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HYERAN",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2011,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YOOJIN",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2011,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YOUJOUNG",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2016,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "HAYUN",
+      "group": "BB Girls",
+      "era": "2nd gen",
+      "debutYear": 2016,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "GEUMMI",
+      "group": "Crayon Pop",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "ELLIN",
+      "group": "Crayon Pop",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "CHOA",
+      "group": "Crayon Pop",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SOYUL",
+      "group": "Crayon Pop",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SIHYUN",
+      "group": "SPICA",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "NARAE",
+      "group": "SPICA",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "BOHYUNG",
+      "group": "SPICA",
+      "era": "2nd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "ALICE",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "NARA",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YOOARA",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YOONJO",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "LIME",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YOOYOUNG",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "SEOYOUNG",
+      "group": "Hello Venus",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "HAERI",
+      "group": "Davichi",
+      "era": "2nd gen",
+      "debutYear": 2008,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "MINKYUNG",
+      "group": "Davichi",
+      "era": "2nd gen",
+      "debutYear": 2008,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "LEEJIEUN",
+      "group": "IU (solo)",
+      "era": "2nd gen",
+      "debutYear": 2008,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "LEEHYORI",
+      "group": "Lee Hyori (solo)",
+      "era": "1st gen",
+      "debutYear": 2003,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "HYORI",
+      "group": "Lee Hyori (solo)",
+      "era": "1st gen",
+      "debutYear": 2003,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "BADA",
+      "group": "S.E.S",
+      "era": "1st gen",
+      "debutYear": 1997,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "EUGENE",
+      "group": "S.E.S",
+      "era": "1st gen",
+      "debutYear": 1997,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SHOO",
+      "group": "S.E.S",
+      "era": "1st gen",
+      "debutYear": 1997,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "LEEJIN",
+      "group": "Fin.K.L",
+      "era": "1st gen",
+      "debutYear": 1998,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JOOHYUN",
+      "group": "Fin.K.L",
+      "era": "1st gen",
+      "debutYear": 1998,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "SUNGYURI",
+      "group": "Fin.K.L",
+      "era": "1st gen",
+      "debutYear": 1998,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "AYEON",
+      "group": "Saturday",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "CHOHEE",
+      "group": "Saturday",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SION",
+      "group": "Saturday",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SUNHA",
+      "group": "Saturday",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JUYEON",
+      "group": "Saturday",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MINSEO",
+      "group": "Saturday",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HYUNJI",
+      "group": "HashTag",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "DAJEONG",
+      "group": "HashTag",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "SEUNGMIN",
+      "group": "HashTag",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "AEJI",
+      "group": "HashTag",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YOUI",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "BONI",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "LARA",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MISO",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "EUNJO",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HABIN",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HANBYEOL",
+      "group": "DreamNote",
+      "era": "3rd gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "CHANMI",
+      "group": "AOA",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YOUKYUNG",
+      "group": "AOA",
+      "era": "3rd gen",
+      "debutYear": 2012,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "KOKORO",
+      "group": "Cherry Bullet",
+      "era": "4th gen",
+      "debutYear": 2019,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "RINJI",
+      "group": "Pixy",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "LOLA",
+      "group": "Pixy",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SATBYEOL",
+      "group": "Pixy",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "RAINIE",
+      "group": "bugAboo",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "CYAN",
+      "group": "bugAboo",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "CHOYEON",
+      "group": "bugAboo",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "NAHYUN",
+      "group": "Hot Issue",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MAYNA",
+      "group": "Hot Issue",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HYEONGSHIN",
+      "group": "Hot Issue",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "DANA",
+      "group": "Hot Issue",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DAIN",
+      "group": "Hot Issue",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "GEUMHEE",
+      "group": "CSR",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "YEHAM",
+      "group": "CSR",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "DUNA",
+      "group": "CSR",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YEONJAE",
+      "group": "mimiirose",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "YUNJU",
+      "group": "mimiirose",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JACKIE",
+      "group": "ICHILLIN'",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JOONIE",
+      "group": "ICHILLIN'",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YEJU",
+      "group": "ICHILLIN'",
+      "era": "4th gen",
+      "debutYear": 2021,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SOOJUNG",
+      "group": "Hi-L",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "DAKYUNG",
+      "group": "Hi-L",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "JOOA",
+      "group": "Hi-L",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YESEUL",
+      "group": "Hi-L",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "WOOYEON",
+      "group": "WOO!AH",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "SORA",
+      "group": "WOO!AH",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SONGYEE",
+      "group": "WOO!AH",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "ESEO",
+      "group": "LUNARSOLAR",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "JIAN",
+      "group": "LUNARSOLAR",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "TAERYEONG",
+      "group": "LUNARSOLAR",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "YUURI",
+      "group": "LUNARSOLAR",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "ARANG",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "MOMOKA",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MIKU",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "HEESUN",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "AINI",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SANGA",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "YUBEEN",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SEEA",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YECHAN",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HARIN",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "DAEWANG",
+      "group": "Pink Fantasy",
+      "era": "4th gen",
+      "debutYear": 2018,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "CHODAN",
+      "group": "QWER",
+      "era": "5th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MAGENTA",
+      "group": "QWER",
+      "era": "5th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "SUHYE",
+      "group": "MADEIN",
+      "era": "5th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "GAEUN",
+      "group": "MADEIN",
+      "era": "5th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SERINA",
+      "group": "MADEIN",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "NAGOMI",
+      "group": "MADEIN",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "KEENA",
+      "group": "FIFTY FIFTY",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SAENA",
+      "group": "FIFTY FIFTY",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "ARAN",
+      "group": "FIFTY FIFTY",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "CHANELLE",
+      "group": "FIFTY FIFTY",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "ATHENA",
+      "group": "FIFTY FIFTY",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SORAM",
+      "group": "Candy Shop",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "YUINA",
+      "group": "Candy Shop",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JULIA",
+      "group": "Candy Shop",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HITOMI",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SHUIE",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "KANNY",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SOHA",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DOHEE",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JUNHWI",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SEUNGJOO",
+      "group": "SAY MY NAME",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "YEYOUNG",
+      "group": "Geenius",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "MIKA",
+      "group": "Geenius",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "ANDAMIRO",
+      "group": "Geenius",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "TAKARA",
+      "group": "BUSTERS",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MINJUNG",
+      "group": "BUSTERS",
+      "era": "3rd gen",
+      "debutYear": 2017,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HYUNNY",
+      "group": "VVUP",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "PAAN",
+      "group": "VVUP",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DITA",
+      "group": "Triple iz",
+      "era": "4th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "CARMEN",
+      "group": "Hearts2Hearts",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "STELLA",
+      "group": "Hearts2Hearts",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JUUN",
+      "group": "Hearts2Hearts",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YEON",
+      "group": "Hearts2Hearts",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "NAVI",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DINDA",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "EBIN",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MINC",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DENISE",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JINNY",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SOODAM",
+      "group": "Secret Number",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JIYU",
+      "group": "KiiiKiii",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "LEESOL",
+      "group": "KiiiKiii",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HAUM",
+      "group": "KiiiKiii",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "LINGLING",
+      "group": "KIIRAS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "KURUMI",
+      "group": "KIIRAS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "KYLIE",
+      "group": "KIIRAS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "ROAH",
+      "group": "KIIRAS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "NAYU",
+      "group": "ILY:1",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "RONA",
+      "group": "ILY:1",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "RIRIKA",
+      "group": "ILY:1",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "ELVA",
+      "group": "ILY:1",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "WOOAH",
+      "group": "CRAXY",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HYEJIN",
+      "group": "CRAXY",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "CHAEY",
+      "group": "CRAXY",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "AREM",
+      "group": "Rolling Quartz",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "IREE",
+      "group": "Rolling Quartz",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YEONGEUN",
+      "group": "Rolling Quartz",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "JAYOUNG",
+      "group": "Rolling Quartz",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HYUNJUNG",
+      "group": "Rolling Quartz",
+      "era": "4th gen",
+      "debutYear": 2020,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "ZENA",
+      "group": "MAVE:",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MARTY",
+      "group": "MAVE:",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "TYRA",
+      "group": "MAVE:",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "GOEUN",
+      "group": "LAYSHA",
+      "era": "3rd gen",
+      "debutYear": 2015,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "CHAEJIN",
+      "group": "LAYSHA",
+      "era": "3rd gen",
+      "debutYear": 2015,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HADAM",
+      "group": "LAYSHA",
+      "era": "3rd gen",
+      "debutYear": 2015,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SEMI",
+      "group": "LAYSHA",
+      "era": "3rd gen",
+      "debutYear": 2015,
+      "themeTags": [
+        "len-4"
+      ],
+      "aliases": [
+        "LATENCY"
+      ]
+    },
+    {
+      "stageName": "BITNA",
+      "group": "LAYSHA",
+      "era": "3rd gen",
+      "debutYear": 2015,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "GAVIN",
+      "group": "LAYSHA",
+      "era": "3rd gen",
+      "debutYear": 2015,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "YIHYUN",
+      "group": "Baby DON'T Cry",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "KUMI",
+      "group": "Baby DON'T Cry",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "BENI",
+      "group": "Baby DON'T Cry",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MICHI",
+      "group": "AtHeart",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "KATELYN",
+      "group": "AtHeart",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "BOME",
+      "group": "AtHeart",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SEOHYEON",
+      "group": "AtHeart",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "YEWON",
+      "group": "USPEER",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SOEE",
+      "group": "USPEER",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SIAN",
+      "group": "USPEER",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SEOYU",
+      "group": "USPEER",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "DAON",
+      "group": "USPEER",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "CHAENA",
+      "group": "USPEER",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "RYUHEE",
+      "group": "JANUARY",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "ANNIE",
+      "group": "JANUARY",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SOYE",
+      "group": "JANUARY",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "HYUNYOUNG",
+      "group": "JANUARY",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "RUBY",
+      "group": "PRIMROSE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YEUM",
+      "group": "PRIMROSE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "RIHA",
+      "group": "HANA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MACHO",
+      "group": "257",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "KUBIN",
+      "group": "257",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "ODIMX",
+      "group": "257",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JUNI",
+      "group": "N-DAY",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "ARISA",
+      "group": "Aesther",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "ERIS",
+      "group": "Aesther",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "ELLIE",
+      "group": "Aesther",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SEOJIN",
+      "group": "HITGS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SEOHEE",
+      "group": "HITGS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "IYOO",
+      "group": "HITGS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "BRITTNEY",
+      "group": "VVS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "ILEE",
+      "group": "VVS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "RANA",
+      "group": "VVS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "LIWON",
+      "group": "VVS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "LENA",
+      "group": "VVS",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "RISAKO",
+      "group": "UDTT",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "CHAEHEE",
+      "group": "UDTT",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HANNA",
+      "group": "UDTT",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "CASSIE",
+      "group": "BLINGONE CN",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "RANEE",
+      "group": "BLINGONE CN",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "KATRINA",
+      "group": "BLINGONE CN",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "ALLIE",
+      "group": "BLINGONE CN",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HWAYEON",
+      "group": "ifeye",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "TAERIN",
+      "group": "ifeye",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "RAHEE",
+      "group": "ifeye",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "KASIA",
+      "group": "ifeye",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SASHA",
+      "group": "ifeye",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SOOHYUN",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "GAYEON",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JISOL",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "AYOUNG",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SUNGKYUNG",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "HYUNJOO",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "SEON",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DAHYEON",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "KIRI",
+      "group": "SAVVVY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MELODY",
+      "group": "Navillera",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "ENNY",
+      "group": "Navillera",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SAYA",
+      "group": "Navillera",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "RILA",
+      "group": "Navillera",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "JEEWON",
+      "group": "LATENCY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HEEYEON",
+      "group": "LATENCY",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "YIRE",
+      "group": "AFuture",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "JUONE",
+      "group": "Keyveatz",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "NEWY",
+      "group": "Keyveatz",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "JIONE",
+      "group": "Keyveatz",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HEEKIE",
+      "group": "UNCHILD",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "TINA",
+      "group": "UNCHILD",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "EVON",
+      "group": "UNCHILD",
+      "era": "5th gen",
+      "debutYear": 2026,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DONA",
+      "group": "LUVDIA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "HAYU",
+      "group": "LUVDIA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "ULILI",
+      "group": "LUVDIA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SULHEE",
+      "group": "PUZZLE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HONOKA",
+      "group": "PUZZLE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "MIZUKI",
+      "group": "PUZZLE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YEONSEO",
+      "group": "PUZZLE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "WONY",
+      "group": "PUZZLE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "ROKO",
+      "group": "PUZZLE",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "EUNA",
+      "group": "Bunny.T",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "CHEONGEUM",
+      "group": "Bunny.T",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "NINA",
+      "group": "Bunny.T",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SINU",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "JAEHWA",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JAEKONG",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "LONA",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SHUCK",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SSUKTTEOK",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "CHAECHAE",
+      "group": "DDgirls",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "YEONSU",
+      "group": "ADYA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SENA",
+      "group": "ADYA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SEUNGCHAE",
+      "group": "ADYA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "long-name"
+      ]
+    },
+    {
+      "stageName": "CHAEEUN",
+      "group": "ADYA",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "MUNEO",
+      "group": "Feverse",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SEORITAE",
+      "group": "Feverse",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "KEUANG",
+      "group": "Feverse",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "RIEN",
+      "group": "Feverse",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SERENA",
+      "group": "Feverse",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "SEUNGA",
+      "group": "ONEST",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "NABI",
+      "group": "ONEST",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "DAYUN",
+      "group": "ONEST",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HWANHEE",
+      "group": "ONEST",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "TAEHEE",
+      "group": "ONEST",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "JINJOO",
+      "group": "JUJU SECRET",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "NAYEONG",
+      "group": "LA FLOR",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "YIRYANG",
+      "group": "LA FLOR",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HELLO",
+      "group": "Kandis",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "NINE",
+      "group": "Kandis",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "VENNY",
+      "group": "Kandis",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "LOOKY",
+      "group": "Kandis",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "NAGYEONG",
+      "group": "Blossom",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "MINJEONG",
+      "group": "Blossom",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "HUIJU",
+      "group": "Blossom",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "HAEJU",
+      "group": "Lucid",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JAEYEONG",
+      "group": "Lucid",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "EUNYUL",
+      "group": "Lucid",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "HANGYEOL",
+      "group": "Lucid",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-8"
+      ]
+    },
+    {
+      "stageName": "RUMI",
+      "group": "Lucid",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MINCHAE",
+      "group": "Lucid",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "HAEON",
+      "group": "ikling",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "CINDY",
+      "group": "ikling",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "SEOLHEE",
+      "group": "ikling",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-7"
+      ]
+    },
+    {
+      "stageName": "YUISA",
+      "group": "eite",
+      "era": "4th gen",
+      "debutYear": 2023,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "LUCIA",
+      "group": "W!TCHX",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "MAGO",
+      "group": "W!TCHX",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "MARI",
+      "group": "W!TCHX",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "NIAA",
+      "group": "W!TCHX",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YOUSOM",
+      "group": "LOVEONE",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YUME",
+      "group": "LOVEONE",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "CHAEI",
+      "group": "LOVEONE",
+      "era": "5th gen",
+      "debutYear": 2024,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "YUJI",
+      "group": "3YE",
+      "era": "4th gen",
+      "debutYear": 2019,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "YURIM",
+      "group": "3YE",
+      "era": "4th gen",
+      "debutYear": 2019,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "YOUYI",
+      "group": "Burvey",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-5"
+      ]
+    },
+    {
+      "stageName": "JUHA",
+      "group": "Burvey",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-4"
+      ]
+    },
+    {
+      "stageName": "SEOYUN",
+      "group": "Burvey",
+      "era": "5th gen",
+      "debutYear": 2025,
+      "themeTags": [
+        "len-6"
+      ]
+    },
+    {
+      "stageName": "YUNJEONG",
+      "group": "Hi Cutie",
+      "era": "4th gen",
+      "debutYear": 2022,
+      "themeTags": [
+        "len-8"
+      ]
     }
   ],
   "frozenPools": {
@@ -3243,10 +6253,28 @@
       "length": 4,
       "idols": [
         {
+          "stageName": "AEJI",
+          "group": "HashTag",
+          "era": "3rd gen",
+          "debutYear": 2017,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "AHIN",
           "group": "Momoland",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "AINI",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
           "themeTags": [
             "len-4"
           ]
@@ -3261,6 +6289,24 @@
           ]
         },
         {
+          "stageName": "ARAN",
+          "group": "FIFTY FIFTY",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "AREM",
+          "group": "Rolling Quartz",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "ARIN",
           "group": "Oh My Girl",
           "era": "3rd gen",
@@ -3270,10 +6316,37 @@
           ]
         },
         {
+          "stageName": "BADA",
+          "group": "S.E.S",
+          "era": "1st gen",
+          "debutYear": 1997,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "BENI",
+          "group": "Baby DON'T Cry",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "BIBI",
           "group": "BIBI",
           "era": "4th gen",
           "debutYear": 2019,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "BOME",
+          "group": "AtHeart",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-4"
           ]
@@ -3297,10 +6370,28 @@
           ]
         },
         {
+          "stageName": "BONI",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "BORA",
           "group": "SISTAR",
           "era": "2nd gen",
           "debutYear": 2010,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "CHOA",
+          "group": "Crayon Pop",
+          "era": "2nd gen",
+          "debutYear": 2012,
           "themeTags": [
             "len-4"
           ]
@@ -3315,10 +6406,46 @@
           ]
         },
         {
+          "stageName": "CYAN",
+          "group": "bugAboo",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "DAIN",
+          "group": "Hot Issue",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "DAMI",
           "group": "Dreamcatcher",
           "era": "3rd gen",
           "debutYear": 2017,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "DANA",
+          "group": "Hot Issue",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "DAON",
+          "group": "USPEER",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-4"
           ]
@@ -3342,6 +6469,42 @@
           ]
         },
         {
+          "stageName": "DITA",
+          "group": "Triple iz",
+          "era": "4th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "DONA",
+          "group": "LUVDIA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "DUNA",
+          "group": "CSR",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "EBIN",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "ELLA",
           "group": "MEOVV",
           "era": "5th gen",
@@ -3360,6 +6523,15 @@
           ]
         },
         {
+          "stageName": "ELVA",
+          "group": "ILY:1",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "EMMA",
           "group": "BADVILLAIN",
           "era": "5th gen",
@@ -3369,10 +6541,64 @@
           ]
         },
         {
+          "stageName": "ENNY",
+          "group": "Navillera",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "ERIN",
           "group": "Nine Muses",
           "era": "2nd gen",
           "debutYear": 2010,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "ERIS",
+          "group": "Aesther",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "ESEO",
+          "group": "LUNARSOLAR",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "EUNA",
+          "group": "Bunny.T",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "EVON",
+          "group": "UNCHILD",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "GAIN",
+          "group": "Brown Eyed Girls",
+          "era": "2nd gen",
+          "debutYear": 2006,
           "themeTags": [
             "len-4"
           ]
@@ -3396,10 +6622,37 @@
           ]
         },
         {
+          "stageName": "HARA",
+          "group": "KARA",
+          "era": "2nd gen",
+          "debutYear": 2008,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "HARU",
           "group": "Nature",
           "era": "4th gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "HAUM",
+          "group": "KiiiKiii",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "HAYU",
+          "group": "LUVDIA",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-4"
           ]
@@ -3414,10 +6667,37 @@
           ]
         },
         {
+          "stageName": "ILEE",
+          "group": "VVS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "IREE",
+          "group": "Rolling Quartz",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "IREH",
           "group": "Purple Kiss",
           "era": "4th gen",
           "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "IYOO",
+          "group": "HITGS",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-4"
           ]
@@ -3441,10 +6721,55 @@
           ]
         },
         {
+          "stageName": "JIAN",
+          "group": "LUNARSOLAR",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "JIYU",
+          "group": "KiiiKiii",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "JOOA",
+          "group": "Hi-L",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "JOOE",
           "group": "Momoland",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "JUHA",
+          "group": "Burvey",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "JUNI",
+          "group": "N-DAY",
+          "era": "5th gen",
+          "debutYear": 2024,
           "themeTags": [
             "len-4"
           ]
@@ -3459,10 +6784,46 @@
           ]
         },
         {
+          "stageName": "JUUN",
+          "group": "Hearts2Hearts",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "KAHI",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "KIRI",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "KOKO",
           "group": "izna",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "KUMI",
+          "group": "Baby DON'T Cry",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-4"
           ]
@@ -3477,10 +6838,37 @@
           ]
         },
         {
+          "stageName": "LARA",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "LENA",
+          "group": "VVS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "LILY",
           "group": "NMIXX",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "LIME",
+          "group": "Hello Venus",
+          "era": "3rd gen",
+          "debutYear": 2012,
           "themeTags": [
             "len-4"
           ]
@@ -3499,6 +6887,24 @@
           "group": "Nature",
           "era": "4th gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "LOLA",
+          "group": "Pixy",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "LONA",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-4"
           ]
@@ -3540,10 +6946,46 @@
           ]
         },
         {
+          "stageName": "MAGO",
+          "group": "W!TCHX",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "MARI",
+          "group": "W!TCHX",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "MAYU",
           "group": "tripleS",
           "era": "4th gen",
           "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "MIKA",
+          "group": "Geenius",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "MIKU",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
           "themeTags": [
             "len-4"
           ]
@@ -3567,10 +7009,28 @@
           ]
         },
         {
+          "stageName": "MINC",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "MIRE",
           "group": "TRI.BE",
           "era": "4th gen",
           "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "MISO",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
           "themeTags": [
             "len-4"
           ]
@@ -3603,8 +7063,62 @@
           ]
         },
         {
+          "stageName": "NABI",
+          "group": "ONEST",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "NANA",
           "group": "UNIS",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "NARA",
+          "group": "Hello Venus",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "NAVI",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "NAYU",
+          "group": "ILY:1",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "NEWY",
+          "group": "Keyveatz",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "NIAA",
+          "group": "W!TCHX",
           "era": "5th gen",
           "debutYear": 2024,
           "themeTags": [
@@ -3621,6 +7135,24 @@
           ]
         },
         {
+          "stageName": "NINA",
+          "group": "Bunny.T",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "NINE",
+          "group": "Kandis",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "ONDA",
           "group": "Everglow",
           "era": "4th gen",
@@ -3630,10 +7162,28 @@
           ]
         },
         {
+          "stageName": "PAAN",
+          "group": "VVUP",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "RAMI",
           "group": "BABYMONSTER",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "RANA",
+          "group": "VVS",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-4"
           ]
@@ -3657,10 +7207,64 @@
           ]
         },
         {
+          "stageName": "RIEN",
+          "group": "Feverse",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "RIHA",
+          "group": "HANA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "RILA",
+          "group": "Navillera",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "RINA",
           "group": "Weki Meki",
           "era": "3rd gen",
           "debutYear": 2017,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "ROAH",
+          "group": "KIIRAS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "ROKO",
+          "group": "PUZZLE",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "RONA",
+          "group": "ILY:1",
+          "era": "4th gen",
+          "debutYear": 2022,
           "themeTags": [
             "len-4"
           ]
@@ -3684,10 +7288,28 @@
           ]
         },
         {
+          "stageName": "RUBY",
+          "group": "PRIMROSE",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "RUKA",
           "group": "BABYMONSTER",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "RUMI",
+          "group": "Lucid",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-4"
           ]
@@ -3702,10 +7324,67 @@
           ]
         },
         {
+          "stageName": "SAYA",
+          "group": "Navillera",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SEEA",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SEMI",
+          "group": "LAYSHA",
+          "era": "3rd gen",
+          "debutYear": 2015,
+          "themeTags": [
+            "len-4"
+          ],
+          "aliases": [
+            "LATENCY"
+          ]
+        },
+        {
+          "stageName": "SENA",
+          "group": "ADYA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SEOA",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2011,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "SEOI",
           "group": "H1-KEY",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SEON",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
           "themeTags": [
             "len-4"
           ]
@@ -3720,10 +7399,64 @@
           ]
         },
         {
+          "stageName": "SHOO",
+          "group": "S.E.S",
+          "era": "1st gen",
+          "debutYear": 1997,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SIAN",
+          "group": "USPEER",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "SINB",
           "group": "GFRIEND",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SINU",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SION",
+          "group": "Saturday",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SOEE",
+          "group": "USPEER",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SOHA",
+          "group": "SAY MY NAME",
+          "era": "5th gen",
+          "debutYear": 2024,
           "themeTags": [
             "len-4"
           ]
@@ -3738,10 +7471,28 @@
           ]
         },
         {
+          "stageName": "SORA",
+          "group": "WOO!AH",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "SORN",
           "group": "CLC",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "SOYE",
+          "group": "JANUARY",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-4"
           ]
@@ -3760,6 +7511,24 @@
           "group": "Purple Kiss",
           "era": "4th gen",
           "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "TINA",
+          "group": "UNCHILD",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "TYRA",
+          "group": "MAVE:",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-4"
           ]
@@ -3789,6 +7558,18 @@
           "debutYear": 2018,
           "themeTags": [
             "len-4"
+          ],
+          "aliases": [
+            "LOOSSEMBLE"
+          ]
+        },
+        {
+          "stageName": "WONY",
+          "group": "PUZZLE",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
           ]
         },
         {
@@ -3810,6 +7591,15 @@
           ]
         },
         {
+          "stageName": "YEJU",
+          "group": "ICHILLIN'",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "YENA",
           "group": "APRIL",
           "era": "3rd gen",
@@ -3819,10 +7609,37 @@
           ]
         },
         {
+          "stageName": "YEON",
+          "group": "Hearts2Hearts",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "YERI",
           "group": "Red Velvet",
           "era": "3rd gen",
           "debutYear": 2014,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "YEUM",
+          "group": "PRIMROSE",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "YIRE",
+          "group": "AFuture",
+          "era": "5th gen",
+          "debutYear": 2026,
           "themeTags": [
             "len-4"
           ]
@@ -3846,10 +7663,28 @@
           ]
         },
         {
+          "stageName": "YOUI",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "YUHA",
           "group": "Pristin",
           "era": "3rd gen",
           "debutYear": 2017,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "YUJI",
+          "group": "3YE",
+          "era": "4th gen",
+          "debutYear": 2019,
           "themeTags": [
             "len-4"
           ]
@@ -3868,6 +7703,15 @@
           "group": "Purple Kiss",
           "era": "4th gen",
           "debutYear": 2021,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
+          "stageName": "YUME",
+          "group": "LOVEONE",
+          "era": "5th gen",
+          "debutYear": 2024,
           "themeTags": [
             "len-4"
           ]
@@ -3909,6 +7753,15 @@
           ]
         },
         {
+          "stageName": "ZENA",
+          "group": "MAVE:",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-4"
+          ]
+        },
+        {
           "stageName": "ZUNY",
           "group": "Ladies' Code",
           "era": "3rd gen",
@@ -3941,10 +7794,91 @@
           ]
         },
         {
+          "stageName": "ALICE",
+          "group": "Hello Venus",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "ALLIE",
+          "group": "BLINGONE CN",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "AMBER",
           "group": "f(x) (solo)",
           "era": "2nd gen",
           "debutYear": 2009,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "ANNIE",
+          "group": "JANUARY",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "ARANG",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "AREUM",
+          "group": "T-ARA",
+          "era": "2nd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "ARISA",
+          "group": "Aesther",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "AYEON",
+          "group": "Saturday",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "BEKAH",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "BELLA",
+          "group": "Alice",
+          "era": "3rd gen",
+          "debutYear": 2017,
           "themeTags": [
             "len-5"
           ]
@@ -3959,6 +7893,15 @@
           ]
         },
         {
+          "stageName": "BITNA",
+          "group": "LAYSHA",
+          "era": "3rd gen",
+          "debutYear": 2015,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "BOEUN",
           "group": "CLASS:y",
           "era": "4th gen",
@@ -3968,10 +7911,46 @@
           ]
         },
         {
+          "stageName": "BORAM",
+          "group": "T-ARA",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "CHAEI",
+          "group": "LOVEONE",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "CHAEY",
+          "group": "CRAXY",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "CHLOE",
           "group": "cignature",
           "era": "4th gen",
           "debutYear": 2020,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "CINDY",
+          "group": "ikling",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-5"
           ]
@@ -4004,10 +7983,37 @@
           ]
         },
         {
+          "stageName": "DAYUN",
+          "group": "ONEST",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "DINDA",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "DOEUN",
           "group": "YOUNG POSSE",
           "era": "5th gen",
           "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "DOHEE",
+          "group": "SAY MY NAME",
+          "era": "5th gen",
+          "debutYear": 2024,
           "themeTags": [
             "len-5"
           ]
@@ -4031,6 +8037,24 @@
           ]
         },
         {
+          "stageName": "ELLIE",
+          "group": "Aesther",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "ELLIN",
+          "group": "Crayon Pop",
+          "era": "2nd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "EUNHA",
           "group": "GFRIEND",
           "era": "3rd gen",
@@ -4049,10 +8073,37 @@
           ]
         },
         {
+          "stageName": "EUNJO",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "GAEUL",
           "group": "IVE",
           "era": "4th gen",
           "debutYear": 2021,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "GAEUN",
+          "group": "MADEIN",
+          "era": "5th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "GAVIN",
+          "group": "LAYSHA",
+          "era": "3rd gen",
+          "debutYear": 2015,
           "themeTags": [
             "len-5"
           ]
@@ -4067,12 +8118,24 @@
           ]
         },
         {
+          "stageName": "GOEUN",
+          "group": "LAYSHA",
+          "era": "3rd gen",
+          "debutYear": 2015,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "GOWON",
           "group": "LOONA",
           "era": "3rd gen",
           "debutYear": 2018,
           "themeTags": [
             "len-5"
+          ],
+          "aliases": [
+            "LOOSSEMBLE"
           ]
         },
         {
@@ -4080,6 +8143,24 @@
           "group": "fromis_9",
           "era": "3rd gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HABIN",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HADAM",
+          "group": "LAYSHA",
+          "era": "3rd gen",
+          "debutYear": 2015,
           "themeTags": [
             "len-5"
           ]
@@ -4094,10 +8175,49 @@
           ]
         },
         {
+          "stageName": "HAEJU",
+          "group": "Lucid",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HAEON",
+          "group": "ikling",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HAERI",
+          "group": "Davichi",
+          "era": "2nd gen",
+          "debutYear": 2008,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "HAEUN",
           "group": "Lapillus",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-5"
+          ],
+          "aliases": [
+            "LATENCY"
+          ]
+        },
+        {
+          "stageName": "HANNA",
+          "group": "UDTT",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-5"
           ]
@@ -4121,10 +8241,46 @@
           ]
         },
         {
+          "stageName": "HARIN",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HAYUN",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2016,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "HEIZE",
           "group": "HEIZE",
           "era": "3rd gen",
           "debutYear": 2014,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HELLO",
+          "group": "Kandis",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HUIJU",
+          "group": "Blossom",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-5"
           ]
@@ -4154,6 +8310,9 @@
           "debutYear": 2018,
           "themeTags": [
             "len-5"
+          ],
+          "aliases": [
+            "LOOSSEMBLE"
           ]
         },
         {
@@ -4170,6 +8329,15 @@
           "group": "Girl's Day",
           "era": "2nd gen",
           "debutYear": 2010,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "HYORI",
+          "group": "Lee Hyori (solo)",
+          "era": "1st gen",
+          "debutYear": 2003,
           "themeTags": [
             "len-5"
           ]
@@ -4265,6 +8433,33 @@
           ]
         },
         {
+          "stageName": "JINNY",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "JIONE",
+          "group": "Keyveatz",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "JISOL",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "JISOO",
           "group": "BLACKPINK",
           "era": "3rd gen",
@@ -4310,10 +8505,28 @@
           ]
         },
         {
+          "stageName": "JULIA",
+          "group": "Candy Shop",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "JULIE",
           "group": "KISS OF LIFE",
           "era": "5th gen",
           "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "JUONE",
+          "group": "Keyveatz",
+          "era": "5th gen",
+          "debutYear": 2026,
           "themeTags": [
             "len-5"
           ]
@@ -4328,10 +8541,55 @@
           ]
         },
         {
+          "stageName": "KAEUN",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "KANIE",
           "group": "ODD YOUTH",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "KANNY",
+          "group": "SAY MY NAME",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "KARIN",
+          "group": "Alice",
+          "era": "3rd gen",
+          "debutYear": 2017,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "KASIA",
+          "group": "ifeye",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "KEENA",
+          "group": "FIFTY FIFTY",
+          "era": "4th gen",
+          "debutYear": 2022,
           "themeTags": [
             "len-5"
           ]
@@ -4346,10 +8604,73 @@
           ]
         },
         {
+          "stageName": "KUBIN",
+          "group": "257",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "KYLIE",
+          "group": "KIIRAS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "LEEHI",
           "group": "LEE HI",
           "era": "3rd gen",
           "debutYear": 2012,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "LIWON",
+          "group": "VVS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "LIZZY",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2010,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "LOOKY",
+          "group": "Kandis",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "LUCIA",
+          "group": "W!TCHX",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "MACHO",
+          "group": "257",
+          "era": "5th gen",
+          "debutYear": 2024,
           "themeTags": [
             "len-5"
           ]
@@ -4364,10 +8685,37 @@
           ]
         },
         {
+          "stageName": "MARTY",
+          "group": "MAVE:",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "MAYNA",
+          "group": "Hot Issue",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "MEIQI",
           "group": "WJSN",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "MICHI",
+          "group": "AtHeart",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-5"
           ]
@@ -4436,6 +8784,24 @@
           ]
         },
         {
+          "stageName": "MIRYO",
+          "group": "Brown Eyed Girls",
+          "era": "2nd gen",
+          "debutYear": 2006,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "MUNEO",
+          "group": "Feverse",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "NAEUN",
           "group": "Apink",
           "era": "3rd gen",
@@ -4449,6 +8815,15 @@
           "group": "Momoland",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "NARAE",
+          "group": "SPICA",
+          "era": "2nd gen",
+          "debutYear": 2012,
           "themeTags": [
             "len-5"
           ]
@@ -4472,10 +8847,55 @@
           ]
         },
         {
+          "stageName": "ODIMX",
+          "group": "257",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "RAHEE",
+          "group": "ifeye",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "RAINA",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "RANEE",
+          "group": "BLINGONE CN",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "RIINA",
           "group": "H1-KEY",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "RINJI",
+          "group": "Pixy",
+          "era": "4th gen",
+          "debutYear": 2021,
           "themeTags": [
             "len-5"
           ]
@@ -4499,10 +8919,37 @@
           ]
         },
         {
+          "stageName": "SAENA",
+          "group": "FIFTY FIFTY",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "SALLY",
           "group": "Gugudan",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SANGA",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SASHA",
+          "group": "ifeye",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-5"
           ]
@@ -4530,6 +8977,15 @@
           "group": "WJSN",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SEOYU",
+          "group": "USPEER",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-5"
           ]
@@ -4564,6 +9020,24 @@
         {
           "stageName": "SHION",
           "group": "tripleS",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SHUCK",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SHUIE",
+          "group": "SAY MY NAME",
           "era": "5th gen",
           "debutYear": 2024,
           "themeTags": [
@@ -4643,6 +9117,15 @@
           ]
         },
         {
+          "stageName": "SORAM",
+          "group": "Candy Shop",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "SOWON",
           "group": "GFRIEND",
           "era": "3rd gen",
@@ -4661,10 +9144,28 @@
           ]
         },
         {
+          "stageName": "SOYUL",
+          "group": "Crayon Pop",
+          "era": "2nd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "SUBIN",
           "group": "Berry Good",
           "era": "3rd gen",
           "debutYear": 2014,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SUHYE",
+          "group": "MADEIN",
+          "era": "5th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-5"
           ]
@@ -4688,8 +9189,26 @@
           ]
         },
         {
+          "stageName": "SUNHA",
+          "group": "Saturday",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "SUNMI",
           "group": "SUNMI (solo)",
+          "era": "2nd gen",
+          "debutYear": 2007,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "SUNYE",
+          "group": "Wonder Girls",
           "era": "2nd gen",
           "debutYear": 2007,
           "themeTags": [
@@ -4733,10 +9252,37 @@
           ]
         },
         {
+          "stageName": "ULILI",
+          "group": "LUVDIA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "VENNY",
+          "group": "Kandis",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "WENDY",
           "group": "Red Velvet",
           "era": "3rd gen",
           "debutYear": 2014,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "WOOAH",
+          "group": "CRAXY",
+          "era": "4th gen",
+          "debutYear": 2020,
           "themeTags": [
             "len-5"
           ]
@@ -4778,6 +9324,24 @@
           ]
         },
         {
+          "stageName": "YEHAM",
+          "group": "CSR",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "YEJIN",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2011,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "YERIN",
           "group": "GFRIEND",
           "era": "3rd gen",
@@ -4791,6 +9355,15 @@
           "group": "Kep1er",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "YEWON",
+          "group": "USPEER",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-5"
           ]
@@ -4814,10 +9387,37 @@
           ]
         },
         {
+          "stageName": "YOUYI",
+          "group": "Burvey",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
           "stageName": "YUBIN",
           "group": "Oh My Girl",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "YUINA",
+          "group": "Candy Shop",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "YUISA",
+          "group": "eite",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-5"
           ]
@@ -4848,6 +9448,33 @@
           "themeTags": [
             "len-5"
           ]
+        },
+        {
+          "stageName": "YUNJU",
+          "group": "mimiirose",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "YURIM",
+          "group": "3YE",
+          "era": "4th gen",
+          "debutYear": 2019,
+          "themeTags": [
+            "len-5"
+          ]
+        },
+        {
+          "stageName": "YUURI",
+          "group": "LUNARSOLAR",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-5"
+          ]
         }
       ]
     },
@@ -4873,10 +9500,28 @@
           ]
         },
         {
+          "stageName": "ATHENA",
+          "group": "FIFTY FIFTY",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "AURORA",
           "group": "Nature",
           "era": "4th gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "AYOUNG",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
           "themeTags": [
             "len-6"
           ]
@@ -4891,6 +9536,24 @@
           ]
         },
         {
+          "stageName": "CARMEN",
+          "group": "Hearts2Hearts",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "CASSIE",
+          "group": "BLINGONE CN",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "CHAEIN",
           "group": "Purple Kiss",
           "era": "4th gen",
@@ -4900,10 +9563,46 @@
           ]
         },
         {
+          "stageName": "CHAENA",
+          "group": "USPEER",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "CHANMI",
+          "group": "AOA",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "CHANTY",
           "group": "Lapillus",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "CHODAN",
+          "group": "QWER",
+          "era": "5th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "CHOHEE",
+          "group": "Saturday",
+          "era": "3rd gen",
+          "debutYear": 2018,
           "themeTags": [
             "len-6"
           ]
@@ -4936,6 +9635,15 @@
           ]
         },
         {
+          "stageName": "DENISE",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "DOYEON",
           "group": "Weki Meki",
           "era": "3rd gen",
@@ -4949,6 +9657,15 @@
           "group": "UNIS",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "EUGENE",
+          "group": "S.E.S",
+          "era": "1st gen",
+          "debutYear": 1997,
           "themeTags": [
             "len-6"
           ]
@@ -4999,6 +9716,24 @@
           ]
         },
         {
+          "stageName": "EUNYUL",
+          "group": "Lucid",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "EYOUNG",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2010,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "GAHYUN",
           "group": "Dreamcatcher",
           "era": "3rd gen",
@@ -5008,10 +9743,37 @@
           ]
         },
         {
+          "stageName": "GAYEON",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "GAYOON",
+          "group": "4Minute",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "GEHLEE",
           "group": "UNIS",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "GEUMMI",
+          "group": "Crayon Pop",
+          "era": "2nd gen",
+          "debutYear": 2012,
           "themeTags": [
             "len-6"
           ]
@@ -5077,6 +9839,9 @@
           "debutYear": 2018,
           "themeTags": [
             "len-6"
+          ],
+          "aliases": [
+            "ARTMS"
           ]
         },
         {
@@ -5095,6 +9860,27 @@
           "debutYear": 2018,
           "themeTags": [
             "len-6"
+          ],
+          "aliases": [
+            "ARTMS"
+          ]
+        },
+        {
+          "stageName": "HEEKIE",
+          "group": "UNCHILD",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HEESUN",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-6"
           ]
         },
         {
@@ -5102,6 +9888,24 @@
           "group": "Kep1er",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HITOMI",
+          "group": "SAY MY NAME",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HONOKA",
+          "group": "PUZZLE",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-6"
           ]
@@ -5125,6 +9929,33 @@
           ]
         },
         {
+          "stageName": "HYEJIN",
+          "group": "CRAXY",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HYERAN",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2011,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HYERIM",
+          "group": "Wonder Girls",
+          "era": "2nd gen",
+          "debutYear": 2010,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "HYERIN",
           "group": "EXID",
           "era": "3rd gen",
@@ -5143,6 +9974,42 @@
           ]
         },
         {
+          "stageName": "HYOMIN",
+          "group": "T-ARA",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HYUNJI",
+          "group": "HashTag",
+          "era": "3rd gen",
+          "debutYear": 2017,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "HYUNNY",
+          "group": "VVUP",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JACKIE",
+          "group": "ICHILLIN'",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "JAEHEE",
           "group": "Weeekly",
           "era": "4th gen",
@@ -5152,10 +10019,28 @@
           ]
         },
         {
+          "stageName": "JAEHWA",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "JEEMIN",
           "group": "izna",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JEEWON",
+          "group": "LATENCY",
+          "era": "5th gen",
+          "debutYear": 2026,
           "themeTags": [
             "len-6"
           ]
@@ -5174,6 +10059,24 @@
           "group": "fromis_9",
           "era": "3rd gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JIHYUN",
+          "group": "4Minute",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JINJOO",
+          "group": "JUJU SECRET",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-6"
           ]
@@ -5224,6 +10127,42 @@
           ]
         },
         {
+          "stageName": "JOONIE",
+          "group": "ICHILLIN'",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JUNGAH",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JUNHWI",
+          "group": "SAY MY NAME",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "JUYEON",
+          "group": "Saturday",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "KARINA",
           "group": "aespa",
           "era": "4th gen",
@@ -5242,10 +10181,32 @@
           ]
         },
         {
+          "stageName": "KEUANG",
+          "group": "Feverse",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "KIMLIP",
           "group": "LOONA",
           "era": "3rd gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ],
+          "aliases": [
+            "ARTMS",
+            "ODD EYE CIRCLE"
+          ]
+        },
+        {
+          "stageName": "KOKORO",
+          "group": "Cherry Bullet",
+          "era": "4th gen",
+          "debutYear": 2019,
           "themeTags": [
             "len-6"
           ]
@@ -5269,10 +10230,28 @@
           ]
         },
         {
+          "stageName": "KURUMI",
+          "group": "KIIRAS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "KYUJIN",
           "group": "NMIXX",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "LEEJIN",
+          "group": "Fin.K.L",
+          "era": "1st gen",
+          "debutYear": 1998,
           "themeTags": [
             "len-6"
           ]
@@ -5287,10 +10266,28 @@
           ]
         },
         {
+          "stageName": "LEESOL",
+          "group": "KiiiKiii",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "LINLIN",
           "group": "Cherry Bullet",
           "era": "4th gen",
           "debutYear": 2019,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "MELODY",
+          "group": "Navillera",
+          "era": "5th gen",
+          "debutYear": 2026,
           "themeTags": [
             "len-6"
           ]
@@ -5314,9 +10311,36 @@
           ]
         },
         {
+          "stageName": "MINSEO",
+          "group": "Saturday",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "MIYEON",
           "group": "(G)I-DLE",
           "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "MIZUKI",
+          "group": "PUZZLE",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "MOMOKA",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
           "debutYear": 2018,
           "themeTags": [
             "len-6"
@@ -5332,10 +10356,37 @@
           ]
         },
         {
+          "stageName": "NAGOMI",
+          "group": "MADEIN",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "NAHYUN",
+          "group": "Hot Issue",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "NAMJOO",
           "group": "Apink",
           "era": "3rd gen",
           "debutYear": 2011,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "NARSHA",
+          "group": "Brown Eyed Girls",
+          "era": "2nd gen",
+          "debutYear": 2006,
           "themeTags": [
             "len-6"
           ]
@@ -5350,10 +10401,55 @@
           ]
         },
         {
+          "stageName": "NICOLE",
+          "group": "KARA",
+          "era": "2nd gen",
+          "debutYear": 2008,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "RACHEL",
           "group": "APRIL",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "RAINIE",
+          "group": "bugAboo",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "RIRIKA",
+          "group": "ILY:1",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "RISAKO",
+          "group": "UDTT",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "RYUHEE",
+          "group": "JANUARY",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-6"
           ]
@@ -5413,6 +10509,24 @@
           ]
         },
         {
+          "stageName": "SEOHEE",
+          "group": "HITGS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "SEOJIN",
+          "group": "HITGS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "SEOWON",
           "group": "UNIS",
           "era": "5th gen",
@@ -5431,6 +10545,33 @@
           ]
         },
         {
+          "stageName": "SEOYUN",
+          "group": "Burvey",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "SERENA",
+          "group": "Feverse",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "SERINA",
+          "group": "MADEIN",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "SEULGI",
           "group": "Red Velvet",
           "era": "3rd gen",
@@ -5440,10 +10581,28 @@
           ]
         },
         {
+          "stageName": "SEUNGA",
+          "group": "ONEST",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "SHUHUA",
           "group": "(G)I-DLE",
           "era": "3rd gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "SIHYUN",
+          "group": "SPICA",
+          "era": "2nd gen",
+          "debutYear": 2012,
           "themeTags": [
             "len-6"
           ]
@@ -5494,6 +10653,15 @@
           ]
         },
         {
+          "stageName": "SOODAM",
+          "group": "Secret Number",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "SOOMIN",
           "group": "tripleS",
           "era": "5th gen",
@@ -5507,6 +10675,24 @@
           "group": "(G)I-DLE",
           "era": "3rd gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "STELLA",
+          "group": "Hearts2Hearts",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "SULHEE",
+          "group": "PUZZLE",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-6"
           ]
@@ -5539,6 +10725,15 @@
           ]
         },
         {
+          "stageName": "SUNHWA",
+          "group": "SECRET",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "SUNHYE",
           "group": "YOUNG POSSE",
           "era": "5th gen",
@@ -5550,6 +10745,33 @@
         {
           "stageName": "SUYEON",
           "group": "Weki Meki",
+          "era": "3rd gen",
+          "debutYear": 2017,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "TAEHEE",
+          "group": "ONEST",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "TAERIN",
+          "group": "ifeye",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "TAKARA",
+          "group": "BUSTERS",
           "era": "3rd gen",
           "debutYear": 2017,
           "themeTags": [
@@ -5611,6 +10833,15 @@
           ]
         },
         {
+          "stageName": "YECHAN",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "YEHANA",
           "group": "Pristin",
           "era": "3rd gen",
@@ -5626,6 +10857,9 @@
           "debutYear": 2018,
           "themeTags": [
             "len-6"
+          ],
+          "aliases": [
+            "LOOSSEMBLE"
           ]
         },
         {
@@ -5638,10 +10872,82 @@
           ]
         },
         {
+          "stageName": "YEONSU",
+          "group": "ADYA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YESEUL",
+          "group": "Hi-L",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YIHYUN",
+          "group": "Baby DON'T Cry",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
           "stageName": "YIYEON",
           "group": "BVNDIT",
           "era": "4th gen",
           "debutYear": 2019,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YOOARA",
+          "group": "Hello Venus",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YOOJIN",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2011,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YOONJO",
+          "group": "Hello Venus",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YOUSOM",
+          "group": "LOVEONE",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-6"
+          ]
+        },
+        {
+          "stageName": "YUBEEN",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
           "themeTags": [
             "len-6"
           ]
@@ -5679,10 +10985,46 @@
       "length": 7,
       "idols": [
         {
+          "stageName": "BOHYUNG",
+          "group": "SPICA",
+          "era": "2nd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "CHAEBIN",
           "group": "Nature",
           "era": "4th gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "CHAEEUN",
+          "group": "ADYA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "CHAEHEE",
+          "group": "UDTT",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "CHAEJIN",
+          "group": "LAYSHA",
+          "era": "3rd gen",
+          "debutYear": 2015,
           "themeTags": [
             "len-7"
           ]
@@ -5712,6 +11054,10 @@
           "debutYear": 2018,
           "themeTags": [
             "len-7"
+          ],
+          "aliases": [
+            "ARTMS",
+            "ODD EYE CIRCLE"
           ]
         },
         {
@@ -5724,10 +11070,55 @@
           ]
         },
         {
+          "stageName": "CHOYEON",
+          "group": "bugAboo",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "CHUNGHA",
           "group": "CHUNGHA",
           "era": "3rd gen",
           "debutYear": 2017,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "DAEWANG",
+          "group": "Pink Fantasy",
+          "era": "4th gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "DAHYEON",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "DAJEONG",
+          "group": "HashTag",
+          "era": "3rd gen",
+          "debutYear": 2017,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "DAKYUNG",
+          "group": "Hi-L",
+          "era": "4th gen",
+          "debutYear": 2022,
           "themeTags": [
             "len-7"
           ]
@@ -5744,6 +11135,24 @@
         {
           "stageName": "EUNCHAE",
           "group": "LE SSERAFIM",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "EUNJUNG",
+          "group": "T-ARA",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "GEUMHEE",
+          "group": "CSR",
           "era": "4th gen",
           "debutYear": 2022,
           "themeTags": [
@@ -5791,6 +11200,33 @@
           "group": "DIA",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "HEEYEON",
+          "group": "LATENCY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "HWANHEE",
+          "group": "ONEST",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "HWAYEON",
+          "group": "ifeye",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-7"
           ]
@@ -5847,6 +11283,37 @@
           "debutYear": 2018,
           "themeTags": [
             "len-7"
+          ],
+          "aliases": [
+            "LATENCY",
+            "LOOSSEMBLE"
+          ]
+        },
+        {
+          "stageName": "HYUNJOO",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "JAEKONG",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "JAYOUNG",
+          "group": "Rolling Quartz",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-7"
           ]
         },
         {
@@ -5874,6 +11341,37 @@
           "debutYear": 2018,
           "themeTags": [
             "len-7"
+          ],
+          "aliases": [
+            "ARTMS",
+            "ODD EYE CIRCLE"
+          ]
+        },
+        {
+          "stageName": "JIYOUNG",
+          "group": "KARA",
+          "era": "2nd gen",
+          "debutYear": 2008,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "JOOHYUN",
+          "group": "Fin.K.L",
+          "era": "1st gen",
+          "debutYear": 1998,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "JOOYEON",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-7"
           ]
         },
         {
@@ -5890,6 +11388,24 @@
           "group": "izna",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "KATELYN",
+          "group": "AtHeart",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "KATRINA",
+          "group": "BLINGONE CN",
+          "era": "5th gen",
+          "debutYear": 2025,
           "themeTags": [
             "len-7"
           ]
@@ -5913,10 +11429,37 @@
           ]
         },
         {
+          "stageName": "MAGENTA",
+          "group": "QWER",
+          "era": "5th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "MASHIRO",
           "group": "Kep1er",
           "era": "4th gen",
           "debutYear": 2022,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "MINCHAE",
+          "group": "Lucid",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "MINJUNG",
+          "group": "BUSTERS",
+          "era": "3rd gen",
+          "debutYear": 2017,
           "themeTags": [
             "len-7"
           ]
@@ -5953,6 +11496,15 @@
           "group": "fromis_9",
           "era": "3rd gen",
           "debutYear": 2018,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "NAYEONG",
+          "group": "LA FLOR",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-7"
           ]
@@ -6012,6 +11564,15 @@
           ]
         },
         {
+          "stageName": "SEOLHEE",
+          "group": "ikling",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "SEONYOU",
           "group": "CLASS:y",
           "era": "4th gen",
@@ -6057,6 +11618,42 @@
           ]
         },
         {
+          "stageName": "SONGYEE",
+          "group": "WOO!AH",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "SOOHYUN",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "SOOJUNG",
+          "group": "Hi-L",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "SOYOUNG",
+          "group": "After School",
+          "era": "2nd gen",
+          "debutYear": 2009,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "SUHYEON",
           "group": "Billlie",
           "era": "4th gen",
@@ -6070,6 +11667,15 @@
           "group": "Lovelyz",
           "era": "3rd gen",
           "debutYear": 2014,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "SUNGHEE",
+          "group": "KARA",
+          "era": "2nd gen",
+          "debutYear": 2007,
           "themeTags": [
             "len-7"
           ]
@@ -6093,6 +11699,15 @@
           ]
         },
         {
+          "stageName": "WOOYEON",
+          "group": "WOO!AH",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "YEONHEE",
           "group": "Rocket Punch",
           "era": "4th gen",
@@ -6102,10 +11717,46 @@
           ]
         },
         {
+          "stageName": "YEONJAE",
+          "group": "mimiirose",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "YEONSEO",
+          "group": "PUZZLE",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "YEOREUM",
           "group": "WJSN",
           "era": "3rd gen",
           "debutYear": 2016,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "YEYOUNG",
+          "group": "Geenius",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "YIRYANG",
+          "group": "LA FLOR",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-7"
           ]
@@ -6129,10 +11780,28 @@
           ]
         },
         {
+          "stageName": "YOUNGJI",
+          "group": "KARA",
+          "era": "2nd gen",
+          "debutYear": 2014,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
           "stageName": "YUJEONG",
           "group": "LIGHTSUM",
           "era": "4th gen",
           "debutYear": 2021,
+          "themeTags": [
+            "len-7"
+          ]
+        },
+        {
+          "stageName": "YUKYUNG",
+          "group": "Alice",
+          "era": "3rd gen",
+          "debutYear": 2017,
           "themeTags": [
             "len-7"
           ]
@@ -6142,6 +11811,15 @@
     "len-8": {
       "length": 8,
       "idols": [
+        {
+          "stageName": "ANDAMIRO",
+          "group": "Geenius",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-8"
+          ]
+        },
         {
           "stageName": "BABYSOUL",
           "group": "Lovelyz",
@@ -6161,6 +11839,24 @@
           ]
         },
         {
+          "stageName": "BRITTNEY",
+          "group": "VVS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "CHAECHAE",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "CHAEHYUN",
           "group": "Kep1er",
           "era": "4th gen",
@@ -6172,6 +11868,15 @@
         {
           "stageName": "CHAEYEON",
           "group": "tripleS",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "CHANELLE",
+          "group": "FIFTY FIFTY",
           "era": "5th gen",
           "debutYear": 2024,
           "themeTags": [
@@ -6197,10 +11902,64 @@
           ]
         },
         {
+          "stageName": "EUNYOUNG",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2011,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "HANBYEOL",
+          "group": "DreamNote",
+          "era": "3rd gen",
+          "debutYear": 2018,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "HANGYEOL",
+          "group": "Lucid",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "HWAYOUNG",
+          "group": "T-ARA",
+          "era": "2nd gen",
+          "debutYear": 2010,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "HYEJEONG",
           "group": "AOA",
           "era": "3rd gen",
           "debutYear": 2012,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "HYESEONG",
+          "group": "Alice",
+          "era": "3rd gen",
+          "debutYear": 2017,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "HYOSEONG",
+          "group": "SECRET",
+          "era": "2nd gen",
+          "debutYear": 2009,
           "themeTags": [
             "len-8"
           ]
@@ -6215,6 +11974,24 @@
           ]
         },
         {
+          "stageName": "HYUNJUNG",
+          "group": "Rolling Quartz",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "JAEYEONG",
+          "group": "Lucid",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "JEONGHWA",
           "group": "EXID",
           "era": "3rd gen",
@@ -6224,10 +12001,73 @@
           ]
         },
         {
+          "stageName": "LEEHYORI",
+          "group": "Lee Hyori (solo)",
+          "era": "1st gen",
+          "debutYear": 2003,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "LEEJIEUN",
+          "group": "IU (solo)",
+          "era": "2nd gen",
+          "debutYear": 2008,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "LINGLING",
+          "group": "KIIRAS",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "MINJEONG",
+          "group": "Blossom",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "MINKYUNG",
+          "group": "Davichi",
+          "era": "2nd gen",
+          "debutYear": 2008,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "MINYOUNG",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2016,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "MOONBYUL",
           "group": "MAMAMOO",
           "era": "3rd gen",
           "debutYear": 2014,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "NAGYEONG",
+          "group": "Blossom",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "len-8"
           ]
@@ -6251,8 +12091,44 @@
           ]
         },
         {
+          "stageName": "SATBYEOL",
+          "group": "Pixy",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "SEOHYEON",
+          "group": "AtHeart",
+          "era": "5th gen",
+          "debutYear": 2025,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "SEOLHYUN",
           "group": "AOA",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "SEORITAE",
+          "group": "Feverse",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "SEOYOUNG",
+          "group": "Hello Venus",
           "era": "3rd gen",
           "debutYear": 2012,
           "themeTags": [
@@ -6273,6 +12149,24 @@
           "group": "Oh My Girl",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "SEUNGJOO",
+          "group": "SAY MY NAME",
+          "era": "5th gen",
+          "debutYear": 2024,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "SEUNGMIN",
+          "group": "HashTag",
+          "era": "3rd gen",
+          "debutYear": 2017,
           "themeTags": [
             "len-8"
           ]
@@ -6314,6 +12208,15 @@
           ]
         },
         {
+          "stageName": "SUNGYURI",
+          "group": "Fin.K.L",
+          "era": "1st gen",
+          "debutYear": 1998,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "SUNSHINE",
           "group": "Nature",
           "era": "4th gen",
@@ -6350,6 +12253,15 @@
           ]
         },
         {
+          "stageName": "YEONGEUN",
+          "group": "Rolling Quartz",
+          "era": "4th gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "YEONJUNG",
           "group": "WJSN",
           "era": "3rd gen",
@@ -6368,8 +12280,44 @@
           ]
         },
         {
+          "stageName": "YOOYOUNG",
+          "group": "Hello Venus",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "YOUJOUNG",
+          "group": "BB Girls",
+          "era": "2nd gen",
+          "debutYear": 2016,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "YOUKYUNG",
+          "group": "AOA",
+          "era": "3rd gen",
+          "debutYear": 2012,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
           "stageName": "YOUNGEUN",
           "group": "Kep1er",
+          "era": "4th gen",
+          "debutYear": 2022,
+          "themeTags": [
+            "len-8"
+          ]
+        },
+        {
+          "stageName": "YUNJEONG",
+          "group": "Hi Cutie",
           "era": "4th gen",
           "debutYear": 2022,
           "themeTags": [
@@ -6381,6 +12329,15 @@
     "long-name": {
       "length": null,
       "idols": [
+        {
+          "stageName": "CHAEJEONG",
+          "group": "Alice",
+          "era": "3rd gen",
+          "debutYear": 2020,
+          "themeTags": [
+            "long-name"
+          ]
+        },
         {
           "stageName": "CHAEKYUNG",
           "group": "APRIL",
@@ -6418,10 +12375,37 @@
           ]
         },
         {
+          "stageName": "CHEONGEUM",
+          "group": "Bunny.T",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
           "stageName": "CHLOEYOUNG",
           "group": "BADVILLAIN",
           "era": "5th gen",
           "debutYear": 2024,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
+          "stageName": "HYEONGSHIN",
+          "group": "Hot Issue",
+          "era": "4th gen",
+          "debutYear": 2021,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
+          "stageName": "HYUNYOUNG",
+          "group": "JANUARY",
+          "era": "4th gen",
+          "debutYear": 2023,
           "themeTags": [
             "long-name"
           ]
@@ -6472,10 +12456,46 @@
           ]
         },
         {
+          "stageName": "SEUNGCHAE",
+          "group": "ADYA",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
           "stageName": "SEUNGYEON",
           "group": "CLC",
           "era": "3rd gen",
           "debutYear": 2015,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
+          "stageName": "SSUKTTEOK",
+          "group": "DDgirls",
+          "era": "4th gen",
+          "debutYear": 2023,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
+          "stageName": "SUNGKYUNG",
+          "group": "SAVVVY",
+          "era": "5th gen",
+          "debutYear": 2026,
+          "themeTags": [
+            "long-name"
+          ]
+        },
+        {
+          "stageName": "TAERYEONG",
+          "group": "LUNARSOLAR",
+          "era": "4th gen",
+          "debutYear": 2020,
           "themeTags": [
             "long-name"
           ]
