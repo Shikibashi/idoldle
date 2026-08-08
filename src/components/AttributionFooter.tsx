@@ -8,23 +8,25 @@ export function AttributionFooter({ snapshot }: AttributionFooterProps) {
   const attr = snapshot.attribution;
 
   return (
-    <footer className="py-2 text-center text-xs text-gray-600 dark:text-gray-400 select-none">
+    <footer className="retro-footer py-2 text-center text-xs select-none">
       {attr ? (
         <>
-          Data:{" "}
+          <span className="retro-footer__label">DATA //</span>{" "}
           <a
             href={attr.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-gray-800 dark:hover:text-gray-300"
+            className="retro-link underline"
           >
             {attr.source}
           </a>{" "}
-          &middot; {attr.license}
+          // {attr.license}
         </>
       ) : (
         "v1 hand-curated snapshot."
       )}
+      <span className="retro-footer__rule" aria-hidden="true"> · </span>
+      <span>best viewed with curiosity // no plugins required</span>
     </footer>
   );
 }

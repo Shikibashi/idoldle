@@ -16,8 +16,8 @@ export function Toast({ message }: ToastProps) {
       aria-atomic="true"
       className={[
         "fixed top-16 left-1/2 -translate-x-1/2 z-50",
-        "bg-gray-900 text-white text-sm font-semibold",
-        "px-4 py-2 rounded-full shadow-lg",
+        "retro-toast text-sm font-semibold",
+        "px-4 py-2 shadow-lg",
         "pointer-events-none select-none",
         "transition-opacity duration-300",
         message ? "opacity-100" : "opacity-0",

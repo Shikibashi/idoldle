@@ -35,9 +35,13 @@ const KEY_BG: Record<LetterState, string> = {
 
 export function Keyboard({ letterStates, onKey }: KeyboardProps) {
   return (
-    <div className="flex flex-col items-center gap-1.5 w-full">
+    <section className="retro-panel retro-keyboard-panel flex flex-col items-center gap-1.5 w-full" aria-labelledby="keyboard-panel-title">
+      <div className="retro-panel__header retro-panel__header--keyboard" id="keyboard-panel-title">
+        <span>Input deck</span>
+        <span>click or type</span>
+      </div>
       {ROWS.map((row, rowIdx) => (
-        <div key={rowIdx} className="flex gap-1 justify-center w-full px-1">
+        <div key={rowIdx} className="retro-key-row flex gap-1 justify-center w-full px-1">
           {row.map((key) => {
             const state = getKeyState(key, letterStates);
             const isWide = key === "⏎" || key === "⌫";
@@ -56,6 +60,8 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
                 aria-label={ariaLabel}
                 onClick={() => onKey(dispatchKey)}
                 className={[
+                  "retro-key",
+                  `retro-key--${state}`,
                   "relative flex items-center justify-center",
                   "flex-1 basis-0 min-w-0 md:min-w-[3rem] min-h-[3rem]",
                   isWide ? "flex-[1.5] basis-0 md:min-w-[4.5rem] px-3 text-sm" : "",
@@ -80,6 +86,6 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
           })}
         </div>
       ))}
-    </div>
+    </section>
   );
 }

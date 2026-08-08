@@ -78,12 +78,12 @@ export function ShareButton({ text, onCopied }: ShareButtonProps) {
       onClick={handleCopy}
       aria-label={copied ? "Copied to clipboard" : "Share result"}
       className={[
-        "flex items-center gap-2 px-6 py-3 rounded-full",
+        "retro-share flex items-center gap-2 px-6 py-3",
         "font-semibold text-sm uppercase tracking-wide",
         "transition-colors duration-150",
         copied
-          ? "bg-tile-correct text-white"
-          : "bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300",
+          ? "retro-share--copied"
+          : "retro-share--idle",
         "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600",
       ].join(" ")}
     >

@@ -34,6 +34,8 @@ export function Tile({ letter, state, revealIndex }: TileProps) {
         "relative flex items-center justify-center",
         "flex-1 min-w-0 aspect-square max-w-[60px] lg:max-w-[72px]",
         "text-xl font-bold uppercase select-none",
+        "retro-tile",
+        `retro-tile--${state}`,
         STATE_BG[state],
         animationClass,
       ]

@@ -75,12 +75,19 @@ export function Board({
   }
 
   return (
-    <div
-      role="grid"
-      aria-label="Idoldle game board"
-      className="flex flex-col gap-1.5 w-full max-w-md md:max-w-lg lg:max-w-xl px-2"
-    >
-      {rows}
-    </div>
+    <section className="retro-panel retro-board-panel" aria-labelledby="board-panel-title">
+      <div className="retro-panel__header" id="board-panel-title">
+        <span>Today&apos;s challenge</span>
+        <span>6 attempts // {length} letters</span>
+      </div>
+      <div
+        role="grid"
+        aria-label="Idoldle game board"
+        className="retro-board-grid flex flex-col gap-1.5 w-full max-w-md md:max-w-lg lg:max-w-xl px-2"
+      >
+        {rows}
+      </div>
+      <div className="retro-panel__hint">Enter a stage name to decode the idol</div>
+    </section>
   );
 }

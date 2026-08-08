@@ -171,7 +171,7 @@ function GameApp({ snapshot }: { snapshot: Snapshot }) {
       />
 
       {/* Main game area */}
-      <main className="flex flex-col items-center justify-center flex-1 overflow-hidden py-3 gap-6">
+      <main className="retro-main flex flex-col items-center justify-center flex-1 overflow-hidden py-3 gap-6">
         <Board
           guesses={state.guesses}
           currentInput={state.currentInput}
@@ -210,7 +210,7 @@ export default function App() {
   const { show: showSkew, skewMinutes, dismiss: dismissSkew } = useClockSkew();
 
   return (
-    <div className="min-h-full xl:bg-gradient-to-b xl:from-gray-50 xl:to-gray-100 dark:bg-gray-900 xl:dark:from-gray-900 xl:dark:to-gray-800">
+    <div className="retro-page min-h-full">
       {/* Landscape rotate hint */}
       <div role="alert" aria-live="polite" className="rotate-hint fixed inset-0 z-50 items-center justify-center bg-black/80 text-white text-center p-8">
         <div className="flex flex-col items-center gap-4">
@@ -222,27 +222,32 @@ export default function App() {
         </div>
       </div>
 
-      <div className="flex flex-col max-w-md md:max-w-lg lg:max-w-xl mx-auto h-full">
+      <div className="retro-window flex flex-col max-w-md md:max-w-lg lg:max-w-xl mx-auto h-full">
+        <div className="retro-windowbar" aria-hidden="true">
+          <span className="retro-windowbar__brand">IDOLDLE.EXE</span>
+          <span className="retro-windowbar__status">// daily idol database</span>
+          <span className="retro-windowbar__controls">_ □ ×</span>
+        </div>
         {showSkew && (
           <ClockSkewBanner skewMinutes={skewMinutes} onDismiss={dismissSkew} />
         )}
 
         {fetchState.status === "loading" && (
-          <div className="flex flex-1 items-center justify-center text-gray-500 dark:text-gray-400 text-sm">
+          <div className="retro-loading flex flex-1 items-center justify-center text-sm">
             Loading today&apos;s puzzle&hellip;
           </div>
         )}
 
         {fetchState.status === "error" && (
           <div className="flex flex-1 items-center justify-center px-6">
-            <div className="text-center">
-              <p className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2">
+            <div className="retro-error text-center">
+              <p className="text-lg font-bold mb-2">
                 Could not load puzzle data
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{fetchState.message}</p>
+              <p className="text-sm">{fetchState.message}</p>
               <button
                 onClick={() => window.location.reload()}
-                className="mt-4 px-4 py-2 bg-gray-900 text-white rounded-full text-sm hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300"
+                className="retro-action-button mt-4 px-4 py-2 text-sm"
               >
                 Try again
               </button>

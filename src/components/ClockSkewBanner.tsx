@@ -11,7 +11,7 @@ export function ClockSkewBanner({ skewMinutes, onDismiss }: ClockSkewBannerProps
   return (
     <div
       role="status"
-      className="flex items-center justify-between gap-2 w-full px-3 py-2 bg-yellow-100 border-b border-yellow-300 text-yellow-900 text-sm dark:bg-yellow-900/30 dark:border-yellow-700 dark:text-yellow-200"
+      className="retro-warning flex items-center justify-between gap-2 w-full px-3 py-2 text-sm"
     >
       <span>
         Your device clock appears to be off by{" "}
