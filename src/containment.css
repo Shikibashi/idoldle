@@ -15,6 +15,15 @@
   overflow-x: hidden;
 }
 
+/* Modal scroll belongs inside the dialog, never on the document behind it.
+ * Modern Chromium/Firefox/Safari all support :has(); keeping this in CSS means
+ * every modal using the shared backdrop gets the same behavior without each
+ * component reimplementing body-scroll bookkeeping. */
+html:has(.retro-modal-backdrop),
+body:has(.retro-modal-backdrop) {
+  overflow-y: hidden !important;
+}
+
 .site-status > span,
 .retro-panel__header > span,
 .site-nav > * {
