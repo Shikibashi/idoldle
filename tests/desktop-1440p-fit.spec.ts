@@ -58,6 +58,23 @@ test.describe("scaled 1440p desktop fit", () => {
     expect(metrics.keyHeight!).toBeGreaterThanOrEqual(48);
   });
 
+  test("tall desktop window has zero vertical overflow", async ({
+    page,
+  }, testInfo) => {
+    test.skip(testInfo.project.name !== "desktop");
+
+    await page.setViewportSize({ width: 1981, height: 1262 });
+    await page.goto("/");
+    await waitForGame(page);
+
+    const metrics = await pageMetrics(page);
+
+    expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.clientHeight);
+    expect(metrics.bodyScrollHeight).toBeLessThanOrEqual(metrics.innerHeight);
+    expect(metrics.shellTop).toBeGreaterThanOrEqual(0);
+    expect(metrics.shellBottom).toBeLessThanOrEqual(metrics.innerHeight);
+  });
+
   test("statistics modal does not create a document scrollbar", async ({
     page,
   }, testInfo) => {

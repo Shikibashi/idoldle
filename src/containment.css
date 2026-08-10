@@ -240,6 +240,20 @@ body:has(.retro-modal-backdrop) {
   }
 }
 
+/* Tall desktop windows can still be just short enough for the full-size
+ * puzzle to need a document scrollbar. Trim only the surrounding masthead
+ * rhythm in this band; the board tiles and keyboard targets stay unchanged. */
+@media (min-width: 1280px) and (min-height: 1101px) and (max-height: 1300px) {
+  .site-masthead__top {
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .site-status {
+    margin-block: 0.35rem !important;
+  }
+}
+
 /* On phone-sized layouts, a panel header is allowed to become two compact
  * lines rather than forcing its right-hand metadata through the border. */
 @media (max-width: 420px) {
