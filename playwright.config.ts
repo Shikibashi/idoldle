@@ -70,6 +70,19 @@ export default defineConfig({
       },
     },
     {
+      // A 2560x1440 monitor typically exposes roughly 1180-1300 CSS px of
+      // page height after browser chrome and a desktop panel. This intentionally
+      // tests the lower end of that range so "fits on 1440p" means no page
+      // scrolling in a normal maximized browser, not only in fullscreen mode.
+      name: "desktop-1440p-browser",
+      use: {
+        viewport: { width: 2560, height: 1180 },
+        deviceScaleFactor: 1,
+        hasTouch: false,
+        isMobile: false,
+      },
+    },
+    {
       name: "phone-landscape",
       use: {
         viewport: { width: 667, height: 375 },
