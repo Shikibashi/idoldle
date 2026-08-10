@@ -16,15 +16,28 @@ import "./webpage.css";
 
 type ColorMode = "system" | "dark" | "light";
 type ResolvedColorMode = Exclude<ColorMode, "system">;
+type Density = "automatic" | "compact" | "comfortable";
+type ResolvedDensity = Exclude<Density, "automatic">;
 
 const isColorMode = (value: unknown): value is ColorMode =>
   value === "system" || value === "dark" || value === "light";
+
+const isDensity = (value: unknown): value is Density =>
+  value === "automatic" || value === "compact" || value === "comfortable";
 
 function resolveColorMode(colorMode: ColorMode): ResolvedColorMode {
   if (colorMode !== "system") return colorMode;
   return window.matchMedia("(prefers-color-scheme: light)").matches
     ? "light"
     : "dark";
+}
+
+function resolveDensity(density: Density): ResolvedDensity {
+  if (density !== "automatic") return density;
+
+  const hasCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const hasNoHover = window.matchMedia("(hover: none)").matches;
+  return hasCoarsePointer || hasNoHover ? "comfortable" : "compact";
 }
 
 function useClockSkew() {
@@ -112,12 +125,18 @@ function GameApp({
   snapshot,
   colorMode,
   resolvedColorMode,
+  density,
+  resolvedDensity,
   onColorModeChange,
+  onDensityChange,
 }: {
   snapshot: Snapshot;
   colorMode: ColorMode;
   resolvedColorMode: ResolvedColorMode;
+  density: Density;
+  resolvedDensity: ResolvedDensity;
   onColorModeChange: (nextColorMode: ColorMode) => void;
+  onDensityChange: (nextDensity: Density) => void;
 }) {
   const {
     state,
@@ -205,6 +224,8 @@ function GameApp({
       <HUD
         colorMode={colorMode}
         resolvedColorMode={resolvedColorMode}
+        density={density}
+        resolvedDensity={resolvedDensity}
         dateKey={dateKey}
         themeLabel={themeLabel}
         currentStreak={stats.currentStreak}
@@ -215,6 +236,7 @@ function GameApp({
         onOpenAbout={() => setInfoMode("about")}
         onOpenHow={() => setInfoMode("how")}
         onColorModeChange={onColorModeChange}
+        onDensityChange={onDensityChange}
       />
 
       <main className="retro-main site-game-main flex flex-col items-center flex-1 gap-4">
@@ -285,6 +307,15 @@ export default function App() {
   const [resolvedColorMode, setResolvedColorMode] = useState<ResolvedColorMode>(
     () => resolveColorMode(colorMode),
   );
+  const [density, setDensity] = useLocalStorage<Density>(
+    "idoldle-density",
+    "automatic",
+    1,
+    { validator: isDensity },
+  );
+  const [resolvedDensity, setResolvedDensity] = useState<ResolvedDensity>(
+    () => resolveDensity(density),
+  );
 
   useEffect(() => {
     const syncColorMode = () => setResolvedColorMode(resolveColorMode(colorMode));
@@ -296,6 +327,22 @@ export default function App() {
     mediaQuery.addEventListener("change", syncColorMode);
     return () => mediaQuery.removeEventListener("change", syncColorMode);
   }, [colorMode]);
+
+  useEffect(() => {
+    const syncDensity = () => setResolvedDensity(resolveDensity(density));
+    syncDensity();
+
+    if (density !== "automatic") return;
+
+    const pointerQuery = window.matchMedia("(pointer: coarse)");
+    const hoverQuery = window.matchMedia("(hover: none)");
+    pointerQuery.addEventListener("change", syncDensity);
+    hoverQuery.addEventListener("change", syncDensity);
+    return () => {
+      pointerQuery.removeEventListener("change", syncDensity);
+      hoverQuery.removeEventListener("change", syncDensity);
+    };
+  }, [density]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = resolvedColorMode;
@@ -314,11 +361,21 @@ export default function App() {
     };
   }, [resolvedColorMode]);
 
+  useEffect(() => {
+    document.documentElement.dataset.density = resolvedDensity;
+
+    return () => {
+      delete document.documentElement.dataset.density;
+    };
+  }, [resolvedDensity]);
+
   return (
     <div
       className={`retro-page site-page site-theme--${resolvedColorMode} min-h-full`}
       data-appearance-mode={colorMode}
       data-color-mode={resolvedColorMode}
+      data-density-mode={density}
+      data-density={resolvedDensity}
     >
       <div role="alert" aria-live="polite" className="rotate-hint fixed inset-0 z-50 items-center justify-center bg-black/80 text-white text-center p-8">
         <div className="flex flex-col items-center gap-4">
@@ -356,7 +413,10 @@ export default function App() {
             snapshot={fetchState.snapshot}
             colorMode={colorMode}
             resolvedColorMode={resolvedColorMode}
+            density={density}
+            resolvedDensity={resolvedDensity}
             onColorModeChange={setColorMode}
+            onDensityChange={setDensity}
           />
         )}
       </div>

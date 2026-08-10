@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 interface HUDProps {
   colorMode: "system" | "dark" | "light";
   resolvedColorMode: "dark" | "light";
+  density: "automatic" | "compact" | "comfortable";
+  resolvedDensity: "compact" | "comfortable";
   dateKey: string;
   themeLabel: string;
   currentStreak: number;
@@ -13,6 +15,7 @@ interface HUDProps {
   onOpenAbout: () => void;
   onOpenHow: () => void;
   onColorModeChange: (nextColorMode: "system" | "dark" | "light") => void;
+  onDensityChange: (nextDensity: "automatic" | "compact" | "comfortable") => void;
 }
 
 interface StatusCellProps {
@@ -34,6 +37,8 @@ function StatusCell({ className = "", label, value, title }: StatusCellProps) {
 export function HUD({
   colorMode,
   resolvedColorMode,
+  density,
+  resolvedDensity,
   dateKey,
   themeLabel,
   currentStreak,
@@ -44,6 +49,7 @@ export function HUD({
   onOpenAbout,
   onOpenHow,
   onColorModeChange,
+  onDensityChange,
 }: HUDProps) {
   const [displayOpen, setDisplayOpen] = useState(false);
   const displayControlRef = useRef<HTMLDivElement>(null);
@@ -74,6 +80,11 @@ export function HUD({
 
   const chooseColorMode = (nextColorMode: HUDProps["colorMode"]) => {
     onColorModeChange(nextColorMode);
+    setDisplayOpen(false);
+  };
+
+  const chooseDensity = (nextDensity: HUDProps["density"]) => {
+    onDensityChange(nextDensity);
     setDisplayOpen(false);
   };
 
@@ -115,8 +126,9 @@ export function HUD({
               role="dialog"
               aria-label="Display options"
             >
+              <div className="site-display-popup__title">DISPLAY</div>
               <fieldset className="site-display-options">
-                <legend>DISPLAY</legend>
+                <legend>APPEARANCE</legend>
                 <label>
                   <input
                     type="radio"
@@ -150,6 +162,44 @@ export function HUD({
                 {colorMode === "system" && (
                   <p className="site-display-options__resolved">
                     USING {resolvedColorMode.toUpperCase()}
+                  </p>
+                )}
+              </fieldset>
+              <fieldset className="site-display-options">
+                <legend>DENSITY</legend>
+                <label>
+                  <input
+                    type="radio"
+                    name="idoldle-density"
+                    value="automatic"
+                    checked={density === "automatic"}
+                    onChange={() => chooseDensity("automatic")}
+                  />
+                  <span>AUTOMATIC</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="idoldle-density"
+                    value="compact"
+                    checked={density === "compact"}
+                    onChange={() => chooseDensity("compact")}
+                  />
+                  <span>COMPACT</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="idoldle-density"
+                    value="comfortable"
+                    checked={density === "comfortable"}
+                    onChange={() => chooseDensity("comfortable")}
+                  />
+                  <span>COMFORTABLE</span>
+                </label>
+                {density === "automatic" && (
+                  <p className="site-display-options__resolved">
+                    USING {resolvedDensity.toUpperCase()}
                   </p>
                 )}
               </fieldset>

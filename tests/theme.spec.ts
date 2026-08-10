@@ -18,6 +18,20 @@ async function chooseDisplayMode(
   else await radio.click();
 }
 
+async function chooseDensity(
+  page: import("@playwright/test").Page,
+  density: "automatic" | "compact" | "comfortable",
+  forceOverlay = false,
+) {
+  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  if (forceOverlay) await display.dispatchEvent("click");
+  else await display.click();
+
+  const radio = page.getByRole("radio", { name: density.toUpperCase(), exact: true });
+  if (forceOverlay) await radio.dispatchEvent("click");
+  else await radio.click();
+}
+
 test.describe("color mode", () => {
   test("switches between explicit appearance modes", async ({ page }, testInfo) => {
     await page.goto("/");
@@ -83,5 +97,27 @@ test.describe("color mode", () => {
     await chooseDisplayMode(page, "light", testInfo.project.name === "phone-landscape");
     await page.emulateMedia({ colorScheme: "dark" });
     await expect(root).toHaveAttribute("data-color-mode", "light");
+  });
+
+  test("supports independent density preferences", async ({ page }, testInfo) => {
+    await page.goto("/");
+    await waitForApp(page);
+
+    const root = page.locator(".site-page[data-density]");
+    await expect(root).toHaveAttribute("data-density-mode", "automatic");
+    await expect(root).toHaveAttribute("data-density", /^(compact|comfortable)$/);
+
+    await chooseDensity(page, "compact", testInfo.project.name === "phone-landscape");
+    await expect(root).toHaveAttribute("data-density-mode", "compact");
+    await expect(root).toHaveAttribute("data-density", "compact");
+
+    await page.reload();
+    await waitForApp(page);
+    await expect(root).toHaveAttribute("data-density-mode", "compact");
+    await expect(root).toHaveAttribute("data-density", "compact");
+
+    await chooseDensity(page, "comfortable", testInfo.project.name === "phone-landscape");
+    await expect(root).toHaveAttribute("data-density-mode", "comfortable");
+    await expect(root).toHaveAttribute("data-density", "comfortable");
   });
 });

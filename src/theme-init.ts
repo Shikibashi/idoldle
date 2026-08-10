@@ -1,6 +1,8 @@
 const STORAGE_KEY = "idoldle-color-mode";
+const DENSITY_STORAGE_KEY = "idoldle-density";
 
 type ColorMode = "system" | "dark" | "light";
+type Density = "automatic" | "compact" | "comfortable";
 
 function isColorMode(value: unknown): value is ColorMode {
   return value === "system" || value === "dark" || value === "light";
@@ -18,6 +20,30 @@ function readColorMode(): ColorMode {
   }
 }
 
+function isDensity(value: unknown): value is Density {
+  return value === "automatic" || value === "compact" || value === "comfortable";
+}
+
+function readDensity(): Density {
+  try {
+    const raw = window.localStorage.getItem(DENSITY_STORAGE_KEY);
+    if (!raw) return "automatic";
+
+    const parsed = JSON.parse(raw) as { _v?: unknown; data?: unknown };
+    return parsed._v === 1 && isDensity(parsed.data) ? parsed.data : "automatic";
+  } catch {
+    return "automatic";
+  }
+}
+
+function resolveDensity(density: Density): Exclude<Density, "automatic"> {
+  if (density !== "automatic") return density;
+
+  const hasCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const hasNoHover = window.matchMedia("(hover: none)").matches;
+  return hasCoarsePointer || hasNoHover ? "comfortable" : "compact";
+}
+
 const colorMode = readColorMode();
 const resolvedColorMode =
   colorMode === "system"
@@ -28,6 +54,7 @@ const resolvedColorMode =
 
 document.documentElement.dataset.theme = resolvedColorMode;
 document.documentElement.style.colorScheme = resolvedColorMode;
+document.documentElement.dataset.density = resolveDensity(readDensity());
 
 const themeColor = document.querySelector<HTMLMetaElement>(
   'meta[name="theme-color"]',

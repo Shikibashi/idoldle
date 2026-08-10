@@ -51,6 +51,16 @@ body,
   --ecw-control-highlight: #f6f6f6;
   --ecw-control-shadow: #666666;
   --ecw-control-text: #111111;
+  --ecw-font-display: Georgia, "Times New Roman", serif;
+  --ecw-font-ui: Verdana, Arial, sans-serif;
+  --ecw-font-system: "Courier New", Courier, monospace;
+  --ecw-font-size-body: 0.9375rem;
+  --ecw-font-size-ui: 0.875rem;
+  --ecw-font-size-meta: 0.8125rem;
+  --ecw-font-size-micro: 0.75rem;
+  --ecw-line-height-body: 1.5;
+  --ecw-line-height-ui: 1.4;
+  --ecw-line-height-meta: 1.35;
 }
 
 :root[data-theme="light"] {
@@ -116,6 +126,13 @@ body,
 }
 
 :root {
+  --ecw-control-block: 2.75rem;
+  --ecw-field-block: 2.75rem;
+  --ecw-row-block: 2.5rem;
+  --ecw-toolbar-block: 3rem;
+  --ecw-control-padding-inline: 0.75rem;
+  --ecw-gap-control: 0.5rem;
+  --ecw-hit-min: 2.75rem;
   --retro-ink: var(--ecw-ink);
   --retro-muted: var(--ecw-muted);
   --retro-night: var(--ecw-canvas);
@@ -127,6 +144,26 @@ body,
   --retro-purple: var(--ecw-purple);
   --retro-yellow: var(--ecw-yellow);
   --retro-green: var(--ecw-success);
+}
+
+:root[data-density="compact"] {
+  --ecw-control-block: 1.875rem;
+  --ecw-field-block: 2rem;
+  --ecw-row-block: 1.875rem;
+  --ecw-toolbar-block: 2.25rem;
+  --ecw-control-padding-inline: 0.5rem;
+  --ecw-gap-control: 0.25rem;
+  --ecw-hit-min: 1.875rem;
+}
+
+:root[data-density="comfortable"] {
+  --ecw-control-block: 2.75rem;
+  --ecw-field-block: 2.75rem;
+  --ecw-row-block: 2.5rem;
+  --ecw-toolbar-block: 3rem;
+  --ecw-control-padding-inline: 0.75rem;
+  --ecw-gap-control: 0.5rem;
+  --ecw-hit-min: 2.75rem;
 }
 
 body {
