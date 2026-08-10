@@ -91,7 +91,36 @@ test.describe("framed UI containment", () => {
     expect(failures, JSON.stringify(failures, null, 2)).toEqual([]);
   });
 
-  test("desktop theme value fits without colliding with attempt", async ({
+  test("status labels and values render on separate rows", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name === "phone-landscape");
+
+    await page.goto("/");
+    await waitForGame(page);
+
+    const failures = await page.evaluate(() =>
+      Array.from(document.querySelectorAll<HTMLElement>(".site-status__cell"))
+        .flatMap((cell) => {
+          const label = cell.querySelector<HTMLElement>(".site-status__label");
+          const value = cell.querySelector<HTMLElement>(".site-status__value");
+          if (!label || !value) return [{ text: cell.textContent ?? "", reason: "missing label/value" }];
+
+          const labelRect = label.getBoundingClientRect();
+          const valueRect = value.getBoundingClientRect();
+          if (valueRect.top >= labelRect.bottom - 0.75) return [];
+
+          return [{
+            text: (cell.textContent ?? "").trim().replace(/\s+/g, " "),
+            reason: "label and value share the same visual row",
+            labelBottom: labelRect.bottom,
+            valueTop: valueRect.top,
+          }];
+        }),
+    );
+
+    expect(failures, JSON.stringify(failures, null, 2)).toEqual([]);
+  });
+
+  test("desktop theme value cannot visually weld to Attempt label", async ({
     page,
   }, testInfo) => {
     test.skip(!["laptop", "desktop"].includes(testInfo.project.name));
@@ -103,15 +132,19 @@ test.describe("framed UI containment", () => {
       const theme = document.querySelector<HTMLElement>(".site-status__cell--theme");
       const themeValue = theme?.querySelector<HTMLElement>(".site-status__value");
       const attempt = document.querySelector<HTMLElement>(".site-status__cell--attempt");
-      if (!theme || !themeValue || !attempt) return null;
+      const attemptLabel = attempt?.querySelector<HTMLElement>(".site-status__label");
+      if (!theme || !themeValue || !attempt || !attemptLabel) return null;
 
       const themeRect = theme.getBoundingClientRect();
       const valueRect = themeValue.getBoundingClientRect();
       const attemptRect = attempt.getBoundingClientRect();
+      const attemptLabelRect = attemptLabel.getBoundingClientRect();
       return {
         themeRight: themeRect.right,
         valueRight: valueRect.right,
+        valueTop: valueRect.top,
         attemptLeft: attemptRect.left,
+        attemptLabelTop: attemptLabelRect.top,
         valueClientWidth: themeValue.clientWidth,
         valueScrollWidth: themeValue.scrollWidth,
       };
@@ -121,5 +154,6 @@ test.describe("framed UI containment", () => {
     expect(metrics!.valueRight).toBeLessThanOrEqual(metrics!.themeRight + 0.75);
     expect(metrics!.themeRight).toBeLessThanOrEqual(metrics!.attemptLeft + 0.75);
     expect(metrics!.valueScrollWidth).toBeLessThanOrEqual(metrics!.valueClientWidth + 1);
+    expect(metrics!.valueTop).toBeGreaterThan(metrics!.attemptLabelTop + 2);
   });
 });
