@@ -31,6 +31,19 @@ async function waitForApp(page: import("@playwright/test").Page) {
   }
 }
 
+async function chooseLightMode(
+  page: import("@playwright/test").Page,
+  forceOverlay: boolean,
+) {
+  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  if (forceOverlay) await display.dispatchEvent("click");
+  else await display.click();
+
+  const light = page.getByRole("radio", { name: "LIGHT", exact: true });
+  if (forceOverlay) await light.dispatchEvent("click");
+  else await light.click();
+}
+
 // ---------------------------------------------------------------------------
 // Helper: filter to only critical/serious violations
 // ---------------------------------------------------------------------------
@@ -59,13 +72,11 @@ function formatViolations(violations: import("axe-core").Result[]): string {
 // 1. Light mode axe scan — all projects
 // ---------------------------------------------------------------------------
 test.describe("light mode accessibility", () => {
-  test("no critical/serious axe violations (light mode)", async ({ page }) => {
+  test("no critical/serious axe violations (light mode)", async ({ page }, testInfo) => {
     await page.goto("/");
     await waitForApp(page);
 
-    await page
-      .getByRole("combobox", { name: "Appearance mode" })
-      .selectOption("light");
+    await chooseLightMode(page, testInfo.project.name === "phone-landscape");
 
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa"])

@@ -61,6 +61,8 @@
 }
 
 .site-nav {
+  position: relative;
+  z-index: 20;
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem 0.8rem;
@@ -70,6 +72,7 @@
   background: #0c1047;
   font: 700 0.68rem/1.5 "Courier New", monospace;
   letter-spacing: 0.02em;
+  overflow: visible;
 }
 
 .site-nav button,
@@ -84,40 +87,73 @@
   cursor: pointer;
 }
 
-.site-mode-control {
+.site-display-control {
+  position: relative;
   display: inline-flex;
   min-height: 48px;
   align-items: center;
-  gap: 0.25rem;
-  color: var(--ecw-link);
-  font: inherit;
-  white-space: nowrap;
 }
 
-.site-mode-control__label {
-  text-decoration: underline;
+.site-display-popup {
+  position: absolute;
+  top: calc(100% + 1px);
+  right: 0;
+  z-index: 30;
+  width: 12rem;
+  padding: 0.35rem;
+  border: 2px ridge var(--ecw-border);
+  background: var(--ecw-panel);
+  box-shadow: 3px 3px 0 rgba(2, 3, 19, 0.7);
+  color: var(--ecw-ink);
 }
 
-.site-mode-control select {
-  min-height: 28px;
-  max-width: 5.2rem;
-  padding: 0.15rem 0.25rem;
-  color: var(--ecw-control-text);
-  border: 2px inset var(--ecw-control-shadow);
-  border-radius: 0;
-  background: var(--ecw-control-face);
+.site-display-options {
+  margin: 0;
+  padding: 0.3rem;
+  border: 1px solid var(--ecw-rule);
   font: inherit;
   text-transform: uppercase;
 }
 
-.site-mode-control select:focus-visible {
-  outline: 2px dotted var(--ecw-focus);
-  outline-offset: 2px;
+.site-display-options legend {
+  padding: 0 0.25rem;
+  color: var(--ecw-purple);
+  font-weight: 700;
 }
 
-.site-mode-control__current {
+.site-display-options label {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.3rem;
+  cursor: pointer;
+}
+
+.site-display-options label:hover,
+.site-display-options label:focus-within {
+  background: var(--ecw-panel-deep);
+  color: var(--ecw-link);
+}
+
+.site-display-options input {
+  flex: 0 0 auto;
+  accent-color: var(--ecw-purple);
+}
+
+.site-display-options__resolved {
+  margin: 0.35rem 0 0;
+  padding: 0.3rem 0.3rem 0;
+  border-top: 1px dotted var(--ecw-rule);
   color: var(--ecw-muted);
   font-size: 0.58rem;
+}
+
+/* The display popup belongs to the nav's utility layer, so the containment
+ * rule must not clip it vertically into the status strip. */
+.site-page .site-nav {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
 }
 
 .site-nav button,
@@ -136,10 +172,6 @@
   color: #ffffff;
   outline: 1px dotted #ffd45c;
   outline-offset: 2px;
-}
-
-.site-mode-control:focus-within {
-  color: var(--ecw-focus);
 }
 
 .site-status {
@@ -376,7 +408,7 @@
     padding-inline: 1.1rem;
   }
 
-  .site-nav .site-mode-control {
+  .site-nav .site-display-control {
     margin-left: auto;
   }
 
@@ -440,15 +472,10 @@
     margin-inline: 0.45rem;
   }
 
-  .site-mode-control {
-    gap: 0.15rem;
-    font-size: 0.6rem;
-  }
-
-  .site-mode-control select {
-    max-width: 4.6rem;
-    padding-inline: 0.15rem;
-    font-size: 0.6rem;
+  .site-display-popup {
+    right: auto;
+    left: 0;
+    width: 11rem;
   }
 }
 
@@ -517,10 +544,6 @@ body:has(.site-theme--light) {
   color: var(--ecw-link);
 }
 
-.site-theme--light .site-mode-control {
-  color: var(--ecw-link);
-}
-
 .site-theme--light .site-nav button:hover,
 .site-theme--light .site-nav button:focus-visible,
 .site-theme--light .site-nav a:hover,
@@ -528,12 +551,6 @@ body:has(.site-theme--light) {
 .site-theme--light .site-text-button:hover,
 .site-theme--light .site-text-button:focus-visible {
   color: var(--ecw-focus);
-}
-
-.site-theme--light .site-mode-control select {
-  color: var(--ecw-control-text);
-  border-color: var(--ecw-control-highlight) var(--ecw-control-shadow) var(--ecw-control-shadow) var(--ecw-control-highlight);
-  background: var(--ecw-control-face);
 }
 
 .site-theme--light .site-status {

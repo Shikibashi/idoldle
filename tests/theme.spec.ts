@@ -4,20 +4,34 @@ async function waitForApp(page: import("@playwright/test").Page) {
   await page.waitForSelector('[aria-label^="Key"]', { timeout: 10_000 });
 }
 
+async function chooseDisplayMode(
+  page: import("@playwright/test").Page,
+  mode: "system" | "light" | "dark",
+  forceOverlay = false,
+) {
+  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  if (forceOverlay) await display.dispatchEvent("click");
+  else await display.click();
+
+  const radio = page.getByRole("radio", { name: mode.toUpperCase(), exact: true });
+  if (forceOverlay) await radio.dispatchEvent("click");
+  else await radio.click();
+}
+
 test.describe("color mode", () => {
-  test("switches between explicit appearance modes", async ({ page }) => {
+  test("switches between explicit appearance modes", async ({ page }, testInfo) => {
     await page.goto("/");
     await waitForApp(page);
 
     const root = page.locator(".site-page[data-color-mode]");
     await expect(root).toHaveAttribute("data-color-mode", "dark");
 
-    const appearance = page.getByRole("combobox", { name: "Appearance mode" });
-    await expect(appearance).toHaveValue("dark");
-    await appearance.selectOption("light");
+    const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+    await expect(display).toHaveCount(1);
+    await chooseDisplayMode(page, "light", testInfo.project.name === "phone-landscape");
 
     await expect(root).toHaveAttribute("data-color-mode", "light");
-    await expect(appearance).toHaveValue("light");
+    await expect(display).toHaveAttribute("aria-expanded", "false");
 
     const lightStyles = await page.evaluate(() => ({
       colorScheme: document.documentElement.style.colorScheme,
@@ -34,13 +48,11 @@ test.describe("color mode", () => {
     expect(lightStyles.tileBackground).toBe("rgb(255, 255, 255)");
   });
 
-  test("persists the selected mode after reload", async ({ page }) => {
+  test("persists the selected mode after reload", async ({ page }, testInfo) => {
     await page.goto("/");
     await waitForApp(page);
 
-    await page
-      .getByRole("combobox", { name: "Appearance mode" })
-      .selectOption("light");
+    await chooseDisplayMode(page, "light", testInfo.project.name === "phone-landscape");
     await page.reload();
     await waitForApp(page);
 
@@ -55,22 +67,20 @@ test.describe("color mode", () => {
 
   test("follows system preference until an explicit mode is chosen", async ({
     page,
-  }) => {
+  }, testInfo) => {
     await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/");
     await waitForApp(page);
 
     const root = page.locator(".site-page[data-color-mode]");
-    const appearance = page.getByRole("combobox", { name: "Appearance mode" });
-    await appearance.selectOption("system");
-    await expect(appearance).toHaveValue("system");
+    await chooseDisplayMode(page, "system", testInfo.project.name === "phone-landscape");
     await expect(root).toHaveAttribute("data-color-mode", "light");
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
     await page.emulateMedia({ colorScheme: "dark" });
     await expect(root).toHaveAttribute("data-color-mode", "dark");
 
-    await appearance.selectOption("light");
+    await chooseDisplayMode(page, "light", testInfo.project.name === "phone-landscape");
     await page.emulateMedia({ colorScheme: "dark" });
     await expect(root).toHaveAttribute("data-color-mode", "light");
   });

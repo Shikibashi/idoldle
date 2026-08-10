@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 interface HUDProps {
   colorMode: "system" | "dark" | "light";
   resolvedColorMode: "dark" | "light";
@@ -43,6 +45,38 @@ export function HUD({
   onOpenHow,
   onColorModeChange,
 }: HUDProps) {
+  const [displayOpen, setDisplayOpen] = useState(false);
+  const displayControlRef = useRef<HTMLDivElement>(null);
+  const displayButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!displayOpen) return;
+
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!displayControlRef.current?.contains(event.target as Node)) {
+        setDisplayOpen(false);
+      }
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setDisplayOpen(false);
+        displayButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [displayOpen]);
+
+  const chooseColorMode = (nextColorMode: HUDProps["colorMode"]) => {
+    onColorModeChange(nextColorMode);
+    setDisplayOpen(false);
+  };
+
   return (
     <header className="site-masthead w-full">
       <div className="site-masthead__top">
@@ -63,21 +97,65 @@ export function HUD({
         <button type="button" onClick={onOpenHow}>[ HOW TO PLAY ]</button>
         <button type="button" aria-label="Open statistics" onClick={onOpenStats}>[ STATISTICS ]</button>
         <a href="https://github.com/Shikibashi/idoldle" target="_blank" rel="noreferrer">[ GITHUB ]</a>
-        <label className="site-mode-control">
-          <span className="site-mode-control__label">[ APPEARANCE: ]</span>
-          <select
-            aria-label="Appearance mode"
-            value={colorMode}
-            onChange={(event) => onColorModeChange(event.target.value as HUDProps["colorMode"])}
+        <div className="site-display-control" ref={displayControlRef}>
+          <button
+            ref={displayButtonRef}
+            type="button"
+            aria-controls="display-options"
+            aria-expanded={displayOpen}
+            aria-haspopup="dialog"
+            onClick={() => setDisplayOpen((open) => !open)}
           >
-            <option value="system">SYSTEM</option>
-            <option value="light">LIGHT</option>
-            <option value="dark">DARK</option>
-          </select>
-          <span className="site-mode-control__current" aria-live="polite">
-            ({resolvedColorMode.toUpperCase()})
-          </span>
-        </label>
+            [ DISPLAY ]
+          </button>
+          {displayOpen && (
+            <div
+              className="site-display-popup"
+              id="display-options"
+              role="dialog"
+              aria-label="Display options"
+            >
+              <fieldset className="site-display-options">
+                <legend>DISPLAY</legend>
+                <label>
+                  <input
+                    type="radio"
+                    name="idoldle-display-mode"
+                    value="system"
+                    checked={colorMode === "system"}
+                    onChange={() => chooseColorMode("system")}
+                  />
+                  <span>SYSTEM</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="idoldle-display-mode"
+                    value="light"
+                    checked={colorMode === "light"}
+                    onChange={() => chooseColorMode("light")}
+                  />
+                  <span>LIGHT</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="idoldle-display-mode"
+                    value="dark"
+                    checked={colorMode === "dark"}
+                    onChange={() => chooseColorMode("dark")}
+                  />
+                  <span>DARK</span>
+                </label>
+                {colorMode === "system" && (
+                  <p className="site-display-options__resolved">
+                    USING {resolvedColorMode.toUpperCase()}
+                  </p>
+                )}
+              </fieldset>
+            </div>
+          )}
+        </div>
       </nav>
 
       <div className="site-status" aria-label="Today&apos;s game status">
