@@ -76,6 +76,18 @@
   }
 }
 
+/* The base desktop chrome gives the framed page 0.75rem top/bottom margins.
+ * App.tsx also carries Tailwind's h-full on .site-shell, which otherwise makes
+ * the shell 100% of the viewport PLUS those margins and creates unavoidable
+ * vertical scrolling. Let the shell size naturally while retaining a
+ * viewport-filling minimum inside the margins. */
+@media (min-width: 640px) {
+  .site-shell {
+    height: auto !important;
+    min-height: calc(100dvh - 1.5rem);
+  }
+}
+
 /* Desktop keeps all five cells in one row, with extra room for the theme.
  * Because label and value are vertically separated, no neighboring label can
  * visually weld itself to the end of the theme value. */

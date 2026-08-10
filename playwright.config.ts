@@ -61,9 +61,13 @@ export default defineConfig({
       },
     },
     {
+      // A 2560x1440 monitor typically exposes roughly 1180-1300 CSS px of
+      // page height after browser chrome and a desktop panel. Use the lower
+      // end of that range so the canonical desktop project enforces the
+      // no-scroll contract in a normal maximized browser, not fullscreen.
       name: "desktop",
       use: {
-        viewport: { width: 1920, height: 1080 },
+        viewport: { width: 2560, height: 1180 },
         deviceScaleFactor: 1,
         hasTouch: false,
         isMobile: false,
