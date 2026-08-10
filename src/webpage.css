@@ -31,6 +31,14 @@
   padding: 1rem 1rem 0.8rem;
 }
 
+.site-masthead__tools {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
 .site-logo {
   margin: 0;
   color: #9c68ff;
@@ -86,7 +94,7 @@
 
 .site-mode-control {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 32px;
   align-items: center;
   gap: 0.25rem;
   color: var(--ecw-link);
@@ -99,7 +107,7 @@
 }
 
 .site-mode-control select {
-  min-height: 32px;
+  min-height: 28px;
   max-width: 5.2rem;
   padding: 0.15rem 0.25rem;
   color: var(--ecw-control-text);
@@ -434,6 +442,21 @@
 
   .site-status {
     margin-inline: 0.45rem;
+  }
+
+  .site-masthead__tools {
+    gap: 0.2rem;
+  }
+
+  .site-mode-control {
+    gap: 0.15rem;
+    font-size: 0.6rem;
+  }
+
+  .site-mode-control select {
+    max-width: 4.6rem;
+    padding-inline: 0.15rem;
+    font-size: 0.6rem;
   }
 }
 
