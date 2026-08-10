@@ -15,6 +15,12 @@
   overflow-x: hidden;
 }
 
+/* Keep the shell's responsive outer margin from collapsing through the page
+ * wrapper and extending the document past the viewport. */
+.site-page {
+  display: flow-root;
+}
+
 /* Modal scroll belongs inside the dialog, never on the document behind it.
  * Modern Chromium/Firefox/Safari all support :has(); keeping this in CSS means
  * every modal using the shared backdrop gets the same behavior without each
