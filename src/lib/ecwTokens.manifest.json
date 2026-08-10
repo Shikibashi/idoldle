@@ -1,0 +1,27 @@
+{
+  "name": "Edriffles Computer Web",
+  "version": "3.2",
+  "target": "WCAG 2.2 AA",
+  "tokens": {
+    "density": {
+      "hitMinCssPx": 24,
+      "compact": { "controlBlock": "1.875rem", "uiFontSize": "0.875rem" },
+      "comfortable": { "controlBlock": "2.75rem", "uiFontSize": "0.875rem" }
+    },
+    "focus": {
+      "bandThicknessCssPx": 2,
+      "minimumInterBandContrast": 9,
+      "dark": { "outer": "#ffd45c", "inner": "#050719" },
+      "light": { "outer": "#522598", "inner": "#ffffff" }
+    },
+    "status": {
+      "requiredChannels": ["text", "accent", "border", "onAccent"]
+    },
+    "fontStacks": {
+      "display": ["Georgia", "Noto Serif", "DejaVu Serif", "Times New Roman", "Liberation Serif", "serif"],
+      "ui": ["Verdana", "DejaVu Sans", "Tahoma", "Noto Sans", "Arial", "sans-serif"],
+      "system": ["Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", "monospace"]
+    },
+    "locales": ["en", "ja", "ko", "ar", "he", "de", "fi", "nl"]
+  }
+}

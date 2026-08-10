@@ -6,6 +6,7 @@ import { scoreGuess } from "../lib/wordle";
 import { getDailyAnswer, utcDateKey } from "../lib/daily";
 import { resolveThemeKey, THEME_LABEL } from "../lib/themes";
 import { buildShareCard } from "../lib/share";
+import { ENGLISH_STRINGS as strings, numberWord } from "../lib/strings";
 
 const INITIAL_STATS: Stats = {
   currentStreak: 0,
@@ -89,6 +90,9 @@ export function useGame(snapshot: Snapshot): {
   state: GameState;
   stats: Stats;
   toast: string | null;
+  announcement: string | null;
+  assertiveAnnouncement: string | null;
+  announce: (message: string, assertive?: boolean) => void;
   shaking: boolean;
   submitInput: () => void;
   addChar: (c: string) => void;
@@ -121,6 +125,8 @@ export function useGame(snapshot: Snapshot): {
   );
 
   const [toast, setToast] = useState<string | null>(null);
+  const [announcement, setAnnouncement] = useState<string | null>(null);
+  const [assertiveAnnouncement, setAssertiveAnnouncement] = useState<string | null>(null);
   const [shaking, setShaking] = useState(false);
   const shakeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Timestamp of the first accepted guess in the current puzzle. Used to
@@ -146,6 +152,11 @@ export function useGame(snapshot: Snapshot): {
     setToast(msg);
   }, []);
 
+  const announce = useCallback((message: string, assertive = false) => {
+    if (assertive) setAssertiveAnnouncement(message);
+    else setAnnouncement(message);
+  }, []);
+
   const triggerShake = useCallback(() => {
     if (shakeTimerRef.current !== null) clearTimeout(shakeTimerRef.current);
     setShaking(true);
@@ -160,6 +171,7 @@ export function useGame(snapshot: Snapshot): {
     const nowKey = utcDateKey(new Date());
     setState((prev) => {
       if (prev.dateKey === nowKey) return prev;
+      setAnnouncement(strings.game.announcements.newPuzzle);
       return makeInitialGameState(snapshot, nowKey);
     });
   }, [snapshot, setState]);
@@ -196,7 +208,9 @@ export function useGame(snapshot: Snapshot): {
 
       // Validation 1: length
       if (word.length !== prev.length) {
-        showToast(`Need ${prev.length} letters`);
+        const message = `Need ${prev.length} letters.`;
+        showToast(message);
+        setAssertiveAnnouncement(strings.game.announcements.invalidLength(prev.length));
         triggerShake();
         return prev;
       }
@@ -207,7 +221,9 @@ export function useGame(snapshot: Snapshot): {
       const pool = frozenPool?.idols ?? [];
       const valid = pool.some((idol: Idol) => idol.stageName.toUpperCase() === word);
       if (!valid) {
-        showToast("Not a valid idol name");
+        const message = "Not a valid idol name.";
+        showToast(message);
+        setAssertiveAnnouncement(strings.game.announcements.invalidIdol);
         triggerShake();
         return prev;
       }
@@ -220,6 +236,20 @@ export function useGame(snapshot: Snapshot): {
       const lost = !won && newGuesses.length >= MAX_GUESSES;
 
       const newStatus: GameStatus = won ? "won" : lost ? "lost" : "playing";
+      const correctCount = feedback.filter((item) => item.state === "correct").length;
+      const presentCount = feedback.filter((item) => item.state === "present").length;
+      const absentCount = feedback.filter((item) => item.state === "absent").length;
+      const resultMessage = won
+        ? strings.game.announcements.solved(newGuesses.length, prev.answer.stageName)
+        : lost
+          ? strings.game.announcements.lost(prev.answer.stageName)
+          : strings.game.announcements.guessSubmitted(
+              numberWord(correctCount),
+              numberWord(presentCount),
+              numberWord(absentCount),
+              newGuesses.length,
+            );
+      setAnnouncement(resultMessage);
 
       // Solve-time tracking: stamp the clock on the first accepted guess;
       // compute elapsed on win. Rejected guesses (length/pool validation
@@ -330,6 +360,9 @@ export function useGame(snapshot: Snapshot): {
     state,
     stats,
     toast,
+    announcement,
+    assertiveAnnouncement,
+    announce,
     shaking,
     submitInput,
     addChar,
