@@ -107,6 +107,124 @@
   }
 }
 
+/*
+ * Height-aware desktop fit.
+ *
+ * A physical 2560x1440 monitor does not imply a 2560x1440 CSS viewport.
+ * Browser chrome, desktop panels, display scaling and browser zoom can leave
+ * roughly 1000 CSS px of usable height. When the viewport is still clearly a
+ * desktop but is vertically constrained, compact the non-interactive chrome
+ * and the puzzle tiles while preserving 48px keyboard targets.
+ */
+@media (min-width: 1280px) and (max-height: 1100px) {
+  .site-shell {
+    margin: 0.4rem auto !important;
+    min-height: calc(100dvh - 0.8rem);
+  }
+
+  .site-masthead__top {
+    padding: 0.55rem 1rem 0.45rem !important;
+  }
+
+  .site-logo {
+    font-size: 2.6rem !important;
+  }
+
+  .site-tagline {
+    margin-top: 0.25rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .site-nav {
+    padding-block: 0 !important;
+  }
+
+  .site-status {
+    margin: 0.35rem 0.75rem !important;
+  }
+
+  .site-status__cell {
+    min-height: 2.1rem !important;
+    gap: 0.08rem;
+  }
+
+  .site-game-main {
+    gap: 0.45rem !important;
+    padding: 0.4rem 1rem 0.5rem !important;
+  }
+
+  .site-game-column {
+    gap: 0.45rem !important;
+  }
+
+  .retro-board-panel,
+  .retro-keyboard-panel {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+
+  .retro-panel__header,
+  .retro-board-panel .retro-panel__header,
+  .retro-panel__header--keyboard {
+    margin-bottom: 0.2rem !important;
+    padding-block: 0.14rem !important;
+  }
+
+  .retro-board-grid {
+    gap: 0.2rem !important;
+  }
+
+  /* Keep Tailwind's max-width contract (72px) for existing tests and large
+   * desktops, but use a smaller fixed flex basis in compact-height mode. */
+  .retro-tile {
+    width: 54px !important;
+    flex: 0 0 54px !important;
+  }
+
+  .retro-panel__hint {
+    padding-top: 0.15rem !important;
+    padding-bottom: 0 !important;
+    line-height: 1.1 !important;
+  }
+
+  .retro-keyboard-panel {
+    gap: 0.25rem !important;
+  }
+
+  .site-legend {
+    padding: 0.3rem 0.5rem !important;
+  }
+
+  .site-info-grid {
+    gap: 0.5rem !important;
+    margin-top: 0 !important;
+  }
+
+  .site-card {
+    padding: 0.45rem !important;
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .site-card__title {
+    margin: -0.45rem -0.45rem 0.35rem !important;
+    padding-block: 0.2rem !important;
+  }
+
+  .site-card p {
+    margin: 0.15rem 0 0.25rem !important;
+  }
+
+  .site-data-value {
+    margin-block: 0.15rem !important;
+  }
+
+  .retro-footer {
+    padding: 0.3rem 0.75rem 0.4rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
 /* On phone-sized layouts, a panel header is allowed to become two compact
  * lines rather than forcing its right-hand metadata through the border. */
 @media (max-width: 420px) {

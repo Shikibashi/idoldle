@@ -4,7 +4,7 @@ async function waitForGame(page: import("@playwright/test").Page) {
   await page.waitForSelector('[aria-label^="Key"]', { timeout: 10_000 });
 }
 
-test.describe("1440p desktop fit", () => {
+test.describe("scaled 1440p desktop fit", () => {
   test("full page fits without vertical scrolling", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "desktop");
 
@@ -15,6 +15,10 @@ test.describe("1440p desktop fit", () => {
       const doc = document.documentElement;
       const shell = document.querySelector<HTMLElement>(".site-shell");
       const shellRect = shell?.getBoundingClientRect();
+      const tile = document.querySelector<HTMLElement>("[role='gridcell']");
+      const key = document.querySelector<HTMLElement>("[aria-label='Key A']");
+      const tileRect = tile?.getBoundingClientRect();
+      const keyRect = key?.getBoundingClientRect();
 
       return {
         clientHeight: doc.clientHeight,
@@ -23,6 +27,8 @@ test.describe("1440p desktop fit", () => {
         shellTop: shellRect?.top ?? null,
         shellBottom: shellRect?.bottom ?? null,
         innerHeight: window.innerHeight,
+        tileWidth: tileRect?.width ?? null,
+        keyHeight: keyRect?.height ?? null,
       };
     });
 
@@ -40,5 +46,11 @@ test.describe("1440p desktop fit", () => {
     expect(metrics.shellBottom).not.toBeNull();
     expect(metrics.shellTop!).toBeGreaterThanOrEqual(0);
     expect(metrics.shellBottom!).toBeLessThanOrEqual(metrics.innerHeight + 1);
+
+    // Compact-height mode should reduce the board, not the accessible keyboard.
+    expect(metrics.tileWidth).not.toBeNull();
+    expect(metrics.tileWidth!).toBeLessThanOrEqual(55);
+    expect(metrics.keyHeight).not.toBeNull();
+    expect(metrics.keyHeight!).toBeGreaterThanOrEqual(48);
   });
 });
