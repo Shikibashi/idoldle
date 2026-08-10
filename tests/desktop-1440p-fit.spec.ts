@@ -6,7 +6,7 @@ async function waitForGame(page: import("@playwright/test").Page) {
 
 test.describe("1440p desktop fit", () => {
   test("full page fits without vertical scrolling", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "desktop-1440p-browser");
+    test.skip(testInfo.project.name !== "desktop");
 
     await page.goto("/");
     await waitForGame(page);
