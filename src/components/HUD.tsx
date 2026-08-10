@@ -39,7 +39,7 @@ export function HUD({
       <nav className="site-nav" aria-label="Idoldle navigation">
         <button type="button" onClick={onOpenAbout}>[ ABOUT ]</button>
         <button type="button" onClick={onOpenHow}>[ HOW TO PLAY ]</button>
-        <button type="button" onClick={onOpenStats}>[ STATISTICS ]</button>
+        <button type="button" aria-label="Open statistics" onClick={onOpenStats}>[ STATISTICS ]</button>
         <a href="https://github.com/Shikibashi/idoldle" target="_blank" rel="noreferrer">[ GITHUB ]</a>
       </nav>
 

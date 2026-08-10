@@ -188,20 +188,22 @@ function GameApp({ snapshot }: { snapshot: Snapshot }) {
       />
 
       <main className="retro-main site-game-main flex flex-col items-center flex-1 gap-4">
-        <Board
-          guesses={state.guesses}
-          currentInput={state.currentInput}
-          shaking={shaking}
-          maxGuesses={state.maxGuesses}
-          length={state.length}
-        />
+        <div className="site-game-column flex flex-col max-w-md md:max-w-lg lg:max-w-xl w-full mx-auto gap-4">
+          <Board
+            guesses={state.guesses}
+            currentInput={state.currentInput}
+            shaking={shaking}
+            maxGuesses={state.maxGuesses}
+            length={state.length}
+          />
 
-        <Keyboard letterStates={letterStates} onKey={handleKey} />
+          <Keyboard letterStates={letterStates} onKey={handleKey} />
 
-        <div className="site-legend" aria-label="Tile color legend">
-          <span><i className="site-swatch site-swatch--correct" /> correct</span>
-          <span><i className="site-swatch site-swatch--present" /> present</span>
-          <span><i className="site-swatch site-swatch--absent" /> absent</span>
+          <div className="site-legend" aria-label="Tile color legend">
+            <span><i className="site-swatch site-swatch--correct" /> correct</span>
+            <span><i className="site-swatch site-swatch--present" /> present</span>
+            <span><i className="site-swatch site-swatch--absent" /> absent</span>
+          </div>
         </div>
 
         <div className="site-info-grid">
@@ -257,7 +259,7 @@ export default function App() {
         </div>
       </div>
 
-      <div className="retro-window site-shell flex flex-col max-w-md md:max-w-lg lg:max-w-xl mx-auto h-full">
+      <div className="retro-window site-shell flex flex-col mx-auto h-full">
         {showSkew && <ClockSkewBanner skewMinutes={skewMinutes} onDismiss={dismissSkew} />}
 
         {fetchState.status === "loading" && (
