@@ -54,6 +54,20 @@ function mergeAlias(existing: Idol, alternateGroup: string): Idol {
 }
 
 /**
+ * Clone an Idol while preserving the interface's optional aliases field.
+ * Explicitly returning Idol prevents TypeScript from inferring a stricter
+ * array element type where `aliases` is a required `string[] | undefined`
+ * property, which then rejects additions that legitimately omit aliases.
+ */
+function cloneIdol(idol: Idol): Idol {
+  return {
+    ...idol,
+    ...(idol.aliases ? { aliases: [...idol.aliases] } : {}),
+    themeTags: [...idol.themeTags],
+  };
+}
+
+/**
  * Merge the fast-moving curated 2026 rookie layer into the generated base
  * snapshot. The app guesses stage names, so stage-name collisions remain one
  * puzzle answer; alternate groups are recorded in aliases, matching the legacy
@@ -68,11 +82,7 @@ export function mergeCuratedIdols(
   additions: Idol[] = IDOLS_2026,
   snapshotDate = IDOLS_2026_SNAPSHOT_DATE,
 ): Snapshot {
-  const idols = base.idols.map((idol) => ({
-    ...idol,
-    aliases: idol.aliases ? [...idol.aliases] : undefined,
-    themeTags: [...idol.themeTags],
-  }));
+  const idols: Idol[] = base.idols.map(cloneIdol);
 
   const indexByStageName = new Map<string, number>();
   idols.forEach((idol, index) => indexByStageName.set(idol.stageName, index));
@@ -91,11 +101,7 @@ export function mergeCuratedIdols(
     }
 
     indexByStageName.set(addition.stageName, idols.length);
-    idols.push({
-      ...addition,
-      aliases: addition.aliases ? [...addition.aliases] : undefined,
-      themeTags: [...addition.themeTags],
-    });
+    idols.push(cloneIdol(addition));
   }
 
   return {
