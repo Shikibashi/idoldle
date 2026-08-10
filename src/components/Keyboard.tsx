@@ -46,7 +46,7 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
       {ROWS.map((row, rowIdx) => (
         <div
           key={rowIdx}
-          className="retro-key-row flex justify-center w-[calc(100%-0.5rem)] gap-1 px-0 md:w-full md:gap-[0.1rem] lg:gap-1 lg:px-1"
+          className="retro-key-row flex justify-center w-full gap-1 px-0.5 sm:px-1 md:gap-[0.1rem] lg:gap-1"
         >
           {row.map((key) => {
             const state = getKeyState(key, letterStates);
@@ -69,8 +69,8 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
                   "retro-key",
                   `retro-key--${state}`,
                   "relative flex items-center justify-center",
-                  "flex-1 basis-0 min-w-0 md:min-w-[3rem] min-h-[3rem]",
-                  isWide ? "flex-[1.5] basis-0 md:min-w-[4.5rem] px-3 text-sm" : "",
+                  "flex-1 basis-0 min-w-[23px] md:min-w-[3rem] min-h-[3rem]",
+                  isWide ? "flex-[1.5] basis-0 md:min-w-[4.5rem] px-2 sm:px-3 text-sm" : "",
                   "rounded font-semibold text-sm uppercase",
                   "transition-colors duration-100",
                   "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400",
