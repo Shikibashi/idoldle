@@ -8,11 +8,7 @@
 .site-page {
   min-height: 100%;
   background-color: #050719;
-  background-image:
-    radial-gradient(circle at 18px 14px, rgba(141, 103, 255, 0.28) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 72px 48px, rgba(111, 244, 255, 0.16) 0 1px, transparent 1.5px),
-    linear-gradient(180deg, #050719, #080b32 55%, #050719);
-  background-size: 96px 72px, 128px 96px, auto;
+  background-image: none;
 }
 
 .site-shell {
@@ -295,17 +291,23 @@
 }
 
 @media (min-width: 1024px) {
-  .site-shell {
-    max-width: 60rem !important;
-  }
-
   .site-info-grid {
-    grid-template-columns: 1fr 1.45fr 1fr;
+    grid-template-columns: 1fr 1.35fr 1fr;
   }
 
   .site-game-main {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-page {
+    background-image:
+      radial-gradient(circle at 18px 14px, rgba(141, 103, 255, 0.28) 0 1px, transparent 1.5px),
+      radial-gradient(circle at 72px 48px, rgba(111, 244, 255, 0.16) 0 1px, transparent 1.5px),
+      linear-gradient(180deg, #050719, #080b32 55%, #050719);
+    background-size: 96px 72px, 128px 96px, auto;
   }
 }
 
