@@ -10,6 +10,22 @@ interface HUDProps {
   onOpenHow: () => void;
 }
 
+interface StatusCellProps {
+  className?: string;
+  label: string;
+  value: React.ReactNode;
+  title?: string;
+}
+
+function StatusCell({ className = "", label, value, title }: StatusCellProps) {
+  return (
+    <span className={`site-status__cell ${className}`.trim()}>
+      <strong className="site-status__label">{label}</strong>
+      <span className="site-status__value" title={title}>{value}</span>
+    </span>
+  );
+}
+
 export function HUD({
   dateKey,
   themeLabel,
@@ -44,11 +60,15 @@ export function HUD({
       </nav>
 
       <div className="site-status" aria-label="Today&apos;s game status">
-        <span><strong>Today:</strong> {dateKey}</span>
-        <span><strong>Theme:</strong> {themeLabel}</span>
-        <span><strong>Attempt:</strong> {Math.min(currentAttempt, maxGuesses)} / {maxGuesses}</span>
-        <span><strong>Streak:</strong> 🔥 {currentStreak}</span>
-        <span><strong>Best:</strong> 🏆 {longestStreak}</span>
+        <StatusCell className="site-status__cell--today" label="Today:" value={dateKey} />
+        <StatusCell className="site-status__cell--theme" label="Theme:" value={themeLabel} title={themeLabel} />
+        <StatusCell
+          className="site-status__cell--attempt"
+          label="Attempt:"
+          value={`${Math.min(currentAttempt, maxGuesses)} / ${maxGuesses}`}
+        />
+        <StatusCell className="site-status__cell--streak" label="Streak:" value={<>🔥 {currentStreak}</>} />
+        <StatusCell className="site-status__cell--best" label="Best:" value={<>🏆 {longestStreak}</>} />
       </div>
     </header>
   );
