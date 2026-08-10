@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import type { Snapshot, Stats } from "./types";
 import { useGame } from "./hooks/useGame";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import { detectClockSkew } from "./lib/clock";
 import { mergeCuratedIdols } from "./lib/mergeCuratedIdols";
 import { Board } from "./components/Board";
@@ -12,6 +13,19 @@ import { InfoModal } from "./components/InfoModal";
 import { AttributionFooter } from "./components/AttributionFooter";
 import { ClockSkewBanner } from "./components/ClockSkewBanner";
 import "./webpage.css";
+
+type ColorMode = "system" | "dark" | "light";
+type ResolvedColorMode = Exclude<ColorMode, "system">;
+
+const isColorMode = (value: unknown): value is ColorMode =>
+  value === "system" || value === "dark" || value === "light";
+
+function resolveColorMode(colorMode: ColorMode): ResolvedColorMode {
+  if (colorMode !== "system") return colorMode;
+  return window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+}
 
 function useClockSkew() {
   const [skewMinutes, setSkewMinutes] = useState<number | null>(null);
@@ -94,7 +108,17 @@ function RecentResults({ stats }: { stats: Stats }) {
   );
 }
 
-function GameApp({ snapshot }: { snapshot: Snapshot }) {
+function GameApp({
+  snapshot,
+  colorMode,
+  resolvedColorMode,
+  onColorModeChange,
+}: {
+  snapshot: Snapshot;
+  colorMode: ColorMode;
+  resolvedColorMode: ResolvedColorMode;
+  onColorModeChange: (nextColorMode: ColorMode) => void;
+}) {
   const {
     state,
     stats,
@@ -179,6 +203,8 @@ function GameApp({ snapshot }: { snapshot: Snapshot }) {
   return (
     <>
       <HUD
+        colorMode={colorMode}
+        resolvedColorMode={resolvedColorMode}
         dateKey={dateKey}
         themeLabel={themeLabel}
         currentStreak={stats.currentStreak}
@@ -188,6 +214,7 @@ function GameApp({ snapshot }: { snapshot: Snapshot }) {
         onOpenStats={() => setStatsOpen(true)}
         onOpenAbout={() => setInfoMode("about")}
         onOpenHow={() => setInfoMode("how")}
+        onColorModeChange={onColorModeChange}
       />
 
       <main className="retro-main site-game-main flex flex-col items-center flex-1 gap-4">
@@ -249,9 +276,50 @@ function GameApp({ snapshot }: { snapshot: Snapshot }) {
 export default function App() {
   const fetchState = useSnapshot();
   const { show: showSkew, skewMinutes, dismiss: dismissSkew } = useClockSkew();
+  const [colorMode, setColorMode] = useLocalStorage<ColorMode>(
+    "idoldle-color-mode",
+    "dark",
+    1,
+    { validator: isColorMode },
+  );
+  const [resolvedColorMode, setResolvedColorMode] = useState<ResolvedColorMode>(
+    () => resolveColorMode(colorMode),
+  );
+
+  useEffect(() => {
+    const syncColorMode = () => setResolvedColorMode(resolveColorMode(colorMode));
+    syncColorMode();
+
+    if (colorMode !== "system") return;
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+    mediaQuery.addEventListener("change", syncColorMode);
+    return () => mediaQuery.removeEventListener("change", syncColorMode);
+  }, [colorMode]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = resolvedColorMode;
+    document.documentElement.style.colorScheme = resolvedColorMode;
+
+    const themeColor = document.querySelector<HTMLMetaElement>(
+      'meta[name="theme-color"]',
+    );
+    if (themeColor) {
+      themeColor.content = resolvedColorMode === "light" ? "#d6d9e8" : "#050719";
+    }
+
+    return () => {
+      delete document.documentElement.dataset.theme;
+      document.documentElement.style.colorScheme = "";
+    };
+  }, [resolvedColorMode]);
 
   return (
-    <div className="retro-page site-page min-h-full">
+    <div
+      className={`retro-page site-page site-theme--${resolvedColorMode} min-h-full`}
+      data-appearance-mode={colorMode}
+      data-color-mode={resolvedColorMode}
+    >
       <div role="alert" aria-live="polite" className="rotate-hint fixed inset-0 z-50 items-center justify-center bg-black/80 text-white text-center p-8">
         <div className="flex flex-col items-center gap-4">
           <svg aria-hidden="true" className="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -283,7 +351,14 @@ export default function App() {
           </div>
         )}
 
-        {fetchState.status === "ready" && <GameApp snapshot={fetchState.snapshot} />}
+        {fetchState.status === "ready" && (
+          <GameApp
+            snapshot={fetchState.snapshot}
+            colorMode={colorMode}
+            resolvedColorMode={resolvedColorMode}
+            onColorModeChange={setColorMode}
+          />
+        )}
       </div>
     </div>
   );

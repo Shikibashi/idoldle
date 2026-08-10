@@ -63,6 +63,10 @@ test.describe("light mode accessibility", () => {
     await page.goto("/");
     await waitForApp(page);
 
+    await page
+      .getByRole("combobox", { name: "Appearance mode" })
+      .selectOption("light");
+
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa"])
       .analyze();

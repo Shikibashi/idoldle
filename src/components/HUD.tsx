@@ -1,4 +1,6 @@
 interface HUDProps {
+  colorMode: "system" | "dark" | "light";
+  resolvedColorMode: "dark" | "light";
   dateKey: string;
   themeLabel: string;
   currentStreak: number;
@@ -8,6 +10,7 @@ interface HUDProps {
   onOpenStats: () => void;
   onOpenAbout: () => void;
   onOpenHow: () => void;
+  onColorModeChange: (nextColorMode: "system" | "dark" | "light") => void;
 }
 
 interface StatusCellProps {
@@ -27,6 +30,8 @@ function StatusCell({ className = "", label, value, title }: StatusCellProps) {
 }
 
 export function HUD({
+  colorMode,
+  resolvedColorMode,
   dateKey,
   themeLabel,
   currentStreak,
@@ -36,6 +41,7 @@ export function HUD({
   onOpenStats,
   onOpenAbout,
   onOpenHow,
+  onColorModeChange,
 }: HUDProps) {
   return (
     <header className="site-masthead w-full">
@@ -56,6 +62,21 @@ export function HUD({
         <button type="button" onClick={onOpenAbout}>[ ABOUT ]</button>
         <button type="button" onClick={onOpenHow}>[ HOW TO PLAY ]</button>
         <button type="button" aria-label="Open statistics" onClick={onOpenStats}>[ STATISTICS ]</button>
+        <label className="site-mode-control">
+          <span className="site-mode-control__label">[ MODE ]</span>
+          <select
+            aria-label="Appearance mode"
+            value={colorMode}
+            onChange={(event) => onColorModeChange(event.target.value as HUDProps["colorMode"])}
+          >
+            <option value="system">SYSTEM</option>
+            <option value="light">LIGHT</option>
+            <option value="dark">DARK</option>
+          </select>
+          <span className="site-mode-control__current" aria-live="polite">
+            ({resolvedColorMode.toUpperCase()})
+          </span>
+        </label>
         <a href="https://github.com/Shikibashi/idoldle" target="_blank" rel="noreferrer">[ GITHUB ]</a>
       </nav>
 
