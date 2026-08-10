@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import type { DailyResult, Idol, Stats } from "../types";
 import { computeBadges } from "../lib/badges";
+import { useDialogFocus } from "../hooks/useDialogFocus";
 import { ShareButton } from "./ShareButton";
 
 /** Format solve time ms as "Xs" or "Ym Zs" (zero-padded seconds). */
@@ -43,22 +44,7 @@ export function StatsModal({
 }: StatsModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [open, onClose]);
-
-  // Focus trap: move focus into dialog when opened
-  useEffect(() => {
-    if (open && dialogRef.current) {
-      dialogRef.current.focus();
-    }
-  }, [open]);
+  useDialogFocus(open, dialogRef);
 
   // IMPORTANT: All hooks must run on every render — no conditional early
   // returns above this block. Compute memoised values first, then bail out
@@ -83,7 +69,7 @@ export function StatsModal({
   return (
     // Overlay
     <div
-      className="retro-modal-backdrop fixed inset-0 z-40 flex items-center justify-center"
+      className="retro-modal-backdrop fixed inset-0 z-40 flex items-center justify-center overflow-y-auto p-4"
       onClick={onClose}
     >
       {/* Dialog */}
@@ -94,7 +80,7 @@ export function StatsModal({
         aria-labelledby="stats-modal-title"
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
-        className="retro-modal relative w-[min(90vw,400px)] max-h-[90vh] overflow-y-auto p-6 flex flex-col gap-5 focus:outline-none"
+        className="retro-modal relative min-w-0 w-[min(90vw,400px)] max-h-[calc(100dvh-2rem)] overflow-y-auto p-6 flex flex-col gap-5 focus:outline-none"
       >
         {/* Close button */}
         <button
@@ -219,9 +205,9 @@ export function StatsModal({
             <p className="font-semibold text-base">
               {lastGame.won ? "You got it!" : "The answer was:"}
             </p>
-            <p className="text-xl font-bold mt-1">{lastGame.answer.stageName}</p>
+            <p className="text-xl font-bold mt-1"><bdi dir="auto">{lastGame.answer.stageName}</bdi></p>
             <p className="retro-modal__muted">
-              {lastGame.answer.group} &middot; {lastGame.answer.era}
+              <bdi dir="auto">{lastGame.answer.group}</bdi> &middot; {lastGame.answer.era}
             </p>
           </div>
         )}

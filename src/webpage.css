@@ -31,6 +31,12 @@
   padding: 1rem 1rem 0.8rem;
 }
 
+.site-home-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .site-logo {
   margin: 0;
   color: #9c68ff;
@@ -94,6 +100,10 @@
   align-items: center;
 }
 
+.site-display-control > button {
+  anchor-name: --ecw-display-control;
+}
+
 .site-display-popup {
   position: absolute;
   top: calc(100% + 1px);
@@ -107,6 +117,14 @@
   background: var(--ecw-panel);
   box-shadow: 3px 3px 0 rgba(2, 3, 19, 0.7);
   color: var(--ecw-ink);
+}
+
+@supports (position-anchor: --ecw-display-control) {
+  .site-display-popup:popover-open {
+    position-anchor: --ecw-display-control;
+    top: anchor(bottom);
+    right: anchor(right);
+  }
 }
 
 .site-display-popup__title {
@@ -240,8 +258,12 @@
 .site-text-button:hover,
 .site-text-button:focus-visible {
   color: #ffffff;
-  outline: 1px dotted #ffd45c;
-  outline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--ecw-ink);
+  text-decoration-thickness: 2px;
 }
 
 .site-status {
@@ -302,6 +324,28 @@
   background: #050719;
   font: var(--ecw-font-size-micro)/var(--ecw-line-height-meta) var(--ecw-font-system);
   text-transform: uppercase;
+}
+
+.site-completion-status {
+  width: min(100%, 38rem);
+  padding: var(--ecw-panel-padding);
+  border: 2px solid var(--ecw-success-border);
+  background: var(--ecw-surface-deep);
+  color: var(--ecw-text);
+  font: var(--ecw-font-size-body)/var(--ecw-line-height-body) var(--ecw-font-ui);
+}
+
+.site-completion-status h2 {
+  margin: calc(var(--ecw-panel-padding) * -1) calc(var(--ecw-panel-padding) * -1) 0.35rem;
+  padding: 0.3rem 0.45rem;
+  border-bottom: 1px solid var(--ecw-success-border);
+  color: var(--ecw-success-text);
+  font: 700 var(--ecw-font-size-micro)/var(--ecw-line-height-ui) var(--ecw-font-system);
+  text-transform: uppercase;
+}
+
+.site-completion-status p {
+  margin: 0 0 0.35rem;
 }
 
 .site-legend span,
@@ -513,7 +557,7 @@
   .site-status {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     margin: 0.65rem 1rem;
-    font-size: 0.66rem;
+    font-size: var(--ecw-font-size-micro);
   }
 
   .site-status span {
@@ -542,7 +586,51 @@
   }
 
   .site-status {
-    font-size: 0.7rem;
+    font-size: var(--ecw-font-size-micro);
+  }
+}
+
+/* Very wide displays are a first-class desktop workspace, not a phone-sized
+ * card floating in unused canvas. The game remains readable, while its
+ * structural regions expand and the supporting information gets a real
+ * inspector column. */
+@media (min-width: 1800px) {
+  .site-shell {
+    width: calc(100% - 4rem);
+    max-width: 220rem;
+  }
+
+  .site-game-main {
+    grid-template-columns: minmax(50rem, 1fr) minmax(22rem, 30rem);
+    gap: 1.25rem !important;
+    padding-inline: 2rem !important;
+    align-items: start !important;
+  }
+
+  .site-game-column {
+    max-width: none !important;
+    margin-inline: 0;
+    gap: 1rem !important;
+  }
+
+  .site-game-column .retro-board-panel,
+  .site-game-column .retro-keyboard-panel,
+  .site-game-column .site-legend {
+    width: 100%;
+    max-width: none;
+  }
+
+  .site-game-column .retro-board-grid {
+    max-width: 52rem;
+    margin-inline: auto;
+  }
+
+  .site-game-column .retro-tile {
+    max-width: 84px !important;
+  }
+
+  .site-info-grid {
+    gap: 0.75rem;
   }
 }
 
@@ -571,11 +659,16 @@
   }
 
   .site-display-popup {
-    right: 0;
-    left: auto;
+    left: 0;
+    right: auto;
     width: 11rem;
     max-height: calc(100dvh - 12rem);
     overflow-y: auto;
+  }
+
+  [dir="rtl"] .site-display-popup {
+    left: auto;
+    right: 0;
   }
 }
 
@@ -620,12 +713,27 @@
     color: HighlightText;
   }
 
+  .site-display-options label[data-selected="true"]:focus-within {
+    background: Highlight;
+    color: HighlightText;
+  }
+
   .site-display-options input {
     accent-color: Highlight;
   }
 
   :focus-visible {
-    outline-color: Highlight;
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  [data-selected="true"]:focus-visible,
+  [data-selected="true"] :focus-visible,
+  [aria-selected="true"]:focus-visible,
+  [aria-selected="true"] :focus-visible {
+    outline-color: HighlightText;
+    outline-offset: -2px;
   }
 }
 
@@ -655,11 +763,7 @@ body:has(.site-theme--light) {
 
 .site-theme--light.site-page {
   background-color: var(--ecw-canvas);
-  background-image:
-    radial-gradient(circle at 18px 14px, rgba(85, 48, 163, 0.13) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 72px 48px, rgba(0, 111, 136, 0.1) 0 1px, transparent 1.5px),
-    linear-gradient(180deg, #d0d5e5, var(--ecw-canvas) 55%, #bdc4da);
-  background-size: 96px 72px, 128px 96px, auto;
+  background-image: none;
 }
 
 .site-theme--light .site-shell {
@@ -765,10 +869,63 @@ body:has(.site-theme--light) {
 .site-theme--light .site-result-win { color: var(--ecw-success); }
 .site-theme--light .site-result-loss { color: var(--ecw-error); }
 
+/* The in-app contrast preference must have a rendered effect too; it is not
+ * merely a persisted setting. Strengthen the structural edges that explain
+ * the page without shrinking or recoloring the whole light theme. */
+.site-page[data-contrast="increased"] :where(
+  .site-masthead,
+  .site-nav,
+  .site-status,
+  .retro-panel,
+  .site-card,
+  .site-legend,
+  .site-display-popup,
+  .site-display-options,
+  .site-display-advanced
+) {
+  border-width: 2px;
+}
+
+.site-page[data-contrast="increased"] :where(
+  .retro-panel__header,
+  .site-card__title,
+  .site-status span,
+  .site-display-advanced[open] summary
+) {
+  border-block-end-width: 2px;
+}
+
+.site-page[data-contrast="increased"] .site-status span {
+  border-inline-end-width: 2px;
+}
+
+.site-page[data-contrast="increased"] .site-completion-status,
+.site-page[data-contrast="increased"] .site-completion-status h2,
+.site-page[data-contrast="increased"] .retro-key,
+.site-page[data-contrast="increased"] .retro-tile {
+  border-width: 2px;
+}
+
 .site-theme--light .retro-panel {
   border-color: var(--ecw-border);
   background: linear-gradient(180deg, var(--ecw-panel), var(--ecw-panel-deep));
   box-shadow: inset 0 0 0 1px rgba(8, 125, 156, 0.13), 3px 3px 0 rgba(70, 80, 126, 0.2);
+}
+
+.site-theme--light[data-contrast="increased"] .site-nav,
+.site-theme--light[data-contrast="increased"] .site-status,
+.site-theme--light[data-contrast="increased"] .site-legend,
+.site-theme--light[data-contrast="increased"] .site-card,
+.site-theme--light[data-contrast="increased"] .retro-panel,
+.site-theme--light[data-contrast="increased"] .site-display-popup {
+  border-color: var(--ecw-border-strong);
+  border-width: 2px;
+}
+
+.site-theme--light[data-contrast="increased"] .site-card__title,
+.site-theme--light[data-contrast="increased"] .retro-panel__header,
+.site-theme--light[data-contrast="increased"] .site-status span {
+  border-color: var(--ecw-border-strong);
 }
 
 .site-theme--light .retro-panel__header {
@@ -946,4 +1103,336 @@ body:has(.site-theme--light) {
 .site-theme--light .retro-badge {
   border-color: #c79d2f;
   background: linear-gradient(#fff7bd, #e9c858);
+}
+
+/* ECW 3.2: local component adaptation and semantic state contracts. */
+.site-short-viewport {
+  display: none;
+  padding: 0.35rem 0.75rem;
+  border-bottom: 1px solid var(--ecw-info-border);
+  background: var(--ecw-panel-deep);
+  color: var(--ecw-info-text);
+  font: var(--ecw-font-size-micro)/var(--ecw-line-height-meta) var(--ecw-font-system);
+  text-align: center;
+}
+
+.site-network-status {
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid var(--ecw-error-border);
+  background: var(--ecw-error-accent);
+  color: var(--ecw-error-on-accent);
+  font: var(--ecw-font-size-micro)/var(--ecw-line-height-meta) var(--ecw-font-system);
+  text-align: center;
+}
+
+.site-game-main {
+  container-type: inline-size;
+  container-name: game-page;
+}
+
+.site-game-column {
+  container-type: inline-size;
+  container-name: game-column;
+}
+
+@container game-column (min-width: 34rem) {
+  .retro-panel__header {
+    padding-inline: 0.65rem;
+  }
+
+  /* Let the keyboard grow with the local game workspace. The legacy
+   * 36rem row cap made the desktop keyboard look like a phone control even
+   * when the surrounding 4K game region had several thousand pixels. */
+  .site-page .site-game-column .retro-keyboard-panel {
+    max-width: min(100%, 52rem);
+    margin-inline: auto;
+  }
+
+  .site-page .site-game-column .retro-key-row {
+    width: min(100%, 52rem) !important;
+    max-width: 52rem !important;
+  }
+
+  .site-legend {
+    justify-content: space-between;
+  }
+}
+
+@container game-column (min-width: 48rem) {
+  .site-page .site-game-column .retro-key {
+    min-height: 3.5rem !important;
+  }
+}
+
+@container game-page (min-width: 54rem) {
+  .site-game-main {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 19rem);
+    align-items: start;
+  }
+
+  .site-info-grid {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+}
+
+/* The outer shell is a page-level decision; use the local container above
+ * for child adaptation, then place supporting information beside the game
+ * when the browser has enough room for both regions. */
+@media (min-width: 1200px) {
+  .site-game-main {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 19rem);
+    align-items: start !important;
+  }
+
+  .site-page .site-game-column {
+    max-width: none;
+  }
+
+  .site-info-grid {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+}
+
+.site-page,
+.site-shell,
+.site-masthead,
+.site-card,
+.site-legend,
+.retro-board-panel,
+.retro-keyboard-panel,
+.retro-footer {
+  background-color: var(--ecw-canvas);
+}
+
+.site-page {
+  color: var(--ecw-ink);
+}
+
+.site-shell {
+  border-color: var(--ecw-border);
+}
+
+.site-masthead {
+  border-bottom-color: var(--ecw-info-border);
+}
+
+.site-nav {
+  border-top-color: var(--ecw-rule);
+  border-bottom-color: var(--ecw-border);
+  background-color: var(--ecw-panel-deep);
+}
+
+.site-status {
+  border-color: var(--ecw-info-border);
+  background: var(--ecw-panel-recessed);
+  color: var(--ecw-ink);
+}
+
+.site-status span {
+  border-color: var(--ecw-rule);
+}
+
+.site-legend {
+  color: var(--ecw-ink-secondary);
+  border-color: var(--ecw-info-border);
+}
+
+.site-card {
+  color: var(--ecw-ink);
+  border-color: var(--ecw-info-border);
+}
+
+.site-card__title {
+  color: var(--ecw-link);
+  border-bottom-color: var(--ecw-info-border);
+  background: var(--ecw-panel-deep);
+}
+
+.site-card__muted,
+.site-display-options__resolved,
+.site-identity,
+.retro-panel__hint,
+.retro-modal__muted {
+  color: var(--ecw-muted);
+}
+
+.site-data-value {
+  color: var(--ecw-pink);
+}
+
+.site-result-row {
+  border-color: var(--ecw-rule);
+}
+
+.site-result-win {
+  color: var(--ecw-success-text);
+}
+
+.site-result-loss {
+  color: var(--ecw-error-text);
+}
+
+.site-swatch {
+  border-color: var(--ecw-ink-secondary);
+}
+
+.site-swatch--correct {
+  background: var(--ecw-success-accent);
+}
+
+.site-swatch--present {
+  background: var(--ecw-warning-accent);
+}
+
+.site-swatch--absent {
+  background: var(--ecw-panel-raised);
+}
+
+.retro-panel {
+  border-color: var(--ecw-border);
+}
+
+.retro-board-panel,
+.retro-keyboard-panel {
+  background-color: var(--ecw-canvas) !important;
+}
+
+.retro-warning {
+  color: var(--ecw-warning-on-accent);
+  background: var(--ecw-warning-accent);
+  border-bottom-color: var(--ecw-warning-border);
+}
+
+.retro-toast {
+  color: var(--ecw-info-on-accent);
+  background: var(--ecw-info-accent);
+  border-color: var(--ecw-info-border);
+  box-shadow: 3px 3px 0 var(--ecw-panel-recessed);
+}
+
+.retro-modal-backdrop {
+  background: color-mix(in srgb, var(--ecw-panel-recessed) 86%, transparent);
+}
+
+.retro-modal {
+  background: linear-gradient(180deg, var(--ecw-panel-raised), var(--ecw-panel-deep));
+  box-shadow: 6px 6px 0 var(--ecw-panel-recessed);
+}
+
+.site-display-options label[data-selected="true"] {
+  background: var(--ecw-selection);
+  color: var(--ecw-selection-text);
+}
+
+@media (min-width: 840px) {
+  .site-page {
+    padding-block: 0;
+  }
+
+  .site-shell {
+    min-height: calc(100dvh - 1.5rem);
+  }
+}
+
+/* Keep the ECW two-band focus contract above legacy component-specific rules. */
+.site-page :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--ecw-focus-inner);
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px var(--ecw-focus-outer);
+}
+
+.site-theme--light .retro-panel__hint,
+.site-theme--light .retro-modal__muted,
+.site-theme--light .site-card__muted {
+  color: var(--ecw-muted);
+}
+
+@media (min-width: 1280px) {
+  .site-page {
+    background-image:
+      radial-gradient(circle at 18px 14px, color-mix(in srgb, var(--ecw-purple) 28%, transparent) 0 1px, transparent 1.5px),
+      radial-gradient(circle at 72px 48px, color-mix(in srgb, var(--ecw-info-text) 16%, transparent) 0 1px, transparent 1.5px),
+      linear-gradient(180deg, var(--ecw-canvas-alt), var(--ecw-canvas) 55%, var(--ecw-canvas-alt));
+    background-size: 96px 72px, 128px 96px, auto;
+  }
+
+  .site-theme--light.site-page {
+    background-image:
+      radial-gradient(circle at 18px 14px, color-mix(in srgb, var(--ecw-purple) 13%, transparent) 0 1px, transparent 1.5px),
+      radial-gradient(circle at 72px 48px, color-mix(in srgb, var(--ecw-info-text) 10%, transparent) 0 1px, transparent 1.5px),
+      linear-gradient(180deg, var(--ecw-canvas-alt), var(--ecw-canvas) 55%, var(--ecw-canvas-alt));
+    background-size: 96px 72px, 128px 96px, auto;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .site-page {
+    overflow-x: hidden;
+  }
+
+  .site-short-viewport {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-reduced-data: reduce) {
+  .site-page,
+  .site-shell,
+  .site-masthead,
+  .retro-panel,
+  .retro-modal,
+  .retro-board-panel,
+  .retro-keyboard-panel {
+    background-image: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .retro-panel,
+  .retro-modal,
+  .retro-toast,
+  .retro-warning {
+    box-shadow: none;
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+  }
+
+  .retro-panel__header,
+  .site-card__title {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+  }
+
+  .site-display-options label[data-selected="true"] {
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .site-display-options label[data-selected="true"]:focus-within {
+    outline: 2px solid HighlightText;
+    outline-offset: -2px;
+  }
+}
+
+@media print {
+  .site-page {
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .site-game-main {
+    display: block !important;
+    padding: 1rem 0 !important;
+  }
+
+  .site-game-column,
+  .site-info-grid {
+    max-width: none;
+  }
 }

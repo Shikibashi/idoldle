@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { formatDateKey } from "../lib/format";
+import { ENGLISH_STRINGS as strings } from "../lib/strings";
 
 interface HUDProps {
   colorMode: "system" | "dark" | "light";
@@ -13,13 +14,14 @@ interface HUDProps {
   longestStreak: number;
   currentAttempt: number;
   maxGuesses: number;
-  onOpenStats: () => void;
-  onOpenAbout: () => void;
-  onOpenHow: () => void;
+  onOpenStats: (origin?: HTMLElement) => void;
+  onOpenAbout: (origin?: HTMLElement) => void;
+  onOpenHow: (origin?: HTMLElement) => void;
   onColorModeChange: (nextColorMode: "system" | "dark" | "light") => void;
   onDensityChange: (nextDensity: "automatic" | "compact" | "comfortable") => void;
   onContrastChange: (nextContrast: "normal" | "increased") => void;
   onResetDisplayPreferences: () => void;
+  activeView: "about" | "how-to-play" | "statistics" | null;
 }
 
 interface StatusCellProps {
@@ -57,23 +59,59 @@ export function HUD({
   onDensityChange,
   onContrastChange,
   onResetDisplayPreferences,
+  activeView,
 }: HUDProps) {
   const [displayOpen, setDisplayOpen] = useState(false);
   const displayControlRef = useRef<HTMLDivElement>(null);
   const displayButtonRef = useRef<HTMLButtonElement>(null);
+  const displayPopupRef = useRef<HTMLDivElement>(null);
+
+  const closeDisplay = useCallback(() => {
+    setDisplayOpen(false);
+    displayButtonRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const popup = displayPopupRef.current as (HTMLDivElement & {
+      showPopover?: () => void;
+      hidePopover?: () => void;
+    }) | null;
+    if (!popup || !displayOpen) return;
+
+    // Keep the ordinary in-flow fallback on narrow screens. Native popovers
+    // enter the top layer and can be positioned outside a short mobile
+    // viewport; the fallback remains fully operable there.
+    const useNativePopover = window.matchMedia("(min-width: 640px)").matches;
+    if (!useNativePopover) return;
+
+    // Native Popover supplies top-layer dismissal and Escape behavior where
+    // available. The React state, focus trap, and ordinary div remain the
+    // reliable fallback for older browsers.
+    popup.setAttribute("popover", "auto");
+    const anchor = displayControlRef.current?.getBoundingClientRect();
+    if (anchor) {
+      popup.style.position = "fixed";
+      popup.style.top = `${anchor.bottom + 1}px`;
+      popup.style.right = `${Math.max(0, window.innerWidth - anchor.right)}px`;
+    }
+    popup.showPopover?.();
+    return () => popup.hidePopover?.();
+  }, [displayOpen]);
 
   useEffect(() => {
     if (!displayOpen) return;
 
     const closeOnOutsidePointer = (event: PointerEvent) => {
-      if (!displayControlRef.current?.contains(event.target as Node)) {
-        setDisplayOpen(false);
+      if (
+        !displayControlRef.current?.contains(event.target as Node) &&
+        !displayPopupRef.current?.contains(event.target as Node)
+      ) {
+        closeDisplay();
       }
     };
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setDisplayOpen(false);
-        displayButtonRef.current?.focus();
+        closeDisplay();
       }
     };
 
@@ -83,32 +121,32 @@ export function HUD({
       document.removeEventListener("pointerdown", closeOnOutsidePointer);
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, [displayOpen]);
+  }, [closeDisplay, displayOpen]);
 
   const chooseColorMode = (nextColorMode: HUDProps["colorMode"]) => {
     onColorModeChange(nextColorMode);
-    setDisplayOpen(false);
+    closeDisplay();
   };
 
   const chooseDensity = (nextDensity: HUDProps["density"]) => {
     onDensityChange(nextDensity);
-    setDisplayOpen(false);
+    closeDisplay();
   };
 
   const chooseContrast = (nextContrast: HUDProps["contrast"]) => {
     onContrastChange(nextContrast);
-    setDisplayOpen(false);
+    closeDisplay();
   };
 
   return (
     <header className="site-masthead w-full">
       <div className="site-masthead__top">
-        <div>
+        <a className="site-home-link" href="/" aria-label={strings.navigation.home}>
           <h1 className="site-logo">IDOLDLE</h1>
           <p className="site-tagline">daily idol database</p>
-        </div>
+        </a>
         <div className="site-identity">
-          <a className="retro-link" href="https://edriffles.us" target="_blank" rel="noreferrer">
+          <a className="retro-link" href="https://edriffles.us" target="_blank" rel="noopener noreferrer">
             edriffles.us
           </a>
           <span>a daily idol-name puzzle</span>
@@ -116,128 +154,137 @@ export function HUD({
       </div>
 
       <nav className="site-nav" aria-label="Idoldle navigation">
-        <button type="button" onClick={onOpenAbout}>[ ABOUT ]</button>
-        <button type="button" onClick={onOpenHow}>[ HOW TO PLAY ]</button>
-        <button type="button" aria-label="Open statistics" onClick={onOpenStats}>[ STATISTICS ]</button>
-        <a href="https://github.com/Shikibashi/idoldle" target="_blank" rel="noreferrer">[ GITHUB ]</a>
+        <a href="#about" aria-current={activeView === "about" ? "page" : undefined} onClick={(event) => onOpenAbout(event.currentTarget)}><span aria-hidden="true">[ </span>{strings.navigation.about}<span aria-hidden="true"> ]</span></a>
+        <a href="#how-to-play" aria-current={activeView === "how-to-play" ? "page" : undefined} onClick={(event) => onOpenHow(event.currentTarget)}><span aria-hidden="true">[ </span>{strings.navigation.howToPlay}<span aria-hidden="true"> ]</span></a>
+        <a href="#statistics" aria-current={activeView === "statistics" ? "page" : undefined} onClick={(event) => onOpenStats(event.currentTarget)}><span aria-hidden="true">[ </span>{strings.navigation.statistics}<span aria-hidden="true"> ]</span></a>
+        <a href="https://github.com/Shikibashi/idoldle" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[ </span>{strings.navigation.github}<span aria-hidden="true"> ]</span></a>
         <div className="site-display-control" ref={displayControlRef}>
           <button
             ref={displayButtonRef}
             type="button"
             aria-controls="display-options"
             aria-expanded={displayOpen}
-            aria-haspopup="dialog"
+            aria-haspopup="true"
             onClick={() => setDisplayOpen((open) => !open)}
           >
-            [ DISPLAY ]
+            <span aria-hidden="true">[ </span>{strings.navigation.display}<span aria-hidden="true"> ]</span>
           </button>
           {displayOpen && (
             <div
+              ref={displayPopupRef}
               className="site-display-popup"
               id="display-options"
-              role="dialog"
-              aria-label="Display options"
+              aria-label={strings.navigation.displayOptions}
+              data-display-popup="true"
             >
-              <div className="site-display-popup__title">DISPLAY</div>
+              <div className="site-display-popup__title">{strings.display.title}</div>
               <fieldset className="site-display-options">
-                <legend>APPEARANCE</legend>
-                <label>
+                <legend>{strings.display.appearance}</legend>
+                <label data-selected={colorMode === "system"}>
                   <input
                     type="radio"
                     name="idoldle-display-mode"
                     value="system"
                     checked={colorMode === "system"}
+                    onClick={() => chooseColorMode("system")}
                     onChange={() => chooseColorMode("system")}
                   />
-                  <span>SYSTEM</span>
+                  <span>{strings.display.system}</span>
                 </label>
-                <label>
+                <label data-selected={colorMode === "light"}>
                   <input
                     type="radio"
                     name="idoldle-display-mode"
                     value="light"
                     checked={colorMode === "light"}
+                    onClick={() => chooseColorMode("light")}
                     onChange={() => chooseColorMode("light")}
                   />
-                  <span>LIGHT</span>
+                  <span>{strings.display.light}</span>
                 </label>
-                <label>
+                <label data-selected={colorMode === "dark"}>
                   <input
                     type="radio"
                     name="idoldle-display-mode"
                     value="dark"
                     checked={colorMode === "dark"}
+                    onClick={() => chooseColorMode("dark")}
                     onChange={() => chooseColorMode("dark")}
                   />
-                  <span>DARK</span>
+                  <span>{strings.display.dark}</span>
                 </label>
                 {colorMode === "system" && (
                   <p className="site-display-options__resolved">
-                    USING {resolvedColorMode.toUpperCase()}
+                    {strings.display.using(resolvedColorMode)}
                   </p>
                 )}
               </fieldset>
               <fieldset className="site-display-options">
-                <legend>DENSITY</legend>
-                <label>
+                <legend>{strings.display.density}</legend>
+                <label data-selected={density === "automatic"}>
                   <input
                     type="radio"
                     name="idoldle-density"
                     value="automatic"
                     checked={density === "automatic"}
+                    onClick={() => chooseDensity("automatic")}
                     onChange={() => chooseDensity("automatic")}
                   />
-                  <span>AUTOMATIC</span>
+                  <span>{strings.display.automatic}</span>
                 </label>
-                <label>
+                <label data-selected={density === "compact"}>
                   <input
                     type="radio"
                     name="idoldle-density"
                     value="compact"
                     checked={density === "compact"}
+                    onClick={() => chooseDensity("compact")}
                     onChange={() => chooseDensity("compact")}
                   />
-                  <span>COMPACT</span>
+                  <span>{strings.display.compact}</span>
                 </label>
-                <label>
+                <label data-selected={density === "comfortable"}>
                   <input
                     type="radio"
                     name="idoldle-density"
                     value="comfortable"
                     checked={density === "comfortable"}
+                    onClick={() => chooseDensity("comfortable")}
                     onChange={() => chooseDensity("comfortable")}
                   />
-                  <span>COMFORTABLE</span>
+                  <span>{strings.display.comfortable}</span>
                 </label>
                 {density === "automatic" && (
                   <p className="site-display-options__resolved">
-                    USING {resolvedDensity.toUpperCase()}
+                    {strings.display.using(resolvedDensity)}
                   </p>
                 )}
               </fieldset>
               <details className="site-display-advanced">
-                <summary>CONTRAST</summary>
+                <summary>{strings.display.contrast}</summary>
                 <fieldset className="site-display-options">
-                  <legend>CONTRAST</legend>
-                  <label>
+                  <legend>{strings.display.contrast}</legend>
+                  <label data-selected={contrast === "normal"}>
                     <input
                       type="radio"
                       name="idoldle-contrast"
                       value="normal"
-                      checked={contrast === "normal"}
-                      onChange={() => chooseContrast("normal")}
+                    checked={contrast === "normal"}
+                    onClick={() => chooseContrast("normal")}
+                    onChange={() => chooseContrast("normal")}
                     />
-                    <span>NORMAL</span>
+                    <span>{strings.display.normal}</span>
                   </label>
-                  <label>
+                  <label data-selected={contrast === "increased"}>
                     <input
                       type="radio"
                       name="idoldle-contrast"
                       value="increased"
-                      checked={contrast === "increased"}
-                      onChange={() => chooseContrast("increased")}
+                    checked={contrast === "increased"}
+                    onClick={() => chooseContrast("increased")}
+                    onChange={() => chooseContrast("increased")}
                     />
-                    <span>INCREASED</span>
+                    <span>{strings.display.increased}</span>
                   </label>
                 </fieldset>
               </details>
@@ -246,10 +293,10 @@ export function HUD({
                 type="button"
                 onClick={() => {
                   onResetDisplayPreferences();
-                  setDisplayOpen(false);
+                  closeDisplay();
                 }}
               >
-                [ RESET DISPLAY ]
+                <span aria-hidden="true">[ </span>{strings.navigation.resetDisplay}<span aria-hidden="true"> ]</span>
               </button>
             </div>
           )}
@@ -259,17 +306,17 @@ export function HUD({
       <div className="site-status" aria-label="Today&apos;s game status">
         <StatusCell
           className="site-status__cell--today"
-          label="Today:"
+          label={`${strings.status.today}:`}
           value={<time dateTime={dateKey}>{formatDateKey(dateKey)}</time>}
         />
-        <StatusCell className="site-status__cell--theme" label="Theme:" value={themeLabel} title={themeLabel} />
+        <StatusCell className="site-status__cell--theme" label={`${strings.status.theme}:`} value={themeLabel} title={themeLabel} />
         <StatusCell
           className="site-status__cell--attempt"
-          label="Attempt:"
+          label={`${strings.status.attempt}:`}
           value={`${Math.min(currentAttempt, maxGuesses)} / ${maxGuesses}`}
         />
-        <StatusCell className="site-status__cell--streak" label="Streak:" value={<>🔥 {currentStreak}</>} />
-        <StatusCell className="site-status__cell--best" label="Best:" value={<>🏆 {longestStreak}</>} />
+        <StatusCell className="site-status__cell--streak" label={`${strings.status.streak}:`} value={<>🔥 {currentStreak}</>} />
+        <StatusCell className="site-status__cell--best" label={`${strings.status.best}:`} value={<>🏆 {longestStreak}</>} />
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import type { Guess, LetterState, WordLength } from "../types";
 import { Tile } from "./Tile";
+import { ENGLISH_STRINGS as strings } from "../lib/strings";
 
 interface BoardProps {
   guesses: Guess[];
@@ -77,7 +78,7 @@ export function Board({
   return (
     <section className="retro-panel retro-board-panel" aria-labelledby="board-panel-title">
       <div className="retro-panel__header" id="board-panel-title">
-        <span>Today&apos;s challenge</span>
+        <span>{strings.game.challenge}</span>
         <span>6 attempts // {length} letters</span>
       </div>
       <div
@@ -87,7 +88,7 @@ export function Board({
       >
         {rows}
       </div>
-      <div className="retro-panel__hint">Enter a stage name to decode the idol</div>
+      <div className="retro-panel__hint">{strings.game.hint}</div>
     </section>
   );
 }

@@ -18,7 +18,7 @@ export function AttributionFooter({ snapshot }: AttributionFooterProps) {
             rel="noopener noreferrer"
             className="retro-link underline"
           >
-            {attr.source}
+            <bdi dir="auto">{attr.source}</bdi>
           </a>{" "}
           // {attr.license}
         </>

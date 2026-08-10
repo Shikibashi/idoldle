@@ -5,7 +5,7 @@ A daily Wordle-style guessing game where the hidden answer is a 6-letter romaniz
 - Mon — 4th gen · Tue — 3rd gen · Wed — 2nd gen · Thu — rookies · Fri — legacy · Sat — wildcard · Sun — throwback
 - 6 guesses, standard Wordle feedback (correct / present / absent)
 - Local-only stats — no accounts, no backend
-- Mobile-first, accessible (ARIA, color-blind mode, reduced-motion)
+- Responsive and capability-aware, with keyboard and touch support, desktop-serious ECW Page Mode structure, and accessibility preferences
 
 ## Getting started
 

@@ -9,11 +9,11 @@ async function chooseDisplayMode(
   mode: "system" | "light" | "dark",
   forceOverlay = false,
 ) {
-  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  const display = page.getByRole("button", { name: "Display", exact: true });
   if (forceOverlay) await display.dispatchEvent("click");
   else await display.click();
 
-  const radio = page.getByRole("radio", { name: mode.toUpperCase(), exact: true });
+  const radio = page.getByRole("radio", { name: new RegExp(`^${mode}$`, "i") });
   if (forceOverlay) await radio.dispatchEvent("click");
   else await radio.click();
 }
@@ -23,11 +23,11 @@ async function chooseDensity(
   density: "automatic" | "compact" | "comfortable",
   forceOverlay = false,
 ) {
-  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  const display = page.getByRole("button", { name: "Display", exact: true });
   if (forceOverlay) await display.dispatchEvent("click");
   else await display.click();
 
-  const radio = page.getByRole("radio", { name: density.toUpperCase(), exact: true });
+  const radio = page.getByRole("radio", { name: new RegExp(`^${density}$`, "i") });
   if (forceOverlay) await radio.dispatchEvent("click");
   else await radio.click();
 }
@@ -37,7 +37,7 @@ async function chooseContrast(
   contrast: "normal" | "increased",
   forceOverlay = false,
 ) {
-  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  const display = page.getByRole("button", { name: "Display", exact: true });
   if (forceOverlay) await display.dispatchEvent("click");
   else await display.click();
 
@@ -45,7 +45,7 @@ async function chooseContrast(
   if (forceOverlay) await contrastDisclosure.dispatchEvent("click");
   else await contrastDisclosure.click();
 
-  const radio = page.getByRole("radio", { name: contrast.toUpperCase(), exact: true });
+  const radio = page.getByRole("radio", { name: new RegExp(`^${contrast}$`, "i") });
   if (forceOverlay) await radio.dispatchEvent("click");
   else await radio.click();
 }
@@ -56,9 +56,10 @@ test.describe("color mode", () => {
     await waitForApp(page);
 
     const root = page.locator(".site-page[data-color-mode]");
-    await expect(root).toHaveAttribute("data-color-mode", "dark");
+    await expect(root).toHaveAttribute("data-appearance-mode", "system");
+    await expect(root).toHaveAttribute("data-color-mode", /^(dark|light)$/);
 
-    const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+    const display = page.getByRole("button", { name: "Display", exact: true });
     await expect(display).toHaveCount(1);
     await chooseDisplayMode(page, "light", testInfo.project.name === "phone-landscape");
 
@@ -152,10 +153,10 @@ test.describe("color mode", () => {
     await waitForApp(page);
     await expect(root).toHaveAttribute("data-contrast", "increased");
 
-    const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+    const display = page.getByRole("button", { name: "Display", exact: true });
     if (testInfo.project.name === "phone-landscape") await display.dispatchEvent("click");
     else await display.click();
-    const reset = page.getByRole("button", { name: "[ RESET DISPLAY ]", exact: true });
+    const reset = page.getByRole("button", { name: "Reset display", exact: true });
     if (testInfo.project.name === "phone-landscape") await reset.dispatchEvent("click");
     else await reset.click();
 
@@ -168,5 +169,28 @@ test.describe("color mode", () => {
       "data-density-mode",
       "automatic",
     );
+  });
+
+  test("light increased contrast visibly strengthens structural boundaries", async ({ page }, testInfo) => {
+    await page.goto("/");
+    await waitForApp(page);
+
+    const forceOverlay = testInfo.project.name === "phone-landscape";
+    await chooseDisplayMode(page, "light", forceOverlay);
+    await chooseContrast(page, "increased", forceOverlay);
+
+    const styles = await page.evaluate(() => ({
+      theme: document.documentElement.dataset.theme,
+      contrast: document.documentElement.dataset.contrast,
+      panelBorderWidth: getComputedStyle(document.querySelector(".retro-panel")!).borderTopWidth,
+      cardBorderWidth: getComputedStyle(document.querySelector(".site-card")!).borderTopWidth,
+      statusBorderWidth: getComputedStyle(document.querySelector(".site-status")!).borderTopWidth,
+    }));
+
+    expect(styles.theme).toBe("light");
+    expect(styles.contrast).toBe("increased");
+    expect(styles.panelBorderWidth).toBe("2px");
+    expect(styles.cardBorderWidth).toBe("2px");
+    expect(styles.statusBorderWidth).toBe("2px");
   });
 });

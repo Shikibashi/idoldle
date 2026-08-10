@@ -1,0 +1,243 @@
+/*
+ * ECW 3.2 token layer.
+ *
+ * Keep foundation, semantic, and compatibility aliases together so the page
+ * can change appearance without components knowing which palette is active.
+ * The pre-paint resolver in public/theme-init.js sets data-theme before this
+ * stylesheet is evaluated.
+ */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --ecw-bg: #050719;
+  --ecw-canvas: #070a2e;
+  --ecw-canvas-alt: #050719;
+  --ecw-surface: #12144b;
+  --ecw-surface-deep: #0b0d38;
+  --ecw-surface-raised: #1c1e67;
+  --ecw-surface-recessed: #02030d;
+  --ecw-text: #f9f3ff;
+  --ecw-text-secondary: #dfe6ff;
+  --ecw-muted: #aeb6e9;
+  --ecw-border: #6675c8;
+  --ecw-border-strong: #7787e8;
+  --ecw-rule: #343960;
+  --ecw-link: #6ff4ff;
+  --ecw-link-visited: #c594ff;
+  --ecw-purple: #b189ff;
+  --ecw-pink: #ff76d7;
+
+  --ecw-warning-text: #ffd45c;
+  --ecw-warning-accent: #ffd45c;
+  --ecw-warning-border: #ffd45c;
+  --ecw-warning-on-accent: #050719;
+  --ecw-success-text: #23d5a6;
+  --ecw-success-accent: #23d5a6;
+  --ecw-success-border: #23d5a6;
+  --ecw-success-on-accent: #050719;
+  --ecw-info-text: #6ff4ff;
+  --ecw-info-accent: #6ff4ff;
+  --ecw-info-border: #6ff4ff;
+  --ecw-info-on-accent: #050719;
+  --ecw-error-text: #ff76a8;
+  --ecw-error-accent: #ff76a8;
+  --ecw-error-border: #ff76a8;
+  --ecw-error-on-accent: #050719;
+
+  --ecw-selection: #7787e8;
+  --ecw-selection-text: #050719;
+  --ecw-focus-outer: #ffd45c;
+  --ecw-focus-inner: #050719;
+  --ecw-control-face: #bdbdbd;
+  --ecw-control-highlight: #ffffff;
+  --ecw-control-shadow: #666666;
+  --ecw-control-text: #111111;
+
+  --ecw-font-display: Georgia, "Noto Serif", "DejaVu Serif", "Times New Roman", "Liberation Serif", serif;
+  --ecw-font-ui: Verdana, "DejaVu Sans", Tahoma, "Noto Sans", Arial, "Liberation Sans", sans-serif;
+  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
+  --ecw-font-size-body: 0.9375rem;
+  --ecw-font-size-ui: 0.875rem;
+  --ecw-font-size-meta: 0.8125rem;
+  --ecw-font-size-micro: 0.75rem;
+  --ecw-line-height-body: 1.5;
+  --ecw-line-height-ui: 1.4;
+  --ecw-line-height-meta: 1.35;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ecw-bg: #d6d9e8;
+  --ecw-canvas: #c7ccdf;
+  --ecw-canvas-alt: #d6d9e8;
+  --ecw-surface: #f4f3eb;
+  --ecw-surface-deep: #e1e3ee;
+  --ecw-surface-raised: #ffffff;
+  --ecw-surface-recessed: #d4d6df;
+  --ecw-text: #11132d;
+  --ecw-text-secondary: #24274a;
+  --ecw-muted: #4d5372;
+  --ecw-border: #626a9c;
+  --ecw-border-strong: #383f78;
+  --ecw-rule: #9da2bd;
+  --ecw-link: #004fa3;
+  --ecw-link-visited: #65349a;
+  --ecw-purple: #5530a3;
+  --ecw-pink: #a82378;
+
+  --ecw-warning-text: #6b4600;
+  --ecw-warning-accent: #ffd45c;
+  --ecw-warning-border: #6b4600;
+  --ecw-warning-on-accent: #11132d;
+  --ecw-success-text: #055c49;
+  --ecw-success-accent: #23d5a6;
+  --ecw-success-border: #055c49;
+  --ecw-success-on-accent: #11132d;
+  --ecw-info-text: #005a6e;
+  --ecw-info-accent: #6ff4ff;
+  --ecw-info-border: #005a6e;
+  --ecw-info-on-accent: #11132d;
+  --ecw-error-text: #9b245f;
+  --ecw-error-accent: #ff76a8;
+  --ecw-error-border: #9b245f;
+  --ecw-error-on-accent: #11132d;
+
+  --ecw-selection: #2c2a86;
+  --ecw-selection-text: #ffffff;
+  --ecw-focus-outer: #522598;
+  --ecw-focus-inner: #ffffff;
+  --ecw-control-face: #d4d0c8;
+  --ecw-control-highlight: #ffffff;
+  --ecw-control-shadow: #777777;
+  --ecw-control-text: #111111;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-theme="light"]) {
+    color-scheme: light;
+    --ecw-bg: #d6d9e8;
+    --ecw-canvas: #c7ccdf;
+    --ecw-canvas-alt: #d6d9e8;
+    --ecw-surface: #f4f3eb;
+    --ecw-surface-deep: #e1e3ee;
+    --ecw-surface-raised: #ffffff;
+    --ecw-surface-recessed: #d4d6df;
+    --ecw-text: #11132d;
+    --ecw-text-secondary: #24274a;
+    --ecw-muted: #4d5372;
+    --ecw-border: #626a9c;
+    --ecw-border-strong: #383f78;
+    --ecw-rule: #9da2bd;
+    --ecw-link: #004fa3;
+    --ecw-link-visited: #65349a;
+    --ecw-purple: #5530a3;
+    --ecw-pink: #a82378;
+  }
+}
+
+:root:lang(ja) {
+  --ecw-font-ui: Verdana, "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+}
+
+:root:lang(ko) {
+  --ecw-font-ui: Verdana, "DejaVu Sans", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+
+:root:lang(ar) {
+  --ecw-font-ui: Verdana, "Noto Sans Arabic", "Segoe UI", "DejaVu Sans", sans-serif;
+}
+
+:root:lang(he) {
+  --ecw-font-ui: Verdana, "Noto Sans Hebrew", "Arial", "DejaVu Sans", sans-serif;
+}
+
+:root {
+  --ecw-control-block: 2.75rem;
+  --ecw-field-block: 2.75rem;
+  --ecw-row-block: 2.5rem;
+  --ecw-toolbar-block: 3rem;
+  --ecw-control-padding-inline: 0.75rem;
+  --ecw-gap-control: 0.5rem;
+  --ecw-hit-min: 2.75rem;
+  --ecw-target-floor: 24px;
+  --ecw-layout-gap: 1rem;
+  --ecw-tight-gap: 0.45rem;
+  --ecw-panel-padding: 0.55rem;
+  --ecw-status-padding-block: 0.45rem;
+  --ecw-focus: var(--ecw-focus-outer);
+
+  /* Compatibility aliases for legacy component rules. */
+  --ecw-panel: var(--ecw-surface);
+  --ecw-panel-deep: var(--ecw-surface-deep);
+  --ecw-panel-raised: var(--ecw-surface-raised);
+  --ecw-panel-recessed: var(--ecw-surface-recessed);
+  --ecw-ink: var(--ecw-text);
+  --ecw-ink-secondary: var(--ecw-text-secondary);
+  --ecw-rule-decorative: var(--ecw-rule);
+  --ecw-yellow: var(--ecw-warning-accent);
+  --ecw-green: var(--ecw-success-accent);
+  --ecw-success: var(--ecw-success-accent);
+  --ecw-warning: var(--ecw-warning-text);
+  --ecw-error: var(--ecw-error-text);
+  --ecw-info: var(--ecw-info-text);
+  --retro-ink: var(--ecw-text);
+  --retro-muted: var(--ecw-muted);
+  --retro-night: var(--ecw-canvas);
+  --retro-panel: var(--ecw-surface);
+  --retro-panel-deep: var(--ecw-surface-deep);
+  --retro-border: var(--ecw-border-strong);
+  --retro-cyan: var(--ecw-info-text);
+  --retro-pink: var(--ecw-pink);
+  --retro-purple: var(--ecw-purple);
+  --retro-yellow: var(--ecw-warning-text);
+  --retro-green: var(--ecw-success-text);
+}
+
+:root[data-density="compact"] {
+  --ecw-control-block: 1.875rem;
+  --ecw-field-block: 2rem;
+  --ecw-row-block: 1.875rem;
+  --ecw-toolbar-block: 2.25rem;
+  --ecw-control-padding-inline: 0.5rem;
+  --ecw-gap-control: 0.25rem;
+  --ecw-hit-min: 1.875rem;
+  --ecw-layout-gap: 0.75rem;
+  --ecw-panel-padding: 0.35rem;
+  --ecw-status-padding-block: 0.3rem;
+}
+
+:root[data-density="comfortable"] {
+  --ecw-control-block: 2.75rem;
+  --ecw-field-block: 2.75rem;
+  --ecw-row-block: 2.5rem;
+  --ecw-toolbar-block: 3rem;
+  --ecw-control-padding-inline: 0.75rem;
+  --ecw-gap-control: 0.5rem;
+  --ecw-hit-min: 2.75rem;
+  --ecw-layout-gap: 1rem;
+  --ecw-tight-gap: 0.65rem;
+  --ecw-panel-padding: 0.6rem;
+  --ecw-status-padding-block: 0.5rem;
+}
+
+:root[data-contrast="increased"] {
+  --ecw-muted: #d7ddff;
+  --ecw-text-secondary: #f1edff;
+  --ecw-border: #93a4ff;
+  --ecw-border-strong: #aebcff;
+  --ecw-rule: #6270b0;
+  --ecw-focus-outer: #fff082;
+  --ecw-focus: #fff082;
+}
+
+:root[data-theme="light"][data-contrast="increased"] {
+  --ecw-muted: #3e466b;
+  --ecw-text-secondary: #1c2245;
+  --ecw-border: #3e4f99;
+  --ecw-border-strong: #252e70;
+  --ecw-rule: #707a9d;
+  --ecw-focus-outer: #3d1b8e;
+  --ecw-focus: #3d1b8e;
+  --ecw-focus-inner: #ffffff;
+}

@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useDialogFocus } from "../hooks/useDialogFocus";
 
 type InfoMode = "about" | "how";
 
@@ -10,15 +11,7 @@ interface InfoModalProps {
 export function InfoModal({ mode, onClose }: InfoModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!mode) return;
-    dialogRef.current?.focus();
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [mode, onClose]);
+  useDialogFocus(mode !== null, dialogRef);
 
   if (!mode) return null;
 
@@ -26,7 +19,7 @@ export function InfoModal({ mode, onClose }: InfoModalProps) {
 
   return (
     <div
-      className="retro-modal-backdrop fixed inset-0 z-40 flex items-center justify-center p-4"
+      className="retro-modal-backdrop fixed inset-0 z-40 flex items-center justify-center overflow-y-auto p-4"
       onClick={onClose}
     >
       <div
@@ -36,7 +29,7 @@ export function InfoModal({ mode, onClose }: InfoModalProps) {
         aria-labelledby="info-modal-title"
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
-        className="retro-modal site-info-modal relative w-[min(92vw,520px)] p-5 focus:outline-none"
+        className="retro-modal site-info-modal relative max-h-[calc(100dvh-2rem)] min-w-0 w-[min(92vw,520px)] overflow-y-auto p-5 focus:outline-none"
       >
         <button
           onClick={onClose}

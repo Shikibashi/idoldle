@@ -1,4 +1,5 @@
 import type { LetterState } from "../types";
+import { ENGLISH_STRINGS as strings } from "../lib/strings";
 
 interface KeyboardProps {
   letterStates: Record<string, LetterState>;
@@ -7,8 +8,8 @@ interface KeyboardProps {
 
 const ROWS = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  ["⏎", "Z", "X", "C", "V", "B", "N", "M", "⌫"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L", "⏎"],
+  ["Z", "X", "C", "V", "B", "N", "M", "⌫"],
 ];
 
 // State precedence for display: correct > present > absent > empty/pending
@@ -40,13 +41,14 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
       aria-labelledby="keyboard-panel-title"
     >
       <div className="retro-panel__header retro-panel__header--keyboard" id="keyboard-panel-title">
-        <span>Input deck</span>
-        <span>click or type</span>
+        <span>{strings.game.inputDeck}</span>
+        <span>{strings.game.clickOrType}</span>
       </div>
       {ROWS.map((row, rowIdx) => (
         <div
           key={rowIdx}
           className="retro-key-row flex justify-center w-full gap-1 px-0.5 sm:px-1 md:gap-[0.1rem] lg:gap-1"
+          data-keyboard-row={rowIdx + 1}
         >
           {row.map((key) => {
             const state = getKeyState(key, letterStates);
@@ -68,6 +70,7 @@ export function Keyboard({ letterStates, onKey }: KeyboardProps) {
                 className={[
                   "retro-key",
                   `retro-key--${state}`,
+                  isWide ? "retro-key--wide" : "",
                   "relative flex items-center justify-center",
                   "flex-1 basis-0 min-w-[23px] md:min-w-[3rem] min-h-[3rem]",
                   isWide ? "flex-[1.5] basis-0 md:min-w-[4.5rem] px-2 sm:px-3 text-sm" : "",

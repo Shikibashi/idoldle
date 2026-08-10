@@ -1,7 +1,7 @@
 /**
  * viewport.spec.ts — Phase C1
  *
- * Verifies layout, tap targets, breakpoint column widths, rotate hint,
+ * Verifies layout, tap targets, breakpoint column widths, short viewport treatment,
  * background polish, and native share API across all 7 viewport projects.
  *
  * Projects defined in playwright.config.ts:
@@ -38,32 +38,19 @@ test.describe("no horizontal overflow", () => {
 // 2. Container max-width per breakpoint
 // ---------------------------------------------------------------------------
 test.describe("container max-width per breakpoint", () => {
-  /**
-   * The inner container uses Tailwind: max-w-md md:max-w-lg lg:max-w-xl
-   *   max-w-md  = 28rem = 448 px
-   *   max-w-lg  = 32rem = 512 px
-   *   max-w-xl  = 36rem = 576 px
-   *
-   * Because viewport < max-width collapses to viewport width, we test
-   * computed max-width (CSS property), not actual offsetWidth.
-   */
-
-  test("max-w-xl at desktop (1920px)", async ({ page }, testInfo) => {
+  test("desktop promotes the game column to a broad workspace", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "desktop");
     await page.goto("/");
     await waitForKeyboard(page);
-    const maxW = await page.evaluate(() => {
-      // The inner container is the second child of the outermost wrapper div
-      const outer = document.body.firstElementChild as HTMLElement;
-      // It may be the root div; the inner flex column is its last child
-      const inner = outer?.querySelector<HTMLElement>(
-        ".flex.flex-col.max-w-md, .flex.flex-col[class*='max-w']",
-      );
-      if (!inner) return "";
-      return getComputedStyle(inner).maxWidth;
+    const metrics = await page.evaluate(() => {
+      const inner = document.querySelector<HTMLElement>(".site-game-column");
+      return {
+        maxWidth: inner ? getComputedStyle(inner).maxWidth : "",
+        width: inner?.getBoundingClientRect().width ?? 0,
+      };
     });
-    // 576px = max-w-xl
-    expect(maxW).toBe("576px");
+    expect(metrics.maxWidth).toBe("none");
+    expect(metrics.width).toBeGreaterThan(900);
   });
 
   test("max-w-lg at ipad (768px)", async ({ page }, testInfo) => {
@@ -133,7 +120,7 @@ test.describe("tap targets >= 48x48 on md+ viewports", () => {
     await page.goto("/");
     await waitForKeyboard(page);
 
-    const statsBtn = page.locator('[aria-label="Open statistics"]');
+    const statsBtn = page.getByRole("link", { name: "Statistics", exact: true });
     const box = await statsBtn.boundingBox();
     expect(box, "Stats button bounding box should exist").not.toBeNull();
     const density = await page.locator(".site-page").getAttribute("data-density");
@@ -148,13 +135,8 @@ test.describe("tap targets >= 48x48 on md+ viewports", () => {
 //    width >= 24 on narrow phones (conscious deviation floor)
 // ---------------------------------------------------------------------------
 test.describe("keyboard height >= 48 on all viewports", () => {
-  test("every key has height >= 48 and width >= 24", async ({
-    page,
-  }, testInfo) => {
-    // phone-landscape shows a rotate-hint overlay obscuring the keyboard —
-    // the game DOM is still present but interactable area is the hint.
-    // Skip measuring keyboard bounds for that project.
-    test.skip(testInfo.project.name === "phone-landscape");
+  test("every key has height >= 48 and width >= 24", async ({ page }) => {
+    // The short-viewport treatment is informational and does not block the keyboard.
 
     await page.goto("/");
     await waitForKeyboard(page);
@@ -192,7 +174,7 @@ test.describe("tile max-width scaling", () => {
    *   iphone-se (320px): computed max-width = 60px
    */
 
-  test("tile max-w is 72px at desktop", async ({ page }, testInfo) => {
+  test("tile max-w expands to 84px in the broad desktop workspace", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "desktop");
     await page.goto("/");
     await waitForKeyboard(page);
@@ -201,7 +183,7 @@ test.describe("tile max-width scaling", () => {
       if (!tile) return "";
       return getComputedStyle(tile).maxWidth;
     });
-    expect(maxW).toBe("72px");
+    expect(maxW).toBe("84px");
   });
 
   test("tile max-w is 60px at iphone-se", async ({ page }, testInfo) => {
@@ -218,25 +200,30 @@ test.describe("tile max-width scaling", () => {
 });
 
 // ---------------------------------------------------------------------------
-// 6. Landscape rotate hint
+// 6. Short viewport treatment
 // ---------------------------------------------------------------------------
-test.describe("landscape rotate hint", () => {
-  test("rotate hint is visible at phone-landscape (667×375)", async ({
+test.describe("short viewport treatment", () => {
+  test("short viewport notice is visible without blocking the game", async ({
     page,
   }, testInfo) => {
     test.skip(testInfo.project.name !== "phone-landscape");
     await page.goto("/");
-    // Don't wait for keyboard — the hint overlay covers the screen
-    await page.waitForSelector(".rotate-hint", { timeout: 5_000 });
-    const display = await page.evaluate(() => {
-      const el = document.querySelector(".rotate-hint") as HTMLElement;
-      if (!el) return "element-not-found";
-      return getComputedStyle(el).display;
+    await page.waitForSelector(".site-short-viewport", { timeout: 5_000 });
+    const metrics = await page.evaluate(() => {
+      const el = document.querySelector(".site-short-viewport") as HTMLElement;
+      const key = document.querySelector('[aria-label^="Key"]') as HTMLElement;
+      return {
+        display: el ? getComputedStyle(el).display : "element-not-found",
+        position: el ? getComputedStyle(el).position : "element-not-found",
+        keyPointerEvents: key ? getComputedStyle(key).pointerEvents : "element-not-found",
+      };
     });
-    expect(display).toBe("flex");
+    expect(metrics.display).toBe("block");
+    expect(metrics.position).not.toBe("fixed");
+    expect(metrics.keyPointerEvents).not.toBe("none");
   });
 
-  test("rotate hint is hidden at non-landscape viewports", async ({
+  test("short viewport notice is hidden at non-landscape viewports", async ({
     page,
   }, testInfo) => {
     // Only run on portrait phones and desktop — skip phone-landscape
@@ -244,12 +231,27 @@ test.describe("landscape rotate hint", () => {
     await page.goto("/");
     await waitForKeyboard(page);
     const display = await page.evaluate(() => {
-      const el = document.querySelector(".rotate-hint") as HTMLElement;
+      const el = document.querySelector(".site-short-viewport") as HTMLElement;
       if (!el) return "element-not-found";
       return getComputedStyle(el).display;
     });
     expect(display).toBe("none");
   });
+});
+
+test("256px-high landscape remains operable without page overflow", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "phone-landscape");
+  await page.setViewportSize({ width: 667, height: 256 });
+  await page.goto("/");
+  await waitForKeyboard(page);
+  const metrics = await page.evaluate(() => ({
+    widthOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    keyboardVisible: Boolean(document.querySelector('[aria-label^="Key"]')),
+    fixedNotice: getComputedStyle(document.querySelector(".site-short-viewport")!).position === "fixed",
+  }));
+  expect(metrics.widthOverflow).toBeLessThanOrEqual(0);
+  expect(metrics.keyboardVisible).toBe(true);
+  expect(metrics.fixedNotice).toBe(false);
 });
 
 // ---------------------------------------------------------------------------
@@ -340,7 +342,7 @@ test.describe("native share API", () => {
     expect(isFunction, "navigator.share should be a function after mock injection").toBe(true);
 
     // Try to open stats modal and find share button
-    await page.click('[aria-label="Open statistics"]');
+    await page.getByRole("link", { name: "Statistics", exact: true }).click();
 
     // The share button only appears when lastGame is present (game over).
     // Without a completed game in localStorage, the share button won't render.
@@ -392,7 +394,7 @@ test.describe("native share API", () => {
       });
     });
 
-    await page.click('[aria-label="Open statistics"]');
+    await page.getByRole("link", { name: "Statistics", exact: true }).click();
     const shareBtn = page.locator('[aria-label="Share result"]');
     const shareBtnCount = await shareBtn.count();
 

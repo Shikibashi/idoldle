@@ -87,7 +87,7 @@ export function ShareButton({ text, onCopied }: ShareButtonProps) {
         "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600",
       ].join(" ")}
     >
-      <span aria-live="polite">
+      <span>
         {copied ? "✓ Copied!" : "Share"}
       </span>
     </button>

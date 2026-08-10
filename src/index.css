@@ -14,22 +14,27 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100%;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
 
+/*
+ * Token declarations live in ecw-tokens.css. This compatibility block is
+ * retained only for the legacy Tailwind-era stylesheet and is overridden by
+ * the canonical layer imported from main.tsx.
 :root,
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ecw-bg: #050719;
   --ecw-canvas: #070a2e;
+  --ecw-canvas-alt: #050719;
   --ecw-panel: #12144b;
   --ecw-panel-deep: #0b0d38;
   --ecw-panel-raised: #1c1e67;
+  --ecw-panel-recessed: #02030d;
   --ecw-ink: #f9f3ff;
   --ecw-ink-secondary: #dfe6ff;
   --ecw-muted: #aeb6e9;
@@ -38,7 +43,7 @@ body,
   --ecw-rule: #343960;
   --ecw-link: #6ff4ff;
   --ecw-link-visited: #c594ff;
-  --ecw-purple: #9c68ff;
+  --ecw-purple: #b189ff;
   --ecw-pink: #ff76d7;
   --ecw-yellow: #ffd45c;
   --ecw-green: #23d5a6;
@@ -47,13 +52,33 @@ body,
   --ecw-error: #ff76a8;
   --ecw-info: #6ff4ff;
   --ecw-focus: #ffd45c;
+  --ecw-focus-outer: #ffd45c;
+  --ecw-focus-inner: #050719;
+  --ecw-warning-text: #ffd45c;
+  --ecw-warning-accent: #ffd45c;
+  --ecw-warning-border: #ffd45c;
+  --ecw-warning-on-accent: #050719;
+  --ecw-success-text: #23d5a6;
+  --ecw-success-accent: #23d5a6;
+  --ecw-success-border: #23d5a6;
+  --ecw-success-on-accent: #050719;
+  --ecw-info-text: #6ff4ff;
+  --ecw-info-accent: #6ff4ff;
+  --ecw-info-border: #6ff4ff;
+  --ecw-info-on-accent: #050719;
+  --ecw-error-text: #ff76a8;
+  --ecw-error-accent: #ff76a8;
+  --ecw-error-border: #ff76a8;
+  --ecw-error-on-accent: #050719;
+  --ecw-selection: #7787e8;
+  --ecw-selection-text: #050719;
   --ecw-control-face: #bdbdbd;
   --ecw-control-highlight: #f6f6f6;
   --ecw-control-shadow: #666666;
   --ecw-control-text: #111111;
   --ecw-font-display: Georgia, "Times New Roman", "Noto Serif", "Liberation Serif", "DejaVu Serif", serif;
   --ecw-font-ui: Verdana, Tahoma, Arial, "DejaVu Sans", "Noto Sans", "Liberation Sans", sans-serif;
-  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", ui-monospace, monospace;
+  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
   --ecw-font-size-body: 0.9375rem;
   --ecw-font-size-ui: 0.875rem;
   --ecw-font-size-meta: 0.8125rem;
@@ -67,12 +92,14 @@ body,
   color-scheme: light;
   --ecw-bg: #d6d9e8;
   --ecw-canvas: #c7ccdf;
+  --ecw-canvas-alt: #d6d9e8;
   --ecw-panel: #f4f3eb;
   --ecw-panel-deep: #e1e3ee;
   --ecw-panel-raised: #ffffff;
+  --ecw-panel-recessed: #d4d6df;
   --ecw-ink: #11132d;
   --ecw-ink-secondary: #24274a;
-  --ecw-muted: #5e6480;
+  --ecw-muted: #4d5372;
   --ecw-border: #626a9c;
   --ecw-border-strong: #383f78;
   --ecw-rule: #9da2bd;
@@ -86,7 +113,27 @@ body,
   --ecw-warning: #8a5900;
   --ecw-error: #9b245f;
   --ecw-info: #006f88;
-  --ecw-focus: #5c2aac;
+  --ecw-focus: #522598;
+  --ecw-focus-outer: #522598;
+  --ecw-focus-inner: #ffffff;
+  --ecw-warning-text: #6b4600;
+  --ecw-warning-accent: #ffd45c;
+  --ecw-warning-border: #6b4600;
+  --ecw-warning-on-accent: #11132d;
+  --ecw-success-text: #055c49;
+  --ecw-success-accent: #23d5a6;
+  --ecw-success-border: #055c49;
+  --ecw-success-on-accent: #11132d;
+  --ecw-info-text: #005a6e;
+  --ecw-info-accent: #6ff4ff;
+  --ecw-info-border: #005a6e;
+  --ecw-info-on-accent: #11132d;
+  --ecw-error-text: #9b245f;
+  --ecw-error-accent: #ff76a8;
+  --ecw-error-border: #9b245f;
+  --ecw-error-on-accent: #11132d;
+  --ecw-selection: #2c2a86;
+  --ecw-selection-text: #ffffff;
   --ecw-control-face: #d4d0c8;
   --ecw-control-highlight: #ffffff;
   --ecw-control-shadow: #777777;
@@ -98,12 +145,14 @@ body,
     color-scheme: light;
     --ecw-bg: #d6d9e8;
     --ecw-canvas: #c7ccdf;
+    --ecw-canvas-alt: #d6d9e8;
     --ecw-panel: #f4f3eb;
     --ecw-panel-deep: #e1e3ee;
     --ecw-panel-raised: #ffffff;
+    --ecw-panel-recessed: #d4d6df;
     --ecw-ink: #11132d;
     --ecw-ink-secondary: #24274a;
-    --ecw-muted: #5e6480;
+    --ecw-muted: #4d5372;
     --ecw-border: #626a9c;
     --ecw-border-strong: #383f78;
     --ecw-rule: #9da2bd;
@@ -117,12 +166,44 @@ body,
     --ecw-warning: #8a5900;
     --ecw-error: #9b245f;
     --ecw-info: #006f88;
-    --ecw-focus: #5c2aac;
+    --ecw-focus: #522598;
+    --ecw-focus-outer: #522598;
+    --ecw-focus-inner: #ffffff;
+    --ecw-warning-text: #6b4600;
+    --ecw-warning-accent: #ffd45c;
+    --ecw-warning-border: #6b4600;
+    --ecw-warning-on-accent: #11132d;
+    --ecw-success-text: #055c49;
+    --ecw-success-accent: #23d5a6;
+    --ecw-success-border: #055c49;
+    --ecw-success-on-accent: #11132d;
+    --ecw-info-text: #005a6e;
+    --ecw-info-accent: #6ff4ff;
+    --ecw-info-border: #005a6e;
+    --ecw-info-on-accent: #11132d;
+    --ecw-error-text: #9b245f;
+    --ecw-error-accent: #ff76a8;
+    --ecw-error-border: #9b245f;
+    --ecw-error-on-accent: #11132d;
+    --ecw-selection: #2c2a86;
+    --ecw-selection-text: #ffffff;
     --ecw-control-face: #d4d0c8;
     --ecw-control-highlight: #ffffff;
     --ecw-control-shadow: #777777;
     --ecw-control-text: #111111;
   }
+}
+
+:root:lang(ja) {
+  --ecw-font-ui: Verdana, "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+}
+
+:root:lang(ko) {
+  --ecw-font-ui: Verdana, "DejaVu Sans", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+
+:root:lang(ar) {
+  --ecw-font-ui: Verdana, "Noto Sans Arabic", "Segoe UI", "DejaVu Sans", sans-serif;
 }
 
 :root {
@@ -133,6 +214,7 @@ body,
   --ecw-control-padding-inline: 0.75rem;
   --ecw-gap-control: 0.5rem;
   --ecw-hit-min: 2.75rem;
+  --ecw-target-floor: 24px;
   --ecw-layout-gap: 1rem;
   --ecw-tight-gap: 0.45rem;
   --ecw-panel-padding: 0.55rem;
@@ -185,6 +267,7 @@ body,
   --ecw-border-strong: #aebcff;
   --ecw-rule: #6270b0;
   --ecw-focus: #fff082;
+  --ecw-focus-outer: #fff082;
 }
 
 :root[data-theme="light"][data-contrast="increased"] {
@@ -194,14 +277,16 @@ body,
   --ecw-border-strong: #252e70;
   --ecw-rule: #707a9d;
   --ecw-focus: #3d1b8e;
+  --ecw-focus-outer: #3d1b8e;
+  --ecw-focus-inner: #ffffff;
 }
+
+*/
 
 body {
   font-family: var(--ecw-font-ui);
   background: var(--retro-night);
   color: var(--retro-ink);
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: auto;
 }
 
@@ -233,7 +318,7 @@ a {
   color: #080b32;
   background: linear-gradient(90deg, var(--retro-cyan), #d5fbff 45%, var(--retro-pink));
   border-bottom: 2px solid #433c91;
-  font: 700 0.65rem/1 var(--ecw-font-system);
+  font: 700 var(--ecw-font-size-micro)/1 var(--ecw-font-system);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -293,7 +378,7 @@ a {
 .retro-meta {
   color: var(--retro-cyan);
   font-family: var(--ecw-font-system);
-  font-size: 0.65rem;
+  font-size: var(--ecw-font-size-micro);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -355,7 +440,7 @@ a {
   color: #090b35;
   background: linear-gradient(90deg, var(--retro-yellow), #fff0a2 50%, var(--retro-pink));
   border: 1px solid #ffd45c;
-  font: 700 0.65rem/1.2 var(--ecw-font-system);
+  font: 700 var(--ecw-font-size-micro)/1.2 var(--ecw-font-system);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -367,7 +452,7 @@ a {
 .retro-panel__hint {
   padding: 0.4rem 0.15rem 0.05rem;
   color: var(--retro-muted);
-  font: 0.6rem/1.3 var(--ecw-font-system);
+  font: var(--ecw-font-size-micro)/1.3 var(--ecw-font-system);
   letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
@@ -459,18 +544,10 @@ a {
   opacity: 1 !important;
 }
 
-.retro-key:focus-visible,
-.retro-stats-button:focus-visible,
-.retro-share:focus-visible,
-.retro-modal__close:focus-visible {
-  outline: 2px dotted var(--retro-yellow);
-  outline-offset: 2px;
-}
-
 .retro-footer {
   padding: 0.5rem 0.85rem 0.75rem;
   color: var(--retro-muted);
-  font: 0.62rem/1.45 var(--ecw-font-system);
+  font: var(--ecw-font-size-micro)/1.45 var(--ecw-font-system);
   letter-spacing: 0.02em;
 }
 
@@ -614,17 +691,6 @@ a {
   background: var(--retro-green) !important;
 }
 
-/* Phone landscape rotate hint */
-.rotate-hint {
-  display: none;
-}
-
-@media (orientation: landscape) and (max-height: 500px) {
-  .rotate-hint {
-    display: flex;
-  }
-}
-
 @media (min-width: 640px) {
   .retro-window {
     min-height: calc(100% - 1.5rem);
@@ -670,5 +736,115 @@ a {
 
   * {
     transition: none !important;
+  }
+}
+
+/* ECW focus is a structural two-band indicator, not a decorative glow. */
+:where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--ecw-focus-inner);
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px var(--ecw-focus-outer);
+}
+
+:where(button, a, input, select, textarea, summary, [tabindex]):focus:not(:focus-visible) {
+  outline: none;
+}
+
+html {
+  min-height: 100%;
+  scroll-padding-block: 1rem;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --ecw-border: var(--ecw-border-strong);
+    --ecw-muted: var(--ecw-ink-secondary);
+  }
+
+  .retro-panel,
+  .site-card,
+  .site-status,
+  .site-legend {
+    border-width: 2px;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .retro-window,
+  .retro-panel,
+  .retro-modal,
+  .site-shell,
+  .site-card {
+    background-color: var(--retro-panel);
+    background-image: none;
+  }
+
+  .retro-modal-backdrop {
+    background: var(--ecw-panel-recessed);
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .retro-page,
+  .retro-window,
+  .retro-hud {
+    background-image: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  :where(button, a, input, select, textarea, summary, [tabindex])[aria-selected="true"]:focus-visible,
+  :where(button, a, input, select, textarea, summary, [tabindex])[data-selected="true"]:focus-visible {
+    outline-color: HighlightText;
+    outline-offset: -2px;
+  }
+}
+
+@media print {
+  html,
+  body,
+  #root,
+  .retro-page,
+  .retro-window {
+    min-height: auto;
+    height: auto;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .retro-window {
+    border: 0 !important;
+    overflow: visible;
+  }
+
+  .retro-modal-backdrop,
+  .retro-toast,
+  .site-display-popup,
+  .site-nav,
+  .site-identity,
+  .retro-footer,
+  .site-short-viewport {
+    display: none !important;
+  }
+
+  .retro-panel,
+  .site-card,
+  .site-status,
+  .site-legend {
+    border-color: #000000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
   }
 }

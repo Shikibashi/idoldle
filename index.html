@@ -22,13 +22,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
+    <meta name="color-scheme" content="light dark" />
     <meta
       name="description"
       content="Idoldle — a daily Wordle-style game for K-pop girl group idol names."
     />
     <meta name="theme-color" content="#050719" />
     <title>Idoldle</title>
-    <script type="module" src="/src/theme-init.ts"></script>
+    <!-- Classic self-hosted script runs before body paint to prevent theme flash. -->
+    <script src="/theme-init.js"></script>
   </head>
   <body>
     <div id="root"></div>

@@ -19,10 +19,9 @@ import AxeBuilder from "@axe-core/playwright";
 // Helper: wait for keyboard to render before scanning
 // ---------------------------------------------------------------------------
 async function waitForApp(page: import("@playwright/test").Page) {
-  // The rotate-hint overlay covers the game on phone-landscape; wait for it.
-  // On all other projects, wait for the keyboard buttons.
+  // The short-viewport notice is non-blocking; wait for the game controls.
   try {
-    await page.waitForSelector('[aria-label^="Key"], .rotate-hint', {
+    await page.waitForSelector('[aria-label^="Key"], .site-short-viewport', {
       timeout: 10_000,
     });
   } catch {
@@ -35,11 +34,11 @@ async function chooseLightMode(
   page: import("@playwright/test").Page,
   forceOverlay: boolean,
 ) {
-  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  const display = page.getByRole("button", { name: "Display", exact: true });
   if (forceOverlay) await display.dispatchEvent("click");
   else await display.click();
 
-  const light = page.getByRole("radio", { name: "LIGHT", exact: true });
+  const light = page.getByRole("radio", { name: "Light", exact: true });
   if (forceOverlay) await light.dispatchEvent("click");
   else await light.click();
 }
@@ -118,7 +117,7 @@ test.describe("reduced motion", () => {
   test("animate-flip has animation: none when prefers-reduced-motion: reduce", async ({
     page,
   }, testInfo) => {
-    // phone-landscape is covered by rotate-hint; skip for this test
+    // phone-landscape has its own short-viewport behavior; skip for this test
     // since the game board may not be rendered/visible behind the hint.
     test.skip(testInfo.project.name === "phone-landscape");
 
