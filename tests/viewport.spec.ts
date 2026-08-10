@@ -101,7 +101,7 @@ test.describe("container max-width per breakpoint", () => {
 });
 
 // ---------------------------------------------------------------------------
-// 3. Tap targets ≥ 48×48 on md+ projects (ipad, laptop, desktop)
+// 3. Game targets remain 48px; utility controls follow density.
 // ---------------------------------------------------------------------------
 test.describe("tap targets >= 48x48 on md+ viewports", () => {
   const mdPlusProjects = ["ipad", "laptop", "desktop"];
@@ -128,7 +128,7 @@ test.describe("tap targets >= 48x48 on md+ viewports", () => {
     }
   });
 
-  test("stats button is >= 48x48", async ({ page }, testInfo) => {
+  test("stats button follows density target", async ({ page }, testInfo) => {
     test.skip(!mdPlusProjects.includes(testInfo.project.name));
     await page.goto("/");
     await waitForKeyboard(page);
@@ -136,8 +136,10 @@ test.describe("tap targets >= 48x48 on md+ viewports", () => {
     const statsBtn = page.locator('[aria-label="Open statistics"]');
     const box = await statsBtn.boundingBox();
     expect(box, "Stats button bounding box should exist").not.toBeNull();
-    expect(box!.width).toBeGreaterThanOrEqual(48);
-    expect(box!.height).toBeGreaterThanOrEqual(48);
+    const density = await page.locator(".site-page").getAttribute("data-density");
+    const minimum = density === "comfortable" ? 48 : 36;
+    expect(box!.width).toBeGreaterThanOrEqual(minimum);
+    expect(box!.height).toBeGreaterThanOrEqual(minimum);
   });
 });
 

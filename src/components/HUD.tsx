@@ -5,6 +5,7 @@ interface HUDProps {
   resolvedColorMode: "dark" | "light";
   density: "automatic" | "compact" | "comfortable";
   resolvedDensity: "compact" | "comfortable";
+  contrast: "normal" | "increased";
   dateKey: string;
   themeLabel: string;
   currentStreak: number;
@@ -16,6 +17,8 @@ interface HUDProps {
   onOpenHow: () => void;
   onColorModeChange: (nextColorMode: "system" | "dark" | "light") => void;
   onDensityChange: (nextDensity: "automatic" | "compact" | "comfortable") => void;
+  onContrastChange: (nextContrast: "normal" | "increased") => void;
+  onResetDisplayPreferences: () => void;
 }
 
 interface StatusCellProps {
@@ -39,6 +42,7 @@ export function HUD({
   resolvedColorMode,
   density,
   resolvedDensity,
+  contrast,
   dateKey,
   themeLabel,
   currentStreak,
@@ -50,6 +54,8 @@ export function HUD({
   onOpenHow,
   onColorModeChange,
   onDensityChange,
+  onContrastChange,
+  onResetDisplayPreferences,
 }: HUDProps) {
   const [displayOpen, setDisplayOpen] = useState(false);
   const displayControlRef = useRef<HTMLDivElement>(null);
@@ -85,6 +91,11 @@ export function HUD({
 
   const chooseDensity = (nextDensity: HUDProps["density"]) => {
     onDensityChange(nextDensity);
+    setDisplayOpen(false);
+  };
+
+  const chooseContrast = (nextContrast: HUDProps["contrast"]) => {
+    onContrastChange(nextContrast);
     setDisplayOpen(false);
   };
 
@@ -203,6 +214,42 @@ export function HUD({
                   </p>
                 )}
               </fieldset>
+              <details className="site-display-advanced">
+                <summary>CONTRAST</summary>
+                <fieldset className="site-display-options">
+                  <legend>CONTRAST</legend>
+                  <label>
+                    <input
+                      type="radio"
+                      name="idoldle-contrast"
+                      value="normal"
+                      checked={contrast === "normal"}
+                      onChange={() => chooseContrast("normal")}
+                    />
+                    <span>NORMAL</span>
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="idoldle-contrast"
+                      value="increased"
+                      checked={contrast === "increased"}
+                      onChange={() => chooseContrast("increased")}
+                    />
+                    <span>INCREASED</span>
+                  </label>
+                </fieldset>
+              </details>
+              <button
+                className="site-display-reset"
+                type="button"
+                onClick={() => {
+                  onResetDisplayPreferences();
+                  setDisplayOpen(false);
+                }}
+              >
+                [ RESET DISPLAY ]
+              </button>
             </div>
           )}
         </div>

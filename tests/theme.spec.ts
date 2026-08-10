@@ -32,6 +32,24 @@ async function chooseDensity(
   else await radio.click();
 }
 
+async function chooseContrast(
+  page: import("@playwright/test").Page,
+  contrast: "normal" | "increased",
+  forceOverlay = false,
+) {
+  const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+  if (forceOverlay) await display.dispatchEvent("click");
+  else await display.click();
+
+  const contrastDisclosure = page.locator(".site-display-advanced > summary");
+  if (forceOverlay) await contrastDisclosure.dispatchEvent("click");
+  else await contrastDisclosure.click();
+
+  const radio = page.getByRole("radio", { name: contrast.toUpperCase(), exact: true });
+  if (forceOverlay) await radio.dispatchEvent("click");
+  else await radio.click();
+}
+
 test.describe("color mode", () => {
   test("switches between explicit appearance modes", async ({ page }, testInfo) => {
     await page.goto("/");
@@ -119,5 +137,36 @@ test.describe("color mode", () => {
     await chooseDensity(page, "comfortable", testInfo.project.name === "phone-landscape");
     await expect(root).toHaveAttribute("data-density-mode", "comfortable");
     await expect(root).toHaveAttribute("data-density", "comfortable");
+  });
+
+  test("supports increased contrast and resets display preferences", async ({ page }, testInfo) => {
+    await page.goto("/");
+    await waitForApp(page);
+
+    const root = page.locator(".site-page[data-contrast]");
+    await expect(root).toHaveAttribute("data-contrast", "normal");
+
+    await chooseContrast(page, "increased", testInfo.project.name === "phone-landscape");
+    await expect(root).toHaveAttribute("data-contrast", "increased");
+    await page.reload();
+    await waitForApp(page);
+    await expect(root).toHaveAttribute("data-contrast", "increased");
+
+    const display = page.getByRole("button", { name: "[ DISPLAY ]", exact: true });
+    if (testInfo.project.name === "phone-landscape") await display.dispatchEvent("click");
+    else await display.click();
+    const reset = page.getByRole("button", { name: "[ RESET DISPLAY ]", exact: true });
+    if (testInfo.project.name === "phone-landscape") await reset.dispatchEvent("click");
+    else await reset.click();
+
+    await expect(root).toHaveAttribute("data-contrast", "normal");
+    await expect(page.locator(".site-page[data-appearance-mode]")).toHaveAttribute(
+      "data-appearance-mode",
+      "system",
+    );
+    await expect(page.locator(".site-page[data-density-mode]")).toHaveAttribute(
+      "data-density-mode",
+      "automatic",
+    );
   });
 });

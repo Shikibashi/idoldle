@@ -164,12 +164,12 @@ body:has(.retro-modal-backdrop) {
   }
 
   .site-game-main {
-    gap: 0.45rem !important;
+    gap: var(--ecw-tight-gap) !important;
     padding: 0.4rem 1rem 0.5rem !important;
   }
 
   .site-game-column {
-    gap: 0.45rem !important;
+    gap: var(--ecw-tight-gap) !important;
   }
 
   .retro-board-panel,
@@ -211,18 +211,18 @@ body:has(.retro-modal-backdrop) {
   }
 
   .site-info-grid {
-    gap: 0.5rem !important;
+    gap: var(--ecw-gap-control) !important;
     margin-top: 0 !important;
   }
 
   .site-card {
-    padding: 0.45rem !important;
+    padding: var(--ecw-panel-padding) !important;
     font-size: 0.72rem !important;
     line-height: 1.35 !important;
   }
 
   .site-card__title {
-    margin: -0.45rem -0.45rem 0.35rem !important;
+    margin: calc(var(--ecw-panel-padding) * -1) calc(var(--ecw-panel-padding) * -1) 0.35rem !important;
     padding-block: 0.2rem !important;
   }
 

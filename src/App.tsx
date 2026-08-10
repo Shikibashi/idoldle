@@ -18,12 +18,16 @@ type ColorMode = "system" | "dark" | "light";
 type ResolvedColorMode = Exclude<ColorMode, "system">;
 type Density = "automatic" | "compact" | "comfortable";
 type ResolvedDensity = Exclude<Density, "automatic">;
+type Contrast = "normal" | "increased";
 
 const isColorMode = (value: unknown): value is ColorMode =>
   value === "system" || value === "dark" || value === "light";
 
 const isDensity = (value: unknown): value is Density =>
   value === "automatic" || value === "compact" || value === "comfortable";
+
+const isContrast = (value: unknown): value is Contrast =>
+  value === "normal" || value === "increased";
 
 function resolveColorMode(colorMode: ColorMode): ResolvedColorMode {
   if (colorMode !== "system") return colorMode;
@@ -127,16 +131,22 @@ function GameApp({
   resolvedColorMode,
   density,
   resolvedDensity,
+  contrast,
   onColorModeChange,
   onDensityChange,
+  onContrastChange,
+  onResetDisplayPreferences,
 }: {
   snapshot: Snapshot;
   colorMode: ColorMode;
   resolvedColorMode: ResolvedColorMode;
   density: Density;
   resolvedDensity: ResolvedDensity;
+  contrast: Contrast;
   onColorModeChange: (nextColorMode: ColorMode) => void;
   onDensityChange: (nextDensity: Density) => void;
+  onContrastChange: (nextContrast: Contrast) => void;
+  onResetDisplayPreferences: () => void;
 }) {
   const {
     state,
@@ -226,6 +236,7 @@ function GameApp({
         resolvedColorMode={resolvedColorMode}
         density={density}
         resolvedDensity={resolvedDensity}
+        contrast={contrast}
         dateKey={dateKey}
         themeLabel={themeLabel}
         currentStreak={stats.currentStreak}
@@ -237,6 +248,8 @@ function GameApp({
         onOpenHow={() => setInfoMode("how")}
         onColorModeChange={onColorModeChange}
         onDensityChange={onDensityChange}
+        onContrastChange={onContrastChange}
+        onResetDisplayPreferences={onResetDisplayPreferences}
       />
 
       <main className="retro-main site-game-main flex flex-col items-center flex-1 gap-4">
@@ -316,6 +329,12 @@ export default function App() {
   const [resolvedDensity, setResolvedDensity] = useState<ResolvedDensity>(
     () => resolveDensity(density),
   );
+  const [contrast, setContrast] = useLocalStorage<Contrast>(
+    "idoldle-contrast",
+    "normal",
+    1,
+    { validator: isContrast },
+  );
 
   useEffect(() => {
     const syncColorMode = () => setResolvedColorMode(resolveColorMode(colorMode));
@@ -369,6 +388,20 @@ export default function App() {
     };
   }, [resolvedDensity]);
 
+  useEffect(() => {
+    document.documentElement.dataset.contrast = contrast;
+
+    return () => {
+      delete document.documentElement.dataset.contrast;
+    };
+  }, [contrast]);
+
+  const resetDisplayPreferences = useCallback(() => {
+    setColorMode("system");
+    setDensity("automatic");
+    setContrast("normal");
+  }, [setColorMode, setDensity, setContrast]);
+
   return (
     <div
       className={`retro-page site-page site-theme--${resolvedColorMode} min-h-full`}
@@ -376,6 +409,7 @@ export default function App() {
       data-color-mode={resolvedColorMode}
       data-density-mode={density}
       data-density={resolvedDensity}
+      data-contrast={contrast}
     >
       <div role="alert" aria-live="polite" className="rotate-hint fixed inset-0 z-50 items-center justify-center bg-black/80 text-white text-center p-8">
         <div className="flex flex-col items-center gap-4">
@@ -415,8 +449,11 @@ export default function App() {
             resolvedColorMode={resolvedColorMode}
             density={density}
             resolvedDensity={resolvedDensity}
+            contrast={contrast}
             onColorModeChange={setColorMode}
             onDensityChange={setDensity}
+            onContrastChange={setContrast}
+            onResetDisplayPreferences={resetDisplayPreferences}
           />
         )}
       </div>

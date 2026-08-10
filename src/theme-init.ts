@@ -1,8 +1,10 @@
 const STORAGE_KEY = "idoldle-color-mode";
 const DENSITY_STORAGE_KEY = "idoldle-density";
+const CONTRAST_STORAGE_KEY = "idoldle-contrast";
 
 type ColorMode = "system" | "dark" | "light";
 type Density = "automatic" | "compact" | "comfortable";
+type Contrast = "normal" | "increased";
 
 function isColorMode(value: unknown): value is ColorMode {
   return value === "system" || value === "dark" || value === "light";
@@ -44,6 +46,22 @@ function resolveDensity(density: Density): Exclude<Density, "automatic"> {
   return hasCoarsePointer || hasNoHover ? "comfortable" : "compact";
 }
 
+function isContrast(value: unknown): value is Contrast {
+  return value === "normal" || value === "increased";
+}
+
+function readContrast(): Contrast {
+  try {
+    const raw = window.localStorage.getItem(CONTRAST_STORAGE_KEY);
+    if (!raw) return "normal";
+
+    const parsed = JSON.parse(raw) as { _v?: unknown; data?: unknown };
+    return parsed._v === 1 && isContrast(parsed.data) ? parsed.data : "normal";
+  } catch {
+    return "normal";
+  }
+}
+
 const colorMode = readColorMode();
 const resolvedColorMode =
   colorMode === "system"
@@ -55,6 +73,7 @@ const resolvedColorMode =
 document.documentElement.dataset.theme = resolvedColorMode;
 document.documentElement.style.colorScheme = resolvedColorMode;
 document.documentElement.dataset.density = resolveDensity(readDensity());
+document.documentElement.dataset.contrast = readContrast();
 
 const themeColor = document.querySelector<HTMLMetaElement>(
   'meta[name="theme-color"]',

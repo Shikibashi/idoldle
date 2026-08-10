@@ -90,7 +90,7 @@
 .site-display-control {
   position: relative;
   display: inline-flex;
-  min-height: 48px;
+  min-height: var(--ecw-toolbar-block);
   align-items: center;
 }
 
@@ -157,6 +157,55 @@
   font-size: var(--ecw-font-size-micro);
 }
 
+.site-display-advanced {
+  border: 1px dotted var(--ecw-rule);
+}
+
+.site-display-advanced summary {
+  padding: 0.35rem var(--ecw-control-padding-inline);
+  color: var(--ecw-purple);
+  cursor: pointer;
+  font: 700 var(--ecw-font-size-meta)/var(--ecw-line-height-ui) var(--ecw-font-system);
+  list-style-position: inside;
+}
+
+.site-display-advanced summary:hover,
+.site-display-advanced summary:focus-visible {
+  background: var(--ecw-panel-deep);
+  color: var(--ecw-link);
+}
+
+.site-display-advanced[open] summary {
+  border-bottom: 1px dotted var(--ecw-rule);
+}
+
+.site-display-advanced .site-display-options {
+  border: 0;
+}
+
+.site-display-reset {
+  min-height: var(--ecw-control-block);
+  padding: 0 var(--ecw-control-padding-inline);
+  border: 1px outset var(--ecw-control-highlight);
+  background: var(--ecw-control-face);
+  box-shadow: 1px 1px 0 var(--ecw-control-shadow);
+  color: var(--ecw-control-text);
+  cursor: pointer;
+  font: 700 var(--ecw-font-size-micro)/var(--ecw-line-height-ui) var(--ecw-font-system);
+}
+
+.site-display-reset:hover,
+.site-display-reset:focus-visible {
+  background: var(--ecw-control-highlight);
+  color: var(--ecw-link-visited);
+}
+
+.site-display-reset:active {
+  border-style: inset;
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
 /* The display popup belongs to the nav's utility layer, so the containment
  * rule must not clip it vertically into the status strip. */
 .site-page .site-nav {
@@ -164,10 +213,23 @@
   overflow-y: visible !important;
 }
 
+.site-page[data-contrast="increased"] .site-identity,
+.site-page[data-contrast="increased"] .site-card__muted,
+.site-page[data-contrast="increased"] .site-display-options__resolved,
+.site-page[data-contrast="increased"] .site-legend {
+  color: var(--ecw-muted);
+}
+
+.site-page[data-contrast="increased"] .site-status,
+.site-page[data-contrast="increased"] .site-card,
+.site-page[data-contrast="increased"] .site-legend {
+  border-color: var(--ecw-border-strong);
+}
+
 .site-nav button,
 .site-nav a {
   display: inline-flex;
-  min-height: 48px;
+  min-height: var(--ecw-toolbar-block);
   align-items: center;
 }
 
@@ -196,7 +258,7 @@
 
 .site-status span {
   min-width: 0;
-  padding: 0.38rem 0.48rem;
+  padding: var(--ecw-status-padding-block) 0.48rem;
   border-right: 1px dotted #375d79;
   border-bottom: 1px dotted #375d79;
 }
@@ -207,11 +269,13 @@
 
 .site-game-main {
   overflow: visible !important;
+  gap: var(--ecw-layout-gap);
   padding-top: 0.65rem;
 }
 
 .site-game-column {
   width: 100%;
+  gap: var(--ecw-layout-gap);
 }
 
 .site-legend {
@@ -221,7 +285,7 @@
   gap: 0.65rem 1rem;
   width: 100%;
   max-width: 38rem;
-  padding: 0.5rem;
+  padding: var(--ecw-panel-padding);
   color: #dfe6ff;
   border: 1px solid #315a77;
   background: #050719;
@@ -252,14 +316,14 @@
 .site-info-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.65rem;
+  gap: var(--ecw-layout-gap);
   width: 100%;
   margin-top: 0.3rem;
 }
 
 .site-card {
   min-width: 0;
-  padding: 0.6rem;
+  padding: var(--ecw-panel-padding);
   color: #f9f3ff;
   border: 1px solid #4ac8d3;
   background: #050719;
@@ -267,7 +331,7 @@
 }
 
 .site-card__title {
-  margin: -0.6rem -0.6rem 0.55rem;
+  margin: calc(var(--ecw-panel-padding) * -1) calc(var(--ecw-panel-padding) * -1) 0.55rem;
   padding: 0.28rem 0.45rem;
   color: #6ff4ff;
   border-bottom: 1px dotted #4ac8d3;
@@ -437,7 +501,7 @@
 
   .site-info-grid {
     grid-template-columns: 1fr 1.35fr 1fr;
-    gap: 0.8rem;
+    gap: var(--ecw-layout-gap);
   }
 }
 
@@ -472,7 +536,7 @@
   }
 
   .site-nav {
-    gap: 0.15rem 0.5rem;
+    gap: var(--ecw-gap-control) 0.5rem;
     padding-inline: 0.65rem;
   }
 
@@ -484,6 +548,8 @@
     right: 0;
     left: auto;
     width: 11rem;
+    max-height: calc(100dvh - 12rem);
+    overflow-y: auto;
   }
 }
 
