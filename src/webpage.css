@@ -12,6 +12,8 @@
 }
 
 .site-shell {
+  width: 100%;
+  max-width: 36rem;
   background: rgba(8, 10, 46, 0.97);
   border-color: #6675c8;
 }
@@ -121,6 +123,10 @@
   padding-top: 0.65rem;
 }
 
+.site-game-column {
+  width: 100%;
+}
+
 .site-legend {
   display: flex;
   flex-wrap: wrap;
@@ -170,7 +176,7 @@
   color: #f9f3ff;
   border: 1px solid #4ac8d3;
   background: #050719;
-  font: 0.72rem/1.45 "Courier New", monospace;
+  font: 0.78rem/1.55 Verdana, Arial, sans-serif;
 }
 
 .site-card__title {
@@ -196,11 +202,13 @@
   display: block;
   margin: 0.25rem 0;
   color: #ff76d7;
+  font-family: "Courier New", monospace;
 }
 
 .site-results-table {
   display: grid;
   gap: 0.2rem;
+  font: 0.7rem/1.4 "Courier New", monospace;
 }
 
 .site-result-row {
@@ -251,11 +259,28 @@
   background: #050719;
 }
 
+.retro-board-panel {
+  padding: 0.35rem;
+}
+
+.retro-board-panel .retro-panel__header {
+  margin-bottom: 0.4rem;
+}
+
+.retro-board-panel .retro-panel__hint {
+  padding-top: 0.25rem;
+}
+
+.retro-tile {
+  font-family: Verdana, Arial, sans-serif !important;
+}
+
 .retro-key {
   background: linear-gradient(#f4f4f4, #bdbdbd) !important;
   color: #111111 !important;
   border-color: #f6f6f6 #666666 #666666 #f6f6f6 !important;
   box-shadow: 1px 1px 0 #02030d, inset 1px 1px 0 #ffffff;
+  font-family: Verdana, Arial, sans-serif !important;
 }
 
 .retro-key--correct {
@@ -282,22 +307,61 @@
   }
 
   .site-status {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop-serious breakpoint: the page itself widens, while the puzzle keeps
+ * its existing compact Wordle dimensions. */
+@media (min-width: 840px) {
+  .site-shell {
+    width: calc(100% - 2rem);
+    max-width: 56rem;
+  }
+
+  .site-masthead__top {
+    padding-inline: 1.25rem;
+  }
+
+  .site-nav {
+    flex-wrap: nowrap;
+    gap: 1rem;
+    padding-inline: 1.1rem;
+  }
+
+  .site-status {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin: 0.65rem 1rem;
+    font-size: 0.66rem;
   }
 
   .site-status span {
     border-bottom: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .site-info-grid {
-    grid-template-columns: 1fr 1.35fr 1fr;
+    white-space: nowrap;
   }
 
   .site-game-main {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0.85rem 1.25rem 1.25rem;
+  }
+
+  .site-info-grid {
+    grid-template-columns: 1fr 1.35fr 1fr;
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .site-shell {
+    max-width: 64rem;
+  }
+
+  .site-game-main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .site-status {
+    font-size: 0.7rem;
   }
 }
 
