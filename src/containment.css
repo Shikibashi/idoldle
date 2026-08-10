@@ -128,10 +128,10 @@ body:has(.retro-modal-backdrop) {
  * A physical 2560x1440 monitor does not imply a 2560x1440 CSS viewport.
  * Browser chrome, desktop panels, display scaling and browser zoom can leave
  * roughly 1000 CSS px of usable height. When the viewport is still clearly a
- * desktop but is vertically constrained, compact the non-interactive chrome
+ * desktop-width layout but is vertically constrained, compact the non-interactive chrome
  * and the puzzle tiles while preserving 48px keyboard targets.
  */
-@media (min-width: 1280px) and (max-height: 1100px) {
+@media (min-width: 840px) and (max-height: 1100px) {
   .site-shell {
     margin: 0.4rem auto !important;
     min-height: calc(100dvh - 0.8rem);
@@ -190,7 +190,7 @@ body:has(.retro-modal-backdrop) {
   }
 
   /* Keep Tailwind's max-width contract (72px) for existing tests and large
-   * desktops, but use a smaller fixed flex basis in compact-height mode. */
+   * desktop-width layouts, but use a smaller fixed flex basis in compact-height mode. */
   .retro-tile {
     width: 54px !important;
     flex: 0 0 54px !important;
@@ -243,7 +243,7 @@ body:has(.retro-modal-backdrop) {
 /* Tall desktop windows can still be just short enough for the full-size
  * puzzle to need a document scrollbar. Trim only the surrounding masthead
  * rhythm in this band; the board tiles and keyboard targets stay unchanged. */
-@media (min-width: 1280px) and (min-height: 1101px) and (max-height: 1300px) {
+@media (min-width: 840px) and (min-height: 1101px) and (max-height: 1300px) {
   .site-masthead__top {
     padding-top: 0.7rem !important;
     padding-bottom: 0.5rem !important;
