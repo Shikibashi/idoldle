@@ -85,7 +85,6 @@ export function StatsModal({
     <div
       className="retro-modal-backdrop fixed inset-0 z-40 flex items-center justify-center"
       onClick={onClose}
-      aria-hidden="true"
     >
       {/* Dialog */}
       <div

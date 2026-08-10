@@ -34,7 +34,7 @@
 .site-logo {
   margin: 0;
   color: #9c68ff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--ecw-font-display);
   font-size: clamp(2rem, 8vw, 3.4rem);
   font-weight: 900;
   line-height: 0.9;
@@ -45,7 +45,7 @@
 .site-tagline {
   margin: 0.45rem 0 0;
   color: #6ff4ff;
-  font: 700 0.78rem/1.2 "Courier New", monospace;
+  font: 700 0.78rem/1.2 var(--ecw-font-system);
   letter-spacing: 0.04em;
   text-transform: lowercase;
 }
@@ -269,13 +269,24 @@
 
 .site-game-main {
   overflow: visible !important;
-  gap: var(--ecw-layout-gap);
+  gap: var(--ecw-layout-gap) !important;
   padding-top: 0.65rem;
+}
+
+.site-game-main:focus-visible {
+  outline: 2px solid var(--ecw-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--ecw-canvas);
 }
 
 .site-game-column {
   width: 100%;
-  gap: var(--ecw-layout-gap);
+  gap: var(--ecw-layout-gap) !important;
+}
+
+.retro-board-grid,
+.retro-keyboard-panel {
+  gap: var(--ecw-gap-control) !important;
 }
 
 .site-legend {
@@ -353,25 +364,40 @@
   display: block;
   margin: 0.25rem 0;
   color: #ff76d7;
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .site-results-table {
-  display: grid;
-  gap: 0.2rem;
+  width: 100%;
+  border-collapse: collapse;
   font: var(--ecw-font-size-micro)/var(--ecw-line-height-meta) var(--ecw-font-system);
 }
 
 .site-result-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 0.65rem;
-  align-items: center;
-  padding: 0.18rem 0;
   border-bottom: 1px dotted #343960;
 }
 
-.site-result-row:last-child {
+.site-result-row > * {
+  padding: 0.18rem 0;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.site-result-row > :first-child {
+  text-align: left;
+}
+
+.site-result-row > :not(:first-child) {
+  padding-left: 0.65rem;
+}
+
+.site-result-row--heading {
+  color: var(--ecw-muted);
+  font-size: var(--ecw-font-size-micro);
+  letter-spacing: 0.04em;
+}
+
+.site-results-table tbody tr:last-child {
   border-bottom: 0;
 }
 
@@ -379,7 +405,7 @@
 .site-result-loss { color: #ff76d7; }
 
 .site-info-modal {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: var(--ecw-font-ui);
 }
 
 .site-info-copy {
@@ -423,7 +449,7 @@
 }
 
 .retro-tile {
-  font-family: Verdana, Arial, sans-serif !important;
+  font-family: var(--ecw-font-ui) !important;
 }
 
 .retro-key {
@@ -431,7 +457,7 @@
   color: #111111 !important;
   border-color: #f6f6f6 #666666 #666666 #f6f6f6 !important;
   box-shadow: 1px 1px 0 #02030d, inset 1px 1px 0 #ffffff;
-  font-family: Verdana, Arial, sans-serif !important;
+  font-family: var(--ecw-font-ui) !important;
 }
 
 .retro-key--correct {

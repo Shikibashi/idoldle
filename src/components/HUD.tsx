@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { formatDateKey } from "../lib/format";
 
 interface HUDProps {
   colorMode: "system" | "dark" | "light";
@@ -256,7 +257,11 @@ export function HUD({
       </nav>
 
       <div className="site-status" aria-label="Today&apos;s game status">
-        <StatusCell className="site-status__cell--today" label="Today:" value={dateKey} />
+        <StatusCell
+          className="site-status__cell--today"
+          label="Today:"
+          value={<time dateTime={dateKey}>{formatDateKey(dateKey)}</time>}
+        />
         <StatusCell className="site-status__cell--theme" label="Theme:" value={themeLabel} title={themeLabel} />
         <StatusCell
           className="site-status__cell--attempt"

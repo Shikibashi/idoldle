@@ -28,7 +28,6 @@ export function InfoModal({ mode, onClose }: InfoModalProps) {
     <div
       className="retro-modal-backdrop fixed inset-0 z-40 flex items-center justify-center p-4"
       onClick={onClose}
-      aria-hidden="true"
     >
       <div
         ref={dialogRef}

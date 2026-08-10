@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { Snapshot, Stats } from "./types";
 import { useGame } from "./hooks/useGame";
 import { useLocalStorage } from "./hooks/useLocalStorage";
@@ -12,6 +12,7 @@ import { StatsModal } from "./components/StatsModal";
 import { InfoModal } from "./components/InfoModal";
 import { AttributionFooter } from "./components/AttributionFooter";
 import { ClockSkewBanner } from "./components/ClockSkewBanner";
+import { formatCount, formatDateKey } from "./lib/format";
 import "./webpage.css";
 
 type ColorMode = "system" | "dark" | "light";
@@ -109,17 +110,31 @@ function RecentResults({ stats }: { stats: Stats }) {
       {recent.length === 0 ? (
         <p className="site-card__muted">No completed games yet. Today can be the first.</p>
       ) : (
-        <div className="site-results-table" role="list">
-          {recent.map((result) => (
-            <div className="site-result-row" role="listitem" key={result.dateKey}>
-              <span>{result.dateKey.slice(5)}</span>
-              <strong>{result.won ? `${result.guessCount}/6` : "X/6"}</strong>
-              <span className={result.won ? "site-result-win" : "site-result-loss"}>
-                {result.won ? "SOLVED" : "MISSED"}
-              </span>
-            </div>
-          ))}
-        </div>
+        <table className="site-results-table">
+          <caption className="sr-only">Recent results</caption>
+          <thead>
+            <tr className="site-result-row site-result-row--heading">
+              <th scope="col">DATE</th>
+              <th scope="col">SCORE</th>
+              <th scope="col">STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recent.map((result) => (
+              <tr className="site-result-row" key={result.dateKey}>
+                <td>
+                  <time dateTime={result.dateKey}>
+                    {formatDateKey(result.dateKey, { year: undefined })}
+                  </time>
+                </td>
+                <td><strong>{result.won ? `${result.guessCount}/6` : "X/6"}</strong></td>
+                <td className={result.won ? "site-result-win" : "site-result-loss"}>
+                  {result.won ? "SOLVED" : "MISSED"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </section>
   );
@@ -165,6 +180,46 @@ function GameApp({
 
   const [statsOpen, setStatsOpen] = useState(false);
   const [infoMode, setInfoMode] = useState<"about" | "how" | null>(null);
+  const mainRef = useRef<HTMLElement>(null);
+  const modalReturnFocusRef = useRef<HTMLElement | null>(null);
+
+  const rememberModalOrigin = useCallback(() => {
+    const active = document.activeElement;
+    modalReturnFocusRef.current =
+      active instanceof HTMLElement && active !== document.body ? active : null;
+  }, []);
+
+  const restoreModalFocus = useCallback(() => {
+    const origin = modalReturnFocusRef.current;
+    modalReturnFocusRef.current = null;
+    window.requestAnimationFrame(() => {
+      if (origin?.isConnected) {
+        origin.focus();
+      } else {
+        mainRef.current?.focus();
+      }
+    });
+  }, []);
+
+  const openStats = useCallback(() => {
+    rememberModalOrigin();
+    setStatsOpen(true);
+  }, [rememberModalOrigin]);
+
+  const closeStats = useCallback(() => {
+    setStatsOpen(false);
+    restoreModalFocus();
+  }, [restoreModalFocus]);
+
+  const openInfo = useCallback((mode: "about" | "how") => {
+    rememberModalOrigin();
+    setInfoMode(mode);
+  }, [rememberModalOrigin]);
+
+  const closeInfo = useCallback(() => {
+    setInfoMode(null);
+    restoreModalFocus();
+  }, [restoreModalFocus]);
 
   useEffect(() => {
     if (state.status === "won" || state.status === "lost") {
@@ -181,11 +236,18 @@ function GameApp({
       if (e.ctrlKey || e.metaKey || e.altKey) return;
 
       if (e.key === "Escape") {
-        setStatsOpen(false);
-        setInfoMode(null);
+        if (statsOpen) closeStats();
+        if (infoMode) closeInfo();
         return;
       }
       if (statsOpen || infoMode) return;
+
+      if (
+        e.target instanceof Element &&
+        e.target.closest("button, a, input, textarea, select, [contenteditable='true']")
+      ) {
+        return;
+      }
 
       if (e.key === "Enter") submitInput();
       else if (e.key === "Backspace") backspace();
@@ -194,7 +256,7 @@ function GameApp({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [addChar, backspace, submitInput, statsOpen, infoMode]);
+  }, [addChar, backspace, submitInput, statsOpen, infoMode, closeStats, closeInfo]);
 
   useEffect(() => {
     const onVisibility = () => {
@@ -243,16 +305,20 @@ function GameApp({
         longestStreak={stats.longestStreak}
         currentAttempt={state.status === "playing" ? state.guesses.length + 1 : state.guesses.length}
         maxGuesses={state.maxGuesses}
-        onOpenStats={() => setStatsOpen(true)}
-        onOpenAbout={() => setInfoMode("about")}
-        onOpenHow={() => setInfoMode("how")}
+        onOpenStats={openStats}
+        onOpenAbout={() => openInfo("about")}
+        onOpenHow={() => openInfo("how")}
         onColorModeChange={onColorModeChange}
         onDensityChange={onDensityChange}
         onContrastChange={onContrastChange}
         onResetDisplayPreferences={onResetDisplayPreferences}
       />
 
-      <main className="retro-main site-game-main flex flex-col items-center flex-1 gap-4">
+      <main
+        ref={mainRef}
+        tabIndex={-1}
+        className="retro-main site-game-main flex flex-col items-center flex-1 gap-4"
+      >
         <div className="site-game-column flex flex-col max-w-md md:max-w-lg lg:max-w-xl w-full mx-auto gap-4">
           <Board
             guesses={state.guesses}
@@ -275,7 +341,7 @@ function GameApp({
           <section className="site-card" aria-labelledby="about-card-title">
             <h2 id="about-card-title" className="site-card__title">What is Idoldle?</h2>
             <p>A daily word game about idol stage names. One puzzle per day, six attempts.</p>
-            <button className="site-text-button" type="button" onClick={() => setInfoMode("about")}>
+            <button className="site-text-button" type="button" onClick={() => openInfo("about")}>
               [ more about the game ]
             </button>
           </section>
@@ -285,8 +351,10 @@ function GameApp({
           <section className="site-card" aria-labelledby="data-card-title">
             <h2 id="data-card-title" className="site-card__title">Data info</h2>
             <p>Idol database snapshot:</p>
-            <strong className="site-data-value">{snapshot.snapshotDate}</strong>
-            <p className="site-card__muted">{snapshot.idols.length} idols in the local snapshot.</p>
+            <strong className="site-data-value">
+              <time dateTime={snapshot.snapshotDate}>{formatDateKey(snapshot.snapshotDate)}</time>
+            </strong>
+            <p className="site-card__muted">{formatCount(snapshot.idols.length)} idols in the local snapshot.</p>
           </section>
         </div>
       </main>
@@ -294,11 +362,11 @@ function GameApp({
       <AttributionFooter snapshot={snapshot} />
       <Toast message={toast} />
 
-      <InfoModal mode={infoMode} onClose={() => setInfoMode(null)} />
+      <InfoModal mode={infoMode} onClose={closeInfo} />
 
       <StatsModal
         open={statsOpen}
-        onClose={() => setStatsOpen(false)}
+        onClose={closeStats}
         stats={stats}
         lastGame={lastGame}
         shareText={shareCard}

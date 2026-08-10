@@ -51,9 +51,9 @@ body,
   --ecw-control-highlight: #f6f6f6;
   --ecw-control-shadow: #666666;
   --ecw-control-text: #111111;
-  --ecw-font-display: Georgia, "Times New Roman", serif;
-  --ecw-font-ui: Verdana, Arial, sans-serif;
-  --ecw-font-system: "Courier New", Courier, monospace;
+  --ecw-font-display: Georgia, "Times New Roman", "Noto Serif", "Liberation Serif", "DejaVu Serif", serif;
+  --ecw-font-ui: Verdana, Tahoma, Arial, "DejaVu Sans", "Noto Sans", "Liberation Sans", sans-serif;
+  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", ui-monospace, monospace;
   --ecw-font-size-body: 0.9375rem;
   --ecw-font-size-ui: 0.875rem;
   --ecw-font-size-meta: 0.8125rem;
@@ -197,12 +197,12 @@ body,
 }
 
 body {
-  font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+  font-family: var(--ecw-font-ui);
   background: var(--retro-night);
   color: var(--retro-ink);
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior: none;
+  overscroll-behavior: auto;
 }
 
 button,
@@ -233,7 +233,7 @@ a {
   color: #080b32;
   background: linear-gradient(90deg, var(--retro-cyan), #d5fbff 45%, var(--retro-pink));
   border-bottom: 2px solid #433c91;
-  font: 700 0.65rem/1 "Courier New", monospace;
+  font: 700 0.65rem/1 var(--ecw-font-system);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -283,7 +283,7 @@ a {
 
 .retro-logo {
   color: var(--retro-pink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--ecw-font-display);
   font-size: clamp(1.35rem, 5vw, 1.75rem);
   letter-spacing: 0.22em;
   text-shadow: 2px 2px 0 #512ca3, 0 0 12px rgba(255, 118, 215, 0.8);
@@ -292,7 +292,7 @@ a {
 
 .retro-meta {
   color: var(--retro-cyan);
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
   font-size: 0.65rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -304,7 +304,7 @@ a {
   border: 2px outset #e6f5ff;
   border-radius: 2px;
   box-shadow: 2px 2px 0 #070a2e;
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
   text-transform: uppercase;
 }
 
@@ -355,7 +355,7 @@ a {
   color: #090b35;
   background: linear-gradient(90deg, var(--retro-yellow), #fff0a2 50%, var(--retro-pink));
   border: 1px solid #ffd45c;
-  font: 700 0.65rem/1.2 "Courier New", monospace;
+  font: 700 0.65rem/1.2 var(--ecw-font-system);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -367,7 +367,7 @@ a {
 .retro-panel__hint {
   padding: 0.4rem 0.15rem 0.05rem;
   color: var(--retro-muted);
-  font: 0.6rem/1.3 "Courier New", monospace;
+  font: 0.6rem/1.3 var(--ecw-font-system);
   letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
@@ -384,7 +384,7 @@ a {
 .retro-tile {
   border-radius: 0 !important;
   color: var(--retro-ink) !important;
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
 }
 
@@ -434,7 +434,7 @@ a {
   border: 2px outset #e6f5ff !important;
   box-shadow: 2px 2px 0 #070a2e, inset 1px 1px 0 rgba(255, 255, 255, 0.65);
   color: #111348 !important;
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
   font-weight: 700;
   text-shadow: none;
 }
@@ -470,7 +470,7 @@ a {
 .retro-footer {
   padding: 0.5rem 0.85rem 0.75rem;
   color: var(--retro-muted);
-  font: 0.62rem/1.45 "Courier New", monospace;
+  font: 0.62rem/1.45 var(--ecw-font-system);
   letter-spacing: 0.02em;
 }
 
@@ -492,7 +492,7 @@ a {
 .retro-error {
   min-height: 12rem;
   color: var(--retro-muted);
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .retro-error p:first-child {
@@ -508,7 +508,7 @@ a {
   color: #1b1533;
   background: var(--retro-yellow);
   border-bottom: 2px ridge #fff1a0;
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .retro-toast {
@@ -517,7 +517,7 @@ a {
   border: 2px outset #efffff;
   border-radius: 2px;
   box-shadow: 3px 3px 0 #070a2e;
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .retro-modal-backdrop {
@@ -536,7 +536,7 @@ a {
   padding-bottom: 0.55rem;
   color: var(--retro-pink);
   border-bottom: 1px dashed var(--retro-cyan);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--ecw-font-display);
   text-shadow: 1px 1px 0 #512ca3;
 }
 
@@ -560,7 +560,7 @@ a {
 
 .retro-stat__value {
   color: var(--retro-yellow);
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .retro-stat__label,
@@ -570,7 +570,7 @@ a {
 
 .retro-section-label {
   color: var(--retro-cyan);
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .retro-distribution-bar {
@@ -591,7 +591,7 @@ a {
   border: 1px outset #fff3a8;
   border-radius: 2px;
   background: linear-gradient(#fff7bd, #eebd37);
-  font-family: "Courier New", monospace;
+  font-family: var(--ecw-font-system);
 }
 
 .retro-heatmap-cell {
