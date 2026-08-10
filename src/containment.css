@@ -1,0 +1,59 @@
+/*
+ * Framed-UI containment rules.
+ *
+ * The late-90s page language uses visible borders as structural boundaries.
+ * Content must therefore never paint through an adjacent frame. Keep these
+ * overrides last in the cascade so future labels inherit the containment
+ * contract without requiring one-off fixes.
+ */
+
+.site-status,
+.site-nav,
+.retro-panel__header,
+.retro-board-panel,
+.retro-keyboard-panel,
+.site-card {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.site-status > span,
+.retro-panel__header > span,
+.site-nav > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* The theme is the longest status value in normal operation. Equal fifths
+ * make labels such as "4-LETTER NAMES" paint into the Attempt cell, so the
+ * desktop grid intentionally gives Theme more room and compresses the two
+ * numeric streak cells instead. */
+@media (min-width: 840px) {
+  .site-status {
+    grid-template-columns:
+      minmax(0, 1.05fr)
+      minmax(0, 1.65fr)
+      minmax(0, 0.95fr)
+      minmax(0, 0.78fr)
+      minmax(0, 0.78fr);
+  }
+
+  .site-status > span {
+    overflow: hidden;
+    text-overflow: clip;
+  }
+}
+
+/* On phone-sized layouts, a panel header is allowed to become two compact
+ * lines rather than forcing its right-hand metadata through the border. */
+@media (max-width: 420px) {
+  .retro-panel__header {
+    flex-wrap: wrap;
+    row-gap: 0.2rem;
+  }
+
+  .retro-panel__header > span:last-child {
+    margin-left: auto;
+    text-align: right;
+  }
+}
