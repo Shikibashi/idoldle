@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import type { Snapshot, Stats } from "./types";
 import { useGame } from "./hooks/useGame";
 import { detectClockSkew } from "./lib/clock";
+import { mergeCuratedIdols } from "./lib/mergeCuratedIdols";
 import { Board } from "./components/Board";
 import { Keyboard } from "./components/Keyboard";
 import { HUD } from "./components/HUD";
@@ -45,7 +46,9 @@ function useSnapshot(): FetchState {
         return res.json() as Promise<Snapshot>;
       })
       .then((snapshot) => {
-        if (!cancelled) setState({ status: "ready", snapshot });
+        if (!cancelled) {
+          setState({ status: "ready", snapshot: mergeCuratedIdols(snapshot) });
+        }
       })
       .catch((err: unknown) => {
         if (!cancelled) {
