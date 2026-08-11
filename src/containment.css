@@ -397,6 +397,20 @@ body:has(.retro-modal-backdrop) {
   }
 }
 
+/* A wide 1440px-tall viewport has enough horizontal room for the ECW shell,
+ * but not enough vertical room for six 102px board tiles, the full keyboard,
+ * completion feedback, and the footer at once. Reduce only the noninteractive
+ * board tiles in this height band; keyboard targets remain 64px and aligned. */
+@media (min-width: 1800px) and (max-height: 1600px) {
+  .site-game-main {
+    padding-bottom: 0.75rem !important;
+  }
+
+  .site-page .site-game-column .retro-tile {
+    max-width: clamp(84px, 3.75vw, 96px) !important;
+  }
+}
+
 /* Ultra-wide ECW Page Mode: make all three information regions coexist.
  * The central game keeps its ideal reading width; About/metadata and recent
  * results occupy real side columns instead of leaving the 4K canvas empty. */

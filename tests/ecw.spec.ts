@@ -115,6 +115,47 @@ test.describe("ECW web behavior", () => {
     expect(metrics.verticalOverflow).toBeLessThanOrEqual(0);
   });
 
+  test("wide virtual keyboard follows the common Wordle command-row pattern", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "desktop");
+    await page.setViewportSize({ width: 2560, height: 1440 });
+    await page.goto("/");
+    await waitForGame(page);
+
+    const keyboard = await page.evaluate(() => {
+      const rows = [...document.querySelectorAll<HTMLElement>(".retro-key-row")].map((row) => ({
+        labels: [...row.querySelectorAll<HTMLButtonElement>("button")].map((button) => button.getAttribute("aria-label")),
+        rect: row.getBoundingClientRect(),
+      }));
+      const letters = [...document.querySelectorAll<HTMLElement>(".retro-key:not(.retro-key--wide)")]
+        .map((key) => key.getBoundingClientRect());
+      const commands = [...document.querySelectorAll<HTMLElement>(".retro-key--wide")]
+        .map((key) => ({ label: key.getAttribute("aria-label"), rect: key.getBoundingClientRect() }));
+      return {
+        rows: rows.map(({ labels, rect }) => ({ labels, left: rect.left, right: rect.right })),
+        letterWidths: [...new Set(letters.map((rect) => Math.round(rect.width)))],
+        commands: commands.map(({ label, rect }) => ({ label, left: rect.left, right: rect.right })),
+        verticalOverflow: document.documentElement.scrollHeight - document.documentElement.clientHeight,
+      };
+    });
+
+    expect(keyboard.rows[2]?.labels).toEqual([
+      "Enter",
+      "Key Z",
+      "Key X",
+      "Key C",
+      "Key V",
+      "Key B",
+      "Key N",
+      "Key M",
+      "Backspace",
+    ]);
+    expect(keyboard.letterWidths).toEqual([96]);
+    expect(keyboard.commands[0]?.left).toBeLessThan(keyboard.commands[1]?.left ?? 0);
+    expect(new Set(keyboard.rows.map((row) => Math.round(row.left))).size).toBe(1);
+    expect(new Set(keyboard.rows.map((row) => Math.round(row.right))).size).toBe(1);
+    expect(keyboard.verticalOverflow).toBeLessThanOrEqual(0);
+  });
+
   test("computed ECW hit minimum stays above the 24 CSS px floor", async ({ page }) => {
     await page.goto("/");
     await waitForGame(page);
