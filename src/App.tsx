@@ -128,12 +128,14 @@ function RecentResults({ stats }: { stats: Stats }) {
 
   return (
     <section className="site-card" aria-labelledby="recent-results-title">
-      <h2 id="recent-results-title" className="site-card__title">{strings.page.recentResults}</h2>
+      <h2 id="recent-results-title" className="site-card__title">
+        {strings.page.recentResults}
+      </h2>
       {recent.length === 0 ? (
         <p className="site-card__muted">{strings.page.noCompletedGames}</p>
       ) : (
         <table className="site-results-table">
-            <caption className="sr-only">{strings.page.recentResults}</caption>
+          <caption className="sr-only">{strings.page.recentResults}</caption>
           <thead>
             <tr className="site-result-row site-result-row--heading">
               <th scope="col">{strings.page.date}</th>
@@ -149,8 +151,16 @@ function RecentResults({ stats }: { stats: Stats }) {
                     {formatDateKey(result.dateKey, { year: undefined })}
                   </time>
                 </td>
-                <td><strong>{result.won ? `${result.guessCount}/6` : "X/6"}</strong></td>
-                <td className={result.won ? "site-result-win" : "site-result-loss"}>
+                <td>
+                  <strong>
+                    {result.won ? `${result.guessCount}/6` : "X/6"}
+                  </strong>
+                </td>
+                <td
+                  className={
+                    result.won ? "site-result-win" : "site-result-loss"
+                  }
+                >
                   {result.won ? strings.page.solved : strings.page.missed}
                 </td>
               </tr>
@@ -209,15 +219,21 @@ function GameApp({
 
   useEffect(() => {
     if (!online) announce(strings.game.announcements.offline);
-    else if (previousOnlineRef.current !== online) announce(strings.game.announcements.online);
+    else if (previousOnlineRef.current !== online)
+      announce(strings.game.announcements.online);
     previousOnlineRef.current = online;
   }, [announce, online]);
 
-  const [view, setView] = useState<ModalView>(() => viewFromHash(window.location.hash));
+  const [view, setView] = useState<ModalView>(() =>
+    viewFromHash(window.location.hash),
+  );
   const statsOpen = view === "statistics";
-  const infoMode = view === "about" || view === "how-to-play"
-    ? view === "about" ? "about" : "how"
-    : null;
+  const infoMode =
+    view === "about" || view === "how-to-play"
+      ? view === "about"
+        ? "about"
+        : "how"
+      : null;
   const mainRef = useRef<HTMLElement>(null);
   const modalReturnFocusRef = useRef<HTMLElement | null>(null);
   const previousViewRef = useRef<ModalView>(view);
@@ -238,26 +254,36 @@ function GameApp({
     }
   }, []);
 
-  const rememberViewOrigin = useCallback((origin?: HTMLElement) => {
-    if (origin) {
-      modalReturnFocusRef.current = origin;
-      return;
-    }
-    rememberModalOrigin();
-  }, [rememberModalOrigin]);
+  const rememberViewOrigin = useCallback(
+    (origin?: HTMLElement) => {
+      if (origin) {
+        modalReturnFocusRef.current = origin;
+        return;
+      }
+      rememberModalOrigin();
+    },
+    [rememberModalOrigin],
+  );
 
   const closeView = useCallback(() => {
-    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}`,
+    );
     setView(null);
   }, []);
 
-  const openView = useCallback((nextView: AppView, origin?: HTMLElement) => {
-    rememberViewOrigin(origin);
-    if (viewFromHash(window.location.hash) !== nextView) {
-      window.history.pushState(null, "", hashForView(nextView));
-    }
-    setView(nextView);
-  }, [rememberViewOrigin]);
+  const openView = useCallback(
+    (nextView: AppView, origin?: HTMLElement) => {
+      rememberViewOrigin(origin);
+      if (viewFromHash(window.location.hash) !== nextView) {
+        window.history.pushState(null, "", hashForView(nextView));
+      }
+      setView(nextView);
+    },
+    [rememberViewOrigin],
+  );
 
   useEffect(() => {
     const syncHashView = () => setView(viewFromHash(window.location.hash));
@@ -273,7 +299,8 @@ function GameApp({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!document.hasFocus() || document.visibilityState !== "visible") return;
+      if (!document.hasFocus() || document.visibilityState !== "visible")
+        return;
       const tag = (e.target as HTMLElement).tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
       if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -286,7 +313,9 @@ function GameApp({
 
       if (
         e.target instanceof Element &&
-        e.target.closest("button, a, input, textarea, select, [contenteditable='true']")
+        e.target.closest(
+          "button, a, input, textarea, select, [contenteditable='true']",
+        )
       ) {
         return;
       }
@@ -345,7 +374,11 @@ function GameApp({
         themeLabel={themeLabel}
         currentStreak={stats.currentStreak}
         longestStreak={stats.longestStreak}
-        currentAttempt={state.status === "playing" ? state.guesses.length + 1 : state.guesses.length}
+        currentAttempt={
+          state.status === "playing"
+            ? state.guesses.length + 1
+            : state.guesses.length
+        }
         maxGuesses={state.maxGuesses}
         onOpenStats={(origin) => openView("statistics", origin)}
         onOpenAbout={(origin) => openView("about", origin)}
@@ -374,14 +407,37 @@ function GameApp({
           <Keyboard letterStates={letterStates} onKey={handleKey} />
 
           <div className="site-legend" aria-label={strings.game.legend}>
-            <span><i className="site-swatch site-swatch--correct" aria-hidden="true" /> <b aria-hidden="true">✓</b> {strings.game.correct}</span>
-            <span><i className="site-swatch site-swatch--present" aria-hidden="true" /> <b aria-hidden="true">≈</b> {strings.game.present}</span>
-            <span><i className="site-swatch site-swatch--absent" aria-hidden="true" /> <b aria-hidden="true">×</b> {strings.game.absent}</span>
+            <span>
+              <i
+                className="site-swatch site-swatch--correct"
+                aria-hidden="true"
+              />{" "}
+              <b aria-hidden="true">✓</b> {strings.game.correct}
+            </span>
+            <span>
+              <i
+                className="site-swatch site-swatch--present"
+                aria-hidden="true"
+              />{" "}
+              <b aria-hidden="true">≈</b> {strings.game.present}
+            </span>
+            <span>
+              <i
+                className="site-swatch site-swatch--absent"
+                aria-hidden="true"
+              />{" "}
+              <b aria-hidden="true">×</b> {strings.game.absent}
+            </span>
           </div>
 
           {(state.status === "won" || state.status === "lost") && (
-            <section className="site-completion-status" aria-labelledby="completion-status-title">
-              <h2 id="completion-status-title">{state.status === "won" ? "Puzzle solved" : "Puzzle complete"}</h2>
+            <section
+              className="site-completion-status"
+              aria-labelledby="completion-status-title"
+            >
+              <h2 id="completion-status-title">
+                {state.status === "won" ? "Puzzle solved" : "Puzzle complete"}
+              </h2>
               <p>
                 {state.status === "won"
                   ? `Solved in ${state.guesses.length} ${state.guesses.length === 1 ? "guess" : "guesses"}.`
@@ -392,7 +448,9 @@ function GameApp({
                 className="site-text-button"
                 onClick={(event) => openView("statistics", event.currentTarget)}
               >
-                <span aria-hidden="true">[ </span>{strings.navigation.statistics}<span aria-hidden="true"> ]</span>
+                <span aria-hidden="true">[ </span>
+                {strings.navigation.statistics}
+                <span aria-hidden="true"> ]</span>
               </button>
             </section>
           )}
@@ -400,28 +458,46 @@ function GameApp({
 
         <div className="site-info-grid">
           <section className="site-card" aria-labelledby="about-card-title">
-            <h2 id="about-card-title" className="site-card__title">{strings.page.aboutTitle}</h2>
+            <h2 id="about-card-title" className="site-card__title">
+              {strings.page.aboutTitle}
+            </h2>
             <p>{strings.page.aboutSummary}</p>
-            <a className="site-text-button" href="#about" onClick={() => openView("about")}>
-              <span aria-hidden="true">[ </span>{strings.page.moreAbout}<span aria-hidden="true"> ]</span>
+            <a
+              className="site-text-button"
+              href="#about"
+              onClick={() => openView("about")}
+            >
+              <span aria-hidden="true">[ </span>
+              {strings.page.moreAbout}
+              <span aria-hidden="true"> ]</span>
             </a>
           </section>
 
           <RecentResults stats={stats} />
 
           <section className="site-card" aria-labelledby="data-card-title">
-            <h2 id="data-card-title" className="site-card__title">{strings.page.dataInfo}</h2>
+            <h2 id="data-card-title" className="site-card__title">
+              {strings.page.dataInfo}
+            </h2>
             <p>{strings.page.snapshot}</p>
             <strong className="site-data-value">
-              <time dateTime={snapshot.snapshotDate}>{formatDateKey(snapshot.snapshotDate)}</time>
+              <time dateTime={snapshot.snapshotDate}>
+                {formatDateKey(snapshot.snapshotDate)}
+              </time>
             </strong>
-            <p className="site-card__muted">{strings.page.idolsInSnapshot(formatCount(snapshot.idols.length))}</p>
+            <p className="site-card__muted">
+              {strings.page.idolsInSnapshot(formatCount(snapshot.idols.length))}
+            </p>
           </section>
         </div>
       </main>
 
-      <p className="sr-only" aria-live="polite" aria-atomic="true">{announcement ?? ""}</p>
-      <p className="sr-only" role="alert" aria-atomic="true">{assertiveAnnouncement ?? ""}</p>
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        {announcement ?? ""}
+      </p>
+      <p className="sr-only" role="alert" aria-atomic="true">
+        {assertiveAnnouncement ?? ""}
+      </p>
 
       <AttributionFooter snapshot={snapshot} />
       <Toast message={toast} />
@@ -459,8 +535,8 @@ export default function App() {
     1,
     { validator: isDensity },
   );
-  const [resolvedDensity, setResolvedDensity] = useState<ResolvedDensity>(
-    () => resolveDensity(density),
+  const [resolvedDensity, setResolvedDensity] = useState<ResolvedDensity>(() =>
+    resolveDensity(density),
   );
   const [contrast, setContrast] = useLocalStorage<Contrast>(
     "idoldle-contrast",
@@ -470,7 +546,8 @@ export default function App() {
   );
 
   useEffect(() => {
-    const syncColorMode = () => setResolvedColorMode(resolveColorMode(colorMode));
+    const syncColorMode = () =>
+      setResolvedColorMode(resolveColorMode(colorMode));
     syncColorMode();
 
     if (colorMode !== "system") return;
@@ -504,7 +581,8 @@ export default function App() {
       'meta[name="theme-color"]',
     );
     if (themeColor) {
-      themeColor.content = resolvedColorMode === "light" ? "#d6d9e8" : "#050719";
+      themeColor.content =
+        resolvedColorMode === "light" ? "#d6d9e8" : "#050719";
     }
 
     return () => {
@@ -544,12 +622,12 @@ export default function App() {
       data-density={resolvedDensity}
       data-contrast={contrast}
     >
-      <div className="site-short-viewport">
-        {strings.game.shortViewport}
-      </div>
+      <div className="site-short-viewport">{strings.game.shortViewport}</div>
 
       <div className="retro-window site-shell flex flex-col mx-auto h-full">
-        {showSkew && <ClockSkewBanner skewMinutes={skewMinutes} onDismiss={dismissSkew} />}
+        {showSkew && (
+          <ClockSkewBanner skewMinutes={skewMinutes} onDismiss={dismissSkew} />
+        )}
         {!online && (
           <div className="site-network-status" aria-label="Connection status">
             {strings.state.offline}
@@ -565,13 +643,18 @@ export default function App() {
         {fetchState.status === "error" && (
           <div className="flex flex-1 items-center justify-center px-6">
             <div className="retro-error text-center" role="alert">
-              <p className="text-lg font-bold mb-2">{strings.state.loadFailure}</p>
+              <p className="text-lg font-bold mb-2">
+                {strings.state.loadFailure}
+              </p>
               <p className="text-sm">
                 {fetchState.offline
                   ? strings.state.offlineRetry
                   : strings.state.shortFailure(fetchState.message)}
               </p>
-              <button onClick={fetchState.retry} className="retro-action-button mt-4 px-4 py-2 text-sm">
+              <button
+                onClick={fetchState.retry}
+                className="retro-action-button mt-4 px-4 py-2 text-sm"
+              >
                 {strings.state.retrySnapshot}
               </button>
             </div>
