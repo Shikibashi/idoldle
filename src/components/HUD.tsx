@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { formatDateKey } from "../lib/format";
 import { ENGLISH_STRINGS as strings } from "../lib/strings";
 
-interface HUDProps {
+export interface HUDProps {
   colorMode: "system" | "dark" | "light";
   resolvedColorMode: "dark" | "light";
   density: "automatic" | "compact" | "comfortable";
@@ -18,7 +18,9 @@ interface HUDProps {
   onOpenAbout: (origin?: HTMLElement) => void;
   onOpenHow: (origin?: HTMLElement) => void;
   onColorModeChange: (nextColorMode: "system" | "dark" | "light") => void;
-  onDensityChange: (nextDensity: "automatic" | "compact" | "comfortable") => void;
+  onDensityChange: (
+    nextDensity: "automatic" | "compact" | "comfortable",
+  ) => void;
   onContrastChange: (nextContrast: "normal" | "increased") => void;
   onResetDisplayPreferences: () => void;
   activeView: "about" | "how-to-play" | "statistics" | null;
@@ -35,7 +37,9 @@ function StatusCell({ className = "", label, value, title }: StatusCellProps) {
   return (
     <span className={`site-status__cell ${className}`.trim()}>
       <strong className="site-status__label">{label}</strong>
-      <span className="site-status__value" title={title}>{value}</span>
+      <span className="site-status__value" title={title}>
+        {value}
+      </span>
     </span>
   );
 }
@@ -72,10 +76,12 @@ export function HUD({
   }, []);
 
   useEffect(() => {
-    const popup = displayPopupRef.current as (HTMLDivElement & {
-      showPopover?: () => void;
-      hidePopover?: () => void;
-    }) | null;
+    const popup = displayPopupRef.current as
+      | (HTMLDivElement & {
+          showPopover?: () => void;
+          hidePopover?: () => void;
+        })
+      | null;
     if (!popup || !displayOpen) return;
 
     // Keep the ordinary in-flow fallback on narrow screens. Native popovers
@@ -141,12 +147,21 @@ export function HUD({
   return (
     <header className="site-masthead w-full">
       <div className="site-masthead__top">
-        <a className="site-home-link" href="/" aria-label={strings.navigation.home}>
+        <a
+          className="site-home-link"
+          href="/"
+          aria-label={strings.navigation.home}
+        >
           <h1 className="site-logo">IDOLDLE</h1>
           <p className="site-tagline">daily idol database</p>
         </a>
         <div className="site-identity">
-          <a className="retro-link" href="https://edriffles.us" target="_blank" rel="noopener noreferrer">
+          <a
+            className="retro-link"
+            href="https://edriffles.us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             edriffles.us
           </a>
           <span>a daily idol-name puzzle</span>
@@ -154,10 +169,42 @@ export function HUD({
       </div>
 
       <nav className="site-nav" aria-label="Idoldle navigation">
-        <a href="#about" aria-current={activeView === "about" ? "page" : undefined} onClick={(event) => onOpenAbout(event.currentTarget)}><span aria-hidden="true">[ </span>{strings.navigation.about}<span aria-hidden="true"> ]</span></a>
-        <a href="#how-to-play" aria-current={activeView === "how-to-play" ? "page" : undefined} onClick={(event) => onOpenHow(event.currentTarget)}><span aria-hidden="true">[ </span>{strings.navigation.howToPlay}<span aria-hidden="true"> ]</span></a>
-        <a href="#statistics" aria-current={activeView === "statistics" ? "page" : undefined} onClick={(event) => onOpenStats(event.currentTarget)}><span aria-hidden="true">[ </span>{strings.navigation.statistics}<span aria-hidden="true"> ]</span></a>
-        <a href="https://github.com/Shikibashi/idoldle" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[ </span>{strings.navigation.github}<span aria-hidden="true"> ]</span></a>
+        <a
+          href="#about"
+          aria-current={activeView === "about" ? "page" : undefined}
+          onClick={(event) => onOpenAbout(event.currentTarget)}
+        >
+          <span aria-hidden="true">[ </span>
+          {strings.navigation.about}
+          <span aria-hidden="true"> ]</span>
+        </a>
+        <a
+          href="#how-to-play"
+          aria-current={activeView === "how-to-play" ? "page" : undefined}
+          onClick={(event) => onOpenHow(event.currentTarget)}
+        >
+          <span aria-hidden="true">[ </span>
+          {strings.navigation.howToPlay}
+          <span aria-hidden="true"> ]</span>
+        </a>
+        <a
+          href="#statistics"
+          aria-current={activeView === "statistics" ? "page" : undefined}
+          onClick={(event) => onOpenStats(event.currentTarget)}
+        >
+          <span aria-hidden="true">[ </span>
+          {strings.navigation.statistics}
+          <span aria-hidden="true"> ]</span>
+        </a>
+        <a
+          href="https://github.com/Shikibashi/idoldle"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span aria-hidden="true">[ </span>
+          {strings.navigation.github}
+          <span aria-hidden="true"> ]</span>
+        </a>
         <div className="site-display-control" ref={displayControlRef}>
           <button
             ref={displayButtonRef}
@@ -167,7 +214,9 @@ export function HUD({
             aria-haspopup="true"
             onClick={() => setDisplayOpen((open) => !open)}
           >
-            <span aria-hidden="true">[ </span>{strings.navigation.display}<span aria-hidden="true"> ]</span>
+            <span aria-hidden="true">[ </span>
+            {strings.navigation.display}
+            <span aria-hidden="true"> ]</span>
           </button>
           {displayOpen && (
             <div
@@ -177,7 +226,9 @@ export function HUD({
               aria-label={strings.navigation.displayOptions}
               data-display-popup="true"
             >
-              <div className="site-display-popup__title">{strings.display.title}</div>
+              <div className="site-display-popup__title">
+                {strings.display.title}
+              </div>
               <fieldset className="site-display-options">
                 <legend>{strings.display.appearance}</legend>
                 <label data-selected={colorMode === "system"}>
@@ -269,9 +320,9 @@ export function HUD({
                       type="radio"
                       name="idoldle-contrast"
                       value="normal"
-                    checked={contrast === "normal"}
-                    onClick={() => chooseContrast("normal")}
-                    onChange={() => chooseContrast("normal")}
+                      checked={contrast === "normal"}
+                      onClick={() => chooseContrast("normal")}
+                      onChange={() => chooseContrast("normal")}
                     />
                     <span>{strings.display.normal}</span>
                   </label>
@@ -280,9 +331,9 @@ export function HUD({
                       type="radio"
                       name="idoldle-contrast"
                       value="increased"
-                    checked={contrast === "increased"}
-                    onClick={() => chooseContrast("increased")}
-                    onChange={() => chooseContrast("increased")}
+                      checked={contrast === "increased"}
+                      onClick={() => chooseContrast("increased")}
+                      onChange={() => chooseContrast("increased")}
                     />
                     <span>{strings.display.increased}</span>
                   </label>
@@ -296,27 +347,42 @@ export function HUD({
                   closeDisplay();
                 }}
               >
-                <span aria-hidden="true">[ </span>{strings.navigation.resetDisplay}<span aria-hidden="true"> ]</span>
+                <span aria-hidden="true">[ </span>
+                {strings.navigation.resetDisplay}
+                <span aria-hidden="true"> ]</span>
               </button>
             </div>
           )}
         </div>
       </nav>
 
-      <div className="site-status" aria-label="Today&apos;s game status">
+      <div className="site-status" aria-label="Today's game status">
         <StatusCell
           className="site-status__cell--today"
           label={`${strings.status.today}:`}
           value={<time dateTime={dateKey}>{formatDateKey(dateKey)}</time>}
         />
-        <StatusCell className="site-status__cell--theme" label={`${strings.status.theme}:`} value={themeLabel} title={themeLabel} />
+        <StatusCell
+          className="site-status__cell--theme"
+          label={`${strings.status.theme}:`}
+          value={themeLabel}
+          title={themeLabel}
+        />
         <StatusCell
           className="site-status__cell--attempt"
           label={`${strings.status.attempt}:`}
           value={`${Math.min(currentAttempt, maxGuesses)} / ${maxGuesses}`}
         />
-        <StatusCell className="site-status__cell--streak" label={`${strings.status.streak}:`} value={<>🔥 {currentStreak}</>} />
-        <StatusCell className="site-status__cell--best" label={`${strings.status.best}:`} value={<>🏆 {longestStreak}</>} />
+        <StatusCell
+          className="site-status__cell--streak"
+          label={`${strings.status.streak}:`}
+          value={<>🔥 {currentStreak}</>}
+        />
+        <StatusCell
+          className="site-status__cell--best"
+          label={`${strings.status.best}:`}
+          value={<>🏆 {longestStreak}</>}
+        />
       </div>
     </header>
   );

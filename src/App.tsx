@@ -1,20 +1,18 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import type { Snapshot, Stats } from "./types";
+import { useState, useEffect, useCallback } from "react";
+import type { GameState, Snapshot } from "./types";
 import { useGame } from "./hooks/useGame";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useGameShortcuts } from "./hooks/useGameShortcuts";
+import { useGameView } from "./hooks/useGameView";
+import { useOnlineAnnouncement } from "./hooks/useOnlineAnnouncement";
 import { detectClockSkew } from "./lib/clock";
 import { mergeCuratedIdols } from "./lib/mergeCuratedIdols";
-import { hashForView, viewFromHash, type AppView } from "./lib/navigation";
 import { ENGLISH_STRINGS as strings } from "./lib/strings";
-import { Board } from "./components/Board";
-import { Keyboard } from "./components/Keyboard";
-import { HUD } from "./components/HUD";
-import { Toast } from "./components/Toast";
-import { StatsModal } from "./components/StatsModal";
-import { InfoModal } from "./components/InfoModal";
-import { AttributionFooter } from "./components/AttributionFooter";
+import { GameHeader } from "./components/GameHeader";
 import { ClockSkewBanner } from "./components/ClockSkewBanner";
-import { formatCount, formatDateKey } from "./lib/format";
+import { GameInfoGrid } from "./components/GameInfoGrid";
+import { GameOverlays } from "./components/GameOverlays";
+import { GamePlayArea } from "./components/GamePlayArea";
 import "./webpage.css";
 
 type ColorMode = "system" | "dark" | "light";
@@ -22,8 +20,6 @@ type ResolvedColorMode = Exclude<ColorMode, "system">;
 type Density = "automatic" | "compact" | "comfortable";
 type ResolvedDensity = Exclude<Density, "automatic">;
 type Contrast = "normal" | "increased";
-type ModalView = AppView | null;
-
 const isColorMode = (value: unknown): value is ColorMode =>
   value === "system" || value === "dark" || value === "light";
 
@@ -121,55 +117,27 @@ function useOnlineStatus(): boolean {
   return online;
 }
 
-function RecentResults({ stats }: { stats: Stats }) {
-  const recent = [...stats.history]
-    .sort((a, b) => b.dateKey.localeCompare(a.dateKey))
-    .slice(0, 5);
+interface GameAppProps {
+  snapshot: Snapshot;
+  colorMode: ColorMode;
+  resolvedColorMode: ResolvedColorMode;
+  density: Density;
+  resolvedDensity: ResolvedDensity;
+  contrast: Contrast;
+  onColorModeChange: (nextColorMode: ColorMode) => void;
+  onDensityChange: (nextDensity: Density) => void;
+  onContrastChange: (nextContrast: Contrast) => void;
+  onResetDisplayPreferences: () => void;
+  online: boolean;
+}
 
-  return (
-    <section className="site-card" aria-labelledby="recent-results-title">
-      <h2 id="recent-results-title" className="site-card__title">
-        {strings.page.recentResults}
-      </h2>
-      {recent.length === 0 ? (
-        <p className="site-card__muted">{strings.page.noCompletedGames}</p>
-      ) : (
-        <table className="site-results-table">
-          <caption className="sr-only">{strings.page.recentResults}</caption>
-          <thead>
-            <tr className="site-result-row site-result-row--heading">
-              <th scope="col">{strings.page.date}</th>
-              <th scope="col">{strings.page.score}</th>
-              <th scope="col">{strings.page.status}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {recent.map((result) => (
-              <tr className="site-result-row" key={result.dateKey}>
-                <td>
-                  <time dateTime={result.dateKey}>
-                    {formatDateKey(result.dateKey, { year: undefined })}
-                  </time>
-                </td>
-                <td>
-                  <strong>
-                    {result.won ? `${result.guessCount}/6` : "X/6"}
-                  </strong>
-                </td>
-                <td
-                  className={
-                    result.won ? "site-result-win" : "site-result-loss"
-                  }
-                >
-                  {result.won ? strings.page.solved : strings.page.missed}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </section>
-  );
+function getLastGame(state: GameState) {
+  if (state.status !== "won" && state.status !== "lost") return null;
+  return {
+    won: state.status === "won",
+    guessCount: state.guesses.length,
+    answer: state.answer,
+  };
 }
 
 function GameApp({
@@ -184,19 +152,7 @@ function GameApp({
   onContrastChange,
   onResetDisplayPreferences,
   online,
-}: {
-  snapshot: Snapshot;
-  colorMode: ColorMode;
-  resolvedColorMode: ResolvedColorMode;
-  density: Density;
-  resolvedDensity: ResolvedDensity;
-  contrast: Contrast;
-  onColorModeChange: (nextColorMode: ColorMode) => void;
-  onDensityChange: (nextDensity: Density) => void;
-  onContrastChange: (nextContrast: Contrast) => void;
-  onResetDisplayPreferences: () => void;
-  online: boolean;
-}) {
+}: GameAppProps) {
   const {
     state,
     stats,
@@ -215,302 +171,67 @@ function GameApp({
     dateKey,
   } = useGame(snapshot);
 
-  const previousOnlineRef = useRef(online);
+  useOnlineAnnouncement(online, announce);
 
-  useEffect(() => {
-    if (!online) announce(strings.game.announcements.offline);
-    else if (previousOnlineRef.current !== online)
-      announce(strings.game.announcements.online);
-    previousOnlineRef.current = online;
-  }, [announce, online]);
+  const { mainRef, view, statsOpen, infoMode, openView, closeView } =
+    useGameView();
 
-  const [view, setView] = useState<ModalView>(() =>
-    viewFromHash(window.location.hash),
-  );
-  const statsOpen = view === "statistics";
-  const infoMode =
-    view === "about" || view === "how-to-play"
-      ? view === "about"
-        ? "about"
-        : "how"
-      : null;
-  const mainRef = useRef<HTMLElement>(null);
-  const modalReturnFocusRef = useRef<HTMLElement | null>(null);
-  const previousViewRef = useRef<ModalView>(view);
+  useGameShortcuts({
+    view,
+    closeView,
+    submitInput,
+    backspace,
+    addChar,
+    resetTodayIfStale,
+  });
 
-  const rememberModalOrigin = useCallback(() => {
-    const active = document.activeElement;
-    modalReturnFocusRef.current =
-      active instanceof HTMLElement && active !== document.body ? active : null;
-  }, []);
-
-  const restoreModalFocus = useCallback(() => {
-    const origin = modalReturnFocusRef.current;
-    modalReturnFocusRef.current = null;
-    if (origin?.isConnected) {
-      origin.focus();
-    } else {
-      mainRef.current?.focus();
-    }
-  }, []);
-
-  const rememberViewOrigin = useCallback(
-    (origin?: HTMLElement) => {
-      if (origin) {
-        modalReturnFocusRef.current = origin;
-        return;
-      }
-      rememberModalOrigin();
-    },
-    [rememberModalOrigin],
-  );
-
-  const closeView = useCallback(() => {
-    window.history.replaceState(
-      null,
-      "",
-      `${window.location.pathname}${window.location.search}`,
-    );
-    setView(null);
-  }, []);
-
-  const openView = useCallback(
-    (nextView: AppView, origin?: HTMLElement) => {
-      rememberViewOrigin(origin);
-      if (viewFromHash(window.location.hash) !== nextView) {
-        window.history.pushState(null, "", hashForView(nextView));
-      }
-      setView(nextView);
-    },
-    [rememberViewOrigin],
-  );
-
-  useEffect(() => {
-    const syncHashView = () => setView(viewFromHash(window.location.hash));
-    window.addEventListener("hashchange", syncHashView);
-    syncHashView();
-    return () => window.removeEventListener("hashchange", syncHashView);
-  }, []);
-
-  useEffect(() => {
-    if (previousViewRef.current !== null && view === null) restoreModalFocus();
-    previousViewRef.current = view;
-  }, [restoreModalFocus, view]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!document.hasFocus() || document.visibilityState !== "visible")
-        return;
-      const tag = (e.target as HTMLElement).tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA") return;
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-
-      if (e.key === "Escape") {
-        if (view !== null) closeView();
-        return;
-      }
-      if (view !== null) return;
-
-      if (
-        e.target instanceof Element &&
-        e.target.closest(
-          "button, a, input, textarea, select, [contenteditable='true']",
-        )
-      ) {
-        return;
-      }
-
-      if (e.key === "Enter") submitInput();
-      else if (e.key === "Backspace") backspace();
-      else if (/^[a-zA-Z]$/.test(e.key)) addChar(e.key.toUpperCase());
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [addChar, backspace, submitInput, view, closeView]);
-
-  useEffect(() => {
-    const onVisibility = () => {
-      if (document.visibilityState === "visible") resetTodayIfStale();
-    };
-    const onFocus = () => resetTodayIfStale();
-    window.addEventListener("focus", onFocus);
-    document.addEventListener("visibilitychange", onVisibility);
-    const intervalId = setInterval(resetTodayIfStale, 60_000);
-    return () => {
-      window.removeEventListener("focus", onFocus);
-      document.removeEventListener("visibilitychange", onVisibility);
-      clearInterval(intervalId);
-    };
-  }, [resetTodayIfStale]);
-
-  const handleKey = useCallback(
-    (key: string) => {
-      if (key === "Enter") submitInput();
-      else if (key === "Backspace") backspace();
-      else addChar(key);
-    },
-    [addChar, backspace, submitInput],
-  );
-
-  const lastGame =
-    state.status === "won" || state.status === "lost"
-      ? {
-          won: state.status === "won",
-          guessCount: state.guesses.length,
-          answer: state.answer,
-        }
-      : null;
+  const lastGame = getLastGame(state);
 
   return (
     <>
-      <HUD
+      <GameHeader
+        state={state}
+        stats={stats}
+        dateKey={dateKey}
+        themeLabel={themeLabel}
+        view={view}
+        openView={openView}
         colorMode={colorMode}
         resolvedColorMode={resolvedColorMode}
         density={density}
         resolvedDensity={resolvedDensity}
         contrast={contrast}
-        dateKey={dateKey}
-        themeLabel={themeLabel}
-        currentStreak={stats.currentStreak}
-        longestStreak={stats.longestStreak}
-        currentAttempt={
-          state.status === "playing"
-            ? state.guesses.length + 1
-            : state.guesses.length
-        }
-        maxGuesses={state.maxGuesses}
-        onOpenStats={(origin) => openView("statistics", origin)}
-        onOpenAbout={(origin) => openView("about", origin)}
-        onOpenHow={(origin) => openView("how-to-play", origin)}
         onColorModeChange={onColorModeChange}
         onDensityChange={onDensityChange}
         onContrastChange={onContrastChange}
         onResetDisplayPreferences={onResetDisplayPreferences}
-        activeView={view}
       />
 
-      <main
-        ref={mainRef}
-        tabIndex={-1}
-        className="retro-main site-game-main flex flex-col items-center flex-1 gap-4"
+      <GamePlayArea
+        state={state}
+        shaking={shaking}
+        letterStates={letterStates}
+        mainRef={mainRef}
+        onSubmitInput={submitInput}
+        onBackspace={backspace}
+        onAddChar={addChar}
+        onOpenStats={(origin) => openView("statistics", origin)}
       >
-        <div className="site-game-column flex flex-col max-w-md md:max-w-lg lg:max-w-xl w-full mx-auto gap-4">
-          <Board
-            guesses={state.guesses}
-            currentInput={state.currentInput}
-            shaking={shaking}
-            maxGuesses={state.maxGuesses}
-            length={state.length}
-          />
+        <GameInfoGrid snapshot={snapshot} stats={stats} openView={openView} />
+      </GamePlayArea>
 
-          <Keyboard letterStates={letterStates} onKey={handleKey} />
-
-          <div className="site-legend" aria-label={strings.game.legend}>
-            <span>
-              <i
-                className="site-swatch site-swatch--correct"
-                aria-hidden="true"
-              />{" "}
-              <b aria-hidden="true">✓</b> {strings.game.correct}
-            </span>
-            <span>
-              <i
-                className="site-swatch site-swatch--present"
-                aria-hidden="true"
-              />{" "}
-              <b aria-hidden="true">≈</b> {strings.game.present}
-            </span>
-            <span>
-              <i
-                className="site-swatch site-swatch--absent"
-                aria-hidden="true"
-              />{" "}
-              <b aria-hidden="true">×</b> {strings.game.absent}
-            </span>
-          </div>
-
-          {(state.status === "won" || state.status === "lost") && (
-            <section
-              className="site-completion-status"
-              aria-labelledby="completion-status-title"
-            >
-              <h2 id="completion-status-title">
-                {state.status === "won" ? "Puzzle solved" : "Puzzle complete"}
-              </h2>
-              <p>
-                {state.status === "won"
-                  ? `Solved in ${state.guesses.length} ${state.guesses.length === 1 ? "guess" : "guesses"}.`
-                  : `The answer was ${state.answer.stageName}.`}
-              </p>
-              <button
-                type="button"
-                className="site-text-button"
-                onClick={(event) => openView("statistics", event.currentTarget)}
-              >
-                <span aria-hidden="true">[ </span>
-                {strings.navigation.statistics}
-                <span aria-hidden="true"> ]</span>
-              </button>
-            </section>
-          )}
-        </div>
-
-        <div className="site-info-grid">
-          <section className="site-card" aria-labelledby="about-card-title">
-            <h2 id="about-card-title" className="site-card__title">
-              {strings.page.aboutTitle}
-            </h2>
-            <p>{strings.page.aboutSummary}</p>
-            <a
-              className="site-text-button"
-              href="#about"
-              onClick={() => openView("about")}
-            >
-              <span aria-hidden="true">[ </span>
-              {strings.page.moreAbout}
-              <span aria-hidden="true"> ]</span>
-            </a>
-          </section>
-
-          <RecentResults stats={stats} />
-
-          <section className="site-card" aria-labelledby="data-card-title">
-            <h2 id="data-card-title" className="site-card__title">
-              {strings.page.dataInfo}
-            </h2>
-            <p>{strings.page.snapshot}</p>
-            <strong className="site-data-value">
-              <time dateTime={snapshot.snapshotDate}>
-                {formatDateKey(snapshot.snapshotDate)}
-              </time>
-            </strong>
-            <p className="site-card__muted">
-              {strings.page.idolsInSnapshot(formatCount(snapshot.idols.length))}
-            </p>
-          </section>
-        </div>
-      </main>
-
-      <p className="sr-only" aria-live="polite" aria-atomic="true">
-        {announcement ?? ""}
-      </p>
-      <p className="sr-only" role="alert" aria-atomic="true">
-        {assertiveAnnouncement ?? ""}
-      </p>
-
-      <AttributionFooter snapshot={snapshot} />
-      <Toast message={toast} />
-
-      <InfoModal mode={infoMode} onClose={closeView} />
-
-      <StatsModal
-        open={statsOpen}
-        onClose={closeView}
+      <GameOverlays
+        snapshot={snapshot}
+        toast={toast}
+        announcement={announcement}
+        assertiveAnnouncement={assertiveAnnouncement}
+        infoMode={infoMode}
+        statsOpen={statsOpen}
         stats={stats}
         lastGame={lastGame}
-        shareText={shareCard}
-        onShare={() => announce(strings.game.announcements.shareCopied)}
+        shareCard={shareCard}
+        closeView={closeView}
+        announce={announce}
       />
     </>
   );
