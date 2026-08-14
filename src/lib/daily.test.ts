@@ -1,7 +1,13 @@
 import { describe, it, expect } from "vitest";
 import { getDailyAnswer, utcDateKey } from "./daily";
 import { resolveThemeKey, THEME_LENGTH } from "./themes";
-import type { Snapshot, ThemeKey, Idol, FrozenPool, WordLength } from "../types";
+import type {
+  Snapshot,
+  ThemeKey,
+  Idol,
+  FrozenPool,
+  WordLength,
+} from "../types";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -15,12 +21,19 @@ function makeIdol(stageName: string, themeKey: ThemeKey): Idol {
   };
 }
 
-function makeSnapshot(overrides?: Partial<{ snapshotDate: string; poolSize: number }>): Snapshot {
+function makeSnapshot(
+  overrides?: Partial<{ snapshotDate: string; poolSize: number }>,
+): Snapshot {
   const snapshotDate = overrides?.snapshotDate ?? "2024-01-01";
   const poolSize = overrides?.poolSize ?? 10;
 
   const allThemes: ThemeKey[] = [
-    "len-4", "len-5", "len-6", "len-7", "len-8", "long-name",
+    "len-4",
+    "len-5",
+    "len-6",
+    "len-7",
+    "len-8",
+    "long-name",
   ];
 
   // Build per-theme pools. Fixed-length themes use THEME_LENGTH;
@@ -73,23 +86,41 @@ describe("getDailyAnswer", () => {
     const snapshot = makeSnapshot();
     snapshot.frozenPools["len-4"] = { length: 4, idols: [] };
     const mondayKey = "2024-06-17"; // a Monday → len-4
-    expect(() => getDailyAnswer(mondayKey, snapshot)).toThrow(/Empty frozen pool/);
+    expect(() => getDailyAnswer(mondayKey, snapshot)).toThrow(
+      /Empty frozen pool/,
+    );
+  });
+
+  it("throws when a fixed-length pool contains an inconsistent idol", () => {
+    const snapshot = makeSnapshot();
+    snapshot.frozenPools["len-4"] = {
+      length: 4,
+      idols: [makeIdol("TOO-LONG", "len-4")],
+    };
+    expect(() => getDailyAnswer("2024-06-17", snapshot)).toThrow(
+      /Snapshot inconsistency/,
+    );
   });
 
   it("themeKey resolution works for each day of the week", () => {
     const snapshot = makeSnapshot();
     const expectedThemes: ThemeKey[] = [
-      "len-5",     // Sunday    2024-06-16 (bonus canonical)
-      "len-4",     // Monday    2024-06-17
-      "len-5",     // Tuesday   2024-06-18
-      "len-6",     // Wednesday 2024-06-19
-      "len-7",     // Thursday  2024-06-20
-      "len-8",     // Friday    2024-06-21
+      "len-5", // Sunday    2024-06-16 (bonus canonical)
+      "len-4", // Monday    2024-06-17
+      "len-5", // Tuesday   2024-06-18
+      "len-6", // Wednesday 2024-06-19
+      "len-7", // Thursday  2024-06-20
+      "len-8", // Friday    2024-06-21
       "long-name", // Saturday  2024-06-22
     ];
     const dates = [
-      "2024-06-16", "2024-06-17", "2024-06-18",
-      "2024-06-19", "2024-06-20", "2024-06-21", "2024-06-22",
+      "2024-06-16",
+      "2024-06-17",
+      "2024-06-18",
+      "2024-06-19",
+      "2024-06-20",
+      "2024-06-21",
+      "2024-06-22",
     ];
     for (let i = 0; i < 7; i++) {
       expect(resolveThemeKey(dates[i])).toBe(expectedThemes[i]);
@@ -108,8 +139,13 @@ describe("getDailyAnswer", () => {
   it("returns an idol whose stageName length is valid for the pool", () => {
     const snapshot = makeSnapshot();
     const days = [
-      "2024-06-16", "2024-06-17", "2024-06-18",
-      "2024-06-19", "2024-06-20", "2024-06-21", "2024-06-22",
+      "2024-06-16",
+      "2024-06-17",
+      "2024-06-18",
+      "2024-06-19",
+      "2024-06-20",
+      "2024-06-21",
+      "2024-06-22",
     ];
     for (const date of days) {
       const result = getDailyAnswer(date, snapshot);

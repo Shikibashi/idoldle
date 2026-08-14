@@ -64,7 +64,7 @@
         "extra_exclude_paths": [],
         "include_paths": [],
         "threshold": 80,
-        "coverage_command": "npx --yes jest --ci --coverage --coverageReporters=json-summary",
+        "coverage_command": "npm run test:coverage",
         "coverage_report_path": "coverage/coverage-summary.json",
         "coverage_format": "json-summary"
       },
