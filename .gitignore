@@ -9,3 +9,6 @@ test-results/
 .omc/
 tsconfig.tsbuildinfo
 .claude/
+
+# slop-mop working directory (machine-local state)
+.slopmop/
