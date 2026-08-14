@@ -198,7 +198,11 @@
         "extra_exclude_paths": [],
         "include_paths": [],
         "knip_config": "",
-        "ignore_patterns": [],
+        "ignore_patterns": [
+          "public/theme-init.js",
+          "scripts/build-frozen-pools.ts",
+          "scripts/build-snapshot.ts"
+        ],
         "ignore_dependencies": []
       },
       "sloppy-frontend.js": {

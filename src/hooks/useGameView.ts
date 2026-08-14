@@ -3,7 +3,7 @@ import type { RefObject } from "react";
 import { hashForView, viewFromHash, type AppView } from "../lib/navigation";
 
 export type ModalView = AppView | null;
-export type InfoMode = "about" | "how" | null;
+type InfoMode = "about" | "how" | null;
 
 interface GameViewState {
   mainRef: RefObject<HTMLElement>;

@@ -6,7 +6,7 @@ import type { Guess } from "../types";
  * the function body) so the test suite and future environments can
  * inject a different value via the optional `shareUrl` param.
  */
-export const DEFAULT_SHARE_URL = "https://idoldle.edriffles.us";
+const DEFAULT_SHARE_URL = "https://idoldle.edriffles.us";
 
 /** Streak threshold at which the optional streak line is included. */
 const STREAK_SHARE_THRESHOLD = 3;

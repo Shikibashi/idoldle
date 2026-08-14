@@ -48,7 +48,12 @@ export const ENGLISH_STRINGS = {
     shortViewport:
       "Short viewport: the page remains usable with ordinary browser scrolling.",
     announcements: {
-      guessSubmitted: (correct: string, present: string, absent: string, attempt: number) =>
+      guessSubmitted: (
+        correct: string,
+        present: string,
+        absent: string,
+        attempt: number,
+      ) =>
         `Guess submitted. ${correct} correct, ${present} present, ${absent} absent. Attempt ${attempt} of 6.`,
       solved: (guessCount: number, answer: string) =>
         `Puzzle solved in ${guessCount} ${guessCount === 1 ? "guess" : "guesses"}. Answer: ${answer}.`,
@@ -82,9 +87,11 @@ export const ENGLISH_STRINGS = {
     offline:
       "Offline — showing the local puzzle state. Reconnect before loading a new snapshot.",
     loadFailure: "Could not load local puzzle data.",
-    offlineRetry: "The browser is offline. Reconnect, then retry the local snapshot.",
+    offlineRetry:
+      "The browser is offline. Reconnect, then retry the local snapshot.",
     retrySnapshot: "Retry snapshot",
-    shortFailure: (message: string) => `The snapshot request failed (${message}).`,
+    shortFailure: (message: string) =>
+      `The snapshot request failed (${message}).`,
   },
   modal: {
     closeInformation: "Close information",
@@ -96,25 +103,28 @@ export const ENGLISH_STRINGS = {
 } as const;
 
 const NUMBER_WORDS = [
-  "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+  "Zero",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
 ] as const;
 
 export function numberWord(value: number): string {
   return NUMBER_WORDS[value] ?? String(value);
 }
 
-export type UiStrings = typeof ENGLISH_STRINGS;
-
-export function getUiStrings(_locale = "en"): UiStrings {
-  // English is the product default.  Locale plumbing is intentionally kept
-  // stable so a translated catalog can be added without changing call sites.
-  return ENGLISH_STRINGS;
-}
-
 /** Expand short strings for deterministic pseudolocalization layout tests. */
 export function pseudoLocalize(value: string, multiplier = 2): string {
-  const marked = value.replace(/[A-Za-z]/g, (character) =>
-    "ÁÉÍÓÚáéíóúÇçÑñ"[character.charCodeAt(0) % 12] ?? character,
+  const marked = value.replace(
+    /[A-Za-z]/g,
+    (character) => "ÁÉÍÓÚáéíóúÇçÑñ"[character.charCodeAt(0) % 12] ?? character,
   );
   const extra = Math.max(0, Math.ceil(value.length * (multiplier - 1)));
   return `⟦${marked}${"·".repeat(extra)}⟧`;

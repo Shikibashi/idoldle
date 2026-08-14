@@ -8,7 +8,7 @@ import { useState, useCallback } from "react";
  *
  * Using a predicate type guard so successful validation narrows the type.
  */
-export type Validator<T> = (candidate: unknown) => candidate is T;
+type Validator<T> = (candidate: unknown) => candidate is T;
 
 export interface UseLocalStorageOptions<T> {
   /** Optional runtime shape check. If it returns false, initial is used. */
